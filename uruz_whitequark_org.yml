@@ -1,0 +1,5 @@
+---
+- hosts: uruz.whitequark.org
+  remote_user: root
+  tasks:
+  - include: tasks/apt.yml
