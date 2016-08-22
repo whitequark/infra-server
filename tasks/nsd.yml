@@ -1,0 +1,24 @@
+- name: install nsd
+  apt: name=nsd state=latest
+- name: run nsd on startup
+  service: name=nsd enabled=yes
+- name: configure nsd
+  template: dest=/etc/nsd/nsd.conf src=templates/etc_nsd_nsd.conf
+  notify:
+   - restart nsd
+- name: create /etc/nsd/zones
+  file: path=/etc/nsd/zones state=directory
+# whitequark.org
+- name: configure whitequark.org zone
+  template: dest=/etc/nsd/zones/whitequark.org src=templates/etc_nsd_zones_whitequark.org
+  notify:
+   - restart nsd
+- name: check whitequark.org zone
+  command: nsd-checkzone whitequark.org /etc/nsd/zones/whitequark.org
+# llvm.moe
+- name: configure llvm.moe zone
+  template: dest=/etc/nsd/zones/llvm.moe src=templates/etc_nsd_zones_llvm.moe
+  notify:
+   - restart nsd
+- name: check llvm.moe zone
+  command: nsd-checkzone llvm.moe /etc/nsd/zones/llvm.moe

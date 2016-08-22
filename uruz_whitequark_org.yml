@@ -3,3 +3,8 @@
   remote_user: root
   tasks:
   - include: tasks/apt.yml
+    tags: apt
+  - include: tasks/nsd.yml
+    tags: nsd
+  handlers:
+  - include: handlers/nsd.yml
