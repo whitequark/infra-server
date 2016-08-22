@@ -1,0 +1,4 @@
+- name: create user whitequark
+  user: name=whitequark shell=/bin/bash
+- name: add SSH authorized key for user whitequark
+  authorized_key: user=whitequark key={{ lookup('file', '/home/whitequark/.ssh/id_rsa.pub') }}

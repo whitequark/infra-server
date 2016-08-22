@@ -6,5 +6,7 @@
     tags: apt
   - include: tasks/nsd.yml
     tags: nsd
+  - include: tasks/user.yml
+    tags: user
   handlers:
   - include: handlers/nsd.yml
