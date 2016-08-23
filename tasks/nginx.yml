@@ -2,3 +2,19 @@
   apt: name=nginx state=latest
 - name: run nginx on startup
   service: name=nginx enabled=yes
+- name: copy nginx ssl_params
+  copy: dest=/etc/nginx/ssl_params src=templates/etc/nginx/ssl_params
+  notify:
+   - reload nginx
+- name: copy nginx common_params
+  copy: dest=/etc/nginx/common_params src=templates/etc/nginx/common_params
+  notify:
+   - reload nginx
+- name: copy default nginx site
+  copy: dest=/etc/nginx/sites-available/default src=templates/etc/nginx/sites-available/default
+  notify:
+   - reload nginx
+- name: enable default nginx site
+  file: dest=/etc/nginx/sites-enabled/default src=../sites-available/default state=link
+  notify:
+   - reload nginx

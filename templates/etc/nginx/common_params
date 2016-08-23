@@ -1,0 +1,3 @@
+listen [::]:80;
+listen [::]:443 ssl;
+include ssl_params;
