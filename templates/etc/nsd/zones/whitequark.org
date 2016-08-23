@@ -16,6 +16,7 @@ ns0       IN AAAA   {{ ansible_default_ipv6.address }}
 mail      IN A      {{ ansible_default_ipv4.address }}
 mail      IN AAAA   {{ ansible_default_ipv6.address }}
 www       IN CNAME  @
+doc       IN CNAME  @
 lab       IN CNAME  @
 groupxiv  IN CNAME  @
 irclog    IN CNAME  @

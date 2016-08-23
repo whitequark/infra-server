@@ -12,6 +12,8 @@
     tags: nginx
   - include: tasks/nginx-site.yml name=uruz.whitequark.org
     tags: nginx
+  - include: tasks/sites/doc.whitequark.org.yml
+    tags: doc.whitequark.org
   handlers:
   - include: handlers/nsd.yml
   - include: handlers/nginx.yml

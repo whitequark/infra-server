@@ -1,5 +1,5 @@
 - name: enable {{name}} nginx site
-  file: dest=/etc/nginx/sites-enabled/{{name}} src=../sites-available/{{name}} state=link
+  file: dest=/etc/nginx/sites-enabled/{{name}} src=../sites-available/{{name}} state=link force=true
   notify:
     - reload nginx
 - name: check if {{name}} has letsencrypt certificate
