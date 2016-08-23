@@ -5,20 +5,20 @@
 - name: configure nsd
   template: dest=/etc/nsd/nsd.conf src=templates/etc/nsd/nsd.conf
   notify:
-   - restart nsd
+   - reload nsd
 - name: create /etc/nsd/zones
   file: path=/etc/nsd/zones state=directory
 # whitequark.org
 - name: configure whitequark.org zone
   template: dest=/etc/nsd/zones/whitequark.org src=templates/etc/nsd/zones/whitequark.org
   notify:
-   - restart nsd
+   - reload nsd
 - name: check whitequark.org zone
   command: nsd-checkzone whitequark.org /etc/nsd/zones/whitequark.org
 # llvm.moe
 - name: configure llvm.moe zone
   template: dest=/etc/nsd/zones/llvm.moe src=templates/etc/nsd/zones/llvm.moe
   notify:
-   - restart nsd
+   - reload nsd
 - name: check llvm.moe zone
   command: nsd-checkzone llvm.moe /etc/nsd/zones/llvm.moe
