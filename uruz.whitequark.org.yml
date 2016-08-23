@@ -22,8 +22,11 @@
     tags: lab.whitequark.org
   - include: tasks/sites/groupxiv.whitequark.org.yml
     tags: groupxiv.whitequark.org
+  - include: tasks/sites/irclog.whitequark.org.yml
+    tags: irclog.whitequark.org
   - include: tasks/sites/llvm.moe.yml
     tags: llvm.moe
   handlers:
   - include: handlers/nsd.yml
   - include: handlers/nginx.yml
+  - include: handlers/sites/irclog.whitequark.org.yml

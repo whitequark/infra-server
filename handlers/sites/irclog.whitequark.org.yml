@@ -1,0 +1,4 @@
+- name: restart irclogger logger
+  service: name=irclogger-logger state=restarted
+- name: restart irclogger viewer
+  service: name=irclogger-viewer state=restarted

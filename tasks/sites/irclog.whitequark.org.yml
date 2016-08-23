@@ -1,0 +1,64 @@
+- name: install ruby, thin, redis and postgres
+  apt: name={{item}} state=present default_release=jessie-backports
+  with_items:
+    - ruby
+    - thin
+    - bundler
+    - redis-server
+    - postgresql-9.4
+    - libpq-dev
+    - python-psycopg2
+    - openssl
+- name: create user irclogger
+  user: name=irclogger shell=/bin/bash
+- name: create postgres role irclogger
+  postgresql_user: name=irclogger
+  become: true
+  become_user: postgres
+- name: create postgres database irclogs
+  postgresql_db: name=irclogs owner=irclogger
+  become: true
+  become_user: postgres
+- name: create webroot for irclog.whitequark.org
+  file: dest=/var/www/irclog.whitequark.org state=directory owner=irclogger
+- name: deploy irclogger
+  git: dest=/var/www/irclog.whitequark.org repo=https://github.com/whitequark/irclogger
+    accept_hostkey=yes force=yes
+  become: true
+  become_user: irclogger
+  register: irclog_checkout
+  notify:
+    - restart irclogger logger
+    - restart irclogger viewer
+- name: check for irclogs database
+  command: psql irclogs -c "select * from irclog limit 1;"
+  become: true
+  become_user: irclogger
+  ignore_errors: True
+  register: irclog_checkdb
+  changed_when: False
+- name: import irclogs database schema
+  command: psql irclogs -f /var/www/irclog.whitequark.org/config/sql/postgresql-schema.sql
+  become: true
+  become_user: irclogger
+  when: irclog_checkdb.rc != 0
+- name: bundle irclogger
+  command: bundle install --deployment --without mysql
+  args:
+    chdir: /var/www/irclog.whitequark.org
+  become: true
+  become_user: irclogger
+- name: add irclogger-logger init script
+  copy: dest=/etc/init.d/irclogger-logger src=templates/etc/init.d/irclogger-logger mode=0755
+- name: enable irclogger-logger service
+  service: name=irclogger-logger enabled=yes
+- name: add irclogger-viewer init script
+  copy: dest=/etc/init.d/irclogger-viewer src=templates/etc/init.d/irclogger-viewer mode=0755
+- name: enable irclogger-viewer service
+  service: name=irclogger-viewer enabled=yes
+- name: configure irclogger
+  copy: dest=/var/www/irclog.whitequark.org/config/application.yml
+    src=templates/var/www/irclog.whitequark.org/config/application.yml
+  notify:
+    - restart irclogger logger
+- include: tasks/nginx-site.yml name=irclog.whitequark.org
