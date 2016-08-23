@@ -11,7 +11,3 @@
   copy: dest=/etc/nginx/ssl_params src=templates/etc/nginx/ssl_params
   notify:
     - reload nginx
-- name: copy nginx common_params
-  copy: dest=/etc/nginx/common_params src=templates/etc/nginx/common_params
-  notify:
-    - reload nginx
