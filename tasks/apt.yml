@@ -1,4 +1,5 @@
 - name: set APT sources
   copy: dest=/etc/apt/sources.list src=templates/etc/apt/sources.list
+  register: apt_sources
 - name: update APT cache
-  apt: update_cache=yes cache_valid_time=3600
+  apt: update_cache=yes cache_valid_time={{ '0' if apt_sources.changed else '3600' }}
