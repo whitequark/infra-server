@@ -1,0 +1,30 @@
+- name: enable {{name}} nginx site
+  file: dest=/etc/nginx/sites-enabled/{{name}} src=../sites-available/{{name}} state=link
+  notify:
+    - reload nginx
+- name: check if {{name}} has letsencrypt certificate
+  stat: path=/etc/letsencrypt/live/{{name}}/fullchain.pem
+  register: ssl_cert
+- name: configure {{name}} nginx site without https
+  template: dest=/etc/nginx/sites-available/{{name}} src=templates/etc/nginx/sites-available/{{name}}
+  vars:
+    has_tls: off
+  when: ssl_cert.stat.exists == False
+- name: reload nginx
+  service: name=nginx state=reloaded
+  when: ssl_cert.stat.exists == False
+- name: create webroot for letsencrypt
+  file: dest=/var/www/{{name}} state=directory
+  when: ssl_cert.stat.exists == False
+- name: acquire letsencrypt certificate
+  command: certbot certonly
+    --email whitequark@whitequark.org
+    --noninteractive --agree-tos
+    --webroot -w /var/www/{{name}}/ -d {{name}}
+  when: ssl_cert.stat.exists == False
+- name: configure {{name}} nginx site with https
+  template: dest=/etc/nginx/sites-available/{{name}} src=templates/etc/nginx/sites-available/{{name}}
+  vars:
+    has_tls: on
+  notify:
+    - reload nginx

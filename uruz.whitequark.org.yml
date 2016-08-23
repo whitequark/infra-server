@@ -8,6 +8,10 @@
     tags: nsd
   - include: tasks/user.yml
     tags: user
+  - include: tasks/nginx.yml
+    tags: nginx
+  - include: tasks/nginx-site.yml name=uruz.whitequark.org
+    tags: nginx
   handlers:
   - include: handlers/nsd.yml
   - include: handlers/nginx.yml

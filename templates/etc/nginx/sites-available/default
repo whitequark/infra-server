@@ -1,7 +1,0 @@
-server {
-  listen [::]:80;
-  location / {
-    add_header Content-Type text/plain;
-    return 200 "Nothing to see here, move along";
-  }
-}
