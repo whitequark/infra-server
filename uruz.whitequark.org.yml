@@ -10,3 +10,4 @@
     tags: user
   handlers:
   - include: handlers/nsd.yml
+  - include: handlers/nginx.yml
