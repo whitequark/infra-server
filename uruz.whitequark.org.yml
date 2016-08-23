@@ -20,6 +20,8 @@
     tags: doc.whitequark.org
   - include: tasks/sites/lab.whitequark.org.yml
     tags: lab.whitequark.org
+  - include: tasks/sites/groupxiv.whitequark.org.yml
+    tags: groupxiv.whitequark.org
   handlers:
   - include: handlers/nsd.yml
   - include: handlers/nginx.yml

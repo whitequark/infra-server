@@ -1,5 +1,5 @@
-- include: tasks/nginx-site.yml name=doc.whitequark.org
 - name: install rsync
   apt: name=rsync state=present
 - name: create webroot for doc.whitequark.org
   file: dest=/var/www/doc.whitequark.org state=directory owner=whitequark
+- include: tasks/nginx-site.yml name=doc.whitequark.org
