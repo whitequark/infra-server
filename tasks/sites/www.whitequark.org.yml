@@ -1,0 +1,1 @@
+- include: tasks/nginx-site.yml name=www.whitequark.org

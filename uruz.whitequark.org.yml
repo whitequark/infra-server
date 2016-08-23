@@ -1,6 +1,8 @@
 ---
 - hosts: uruz.whitequark.org
   remote_user: root
+  vars:
+    live: False
   tasks:
   - include: tasks/apt.yml
     tags: apt
@@ -12,6 +14,8 @@
     tags: nginx
   - include: tasks/nginx-site.yml name=uruz.whitequark.org
     tags: nginx
+  - include: tasks/sites/www.whitequark.org.yml
+    tags: www.whitequark.org
   - include: tasks/sites/doc.whitequark.org.yml
     tags: doc.whitequark.org
   handlers:

@@ -9,22 +9,25 @@
   template: dest=/etc/nginx/sites-available/{{name}} src=templates/etc/nginx/sites-available/{{name}}
   vars:
     has_tls: off
+  notify:
+    - reload nginx
   when: ssl_cert.stat.exists == False
 - name: reload nginx
   service: name=nginx state=reloaded
-  when: ssl_cert.stat.exists == False
+  when: ssl_cert.stat.exists == False and live == True
 - name: create webroot for letsencrypt
   file: dest=/var/www/{{name}} state=directory
-  when: ssl_cert.stat.exists == False
+  when: ssl_cert.stat.exists == False and live == True
 - name: acquire letsencrypt certificate
   command: certbot certonly
     --email whitequark@whitequark.org
     --noninteractive --agree-tos
     --webroot -w /var/www/{{name}}/ -d {{name}}
-  when: ssl_cert.stat.exists == False
+  when: ssl_cert.stat.exists == False and live == True
 - name: configure {{name}} nginx site with https
   template: dest=/etc/nginx/sites-available/{{name}} src=templates/etc/nginx/sites-available/{{name}}
   vars:
     has_tls: on
   notify:
     - reload nginx
+  when: live == True
