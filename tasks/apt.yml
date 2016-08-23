@@ -1,4 +1,4 @@
 - name: set APT sources
-  copy: dest=/etc/apt/sources.list src=templates/etc_apt_sources.list
+  copy: dest=/etc/apt/sources.list src=templates/etc/apt/sources.list
 - name: update APT cache
   apt: update_cache=yes cache_valid_time=3600
