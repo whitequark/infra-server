@@ -13,6 +13,7 @@ do
 done
 
 ssh $INTO rsync -aP $FROM:stuff/Documentation/ /var/www/doc.whitequark.org
+ssh $INTO rsync -aP $FROM:files/ /var/www/files.whitequark.org
 
 ssh root@$INTO "pkill -f 3306:localhost:3306 ; ssh whitequark@$FROM -N -L 3306:localhost:3306 &"
 ssh root@$INTO "cat >irclog.load" <<END

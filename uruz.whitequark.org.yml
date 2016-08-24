@@ -18,6 +18,8 @@
     tags: www.whitequark.org
   - include: tasks/sites/doc.whitequark.org.yml
     tags: doc.whitequark.org
+  - include: tasks/sites/files.whitequark.org.yml
+    tags: files.whitequark.org
   - include: tasks/sites/lab.whitequark.org.yml
     tags: lab.whitequark.org
   - include: tasks/sites/groupxiv.whitequark.org.yml
