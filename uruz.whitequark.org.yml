@@ -8,8 +8,6 @@
     tags: apt
   - include: tasks/nsd.yml
     tags: nsd
-  - include: tasks/user.yml
-    tags: user
   - include: tasks/nginx.yml
     tags: nginx
   - include: tasks/nginx-site.yml name=uruz.whitequark.org
@@ -28,6 +26,8 @@
     tags: irclog.whitequark.org
   - include: tasks/sites/llvm.moe.yml
     tags: llvm.moe
+  - include: tasks/personal.yml
+    tags: personal
   handlers:
   - include: handlers/nsd.yml
   - include: handlers/nginx.yml
