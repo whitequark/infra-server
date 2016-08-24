@@ -6,6 +6,8 @@
   tasks:
   - include: tasks/apt.yml
     tags: apt
+  - include: tasks/tarsnap.yml version=1.0.37
+    tags: tarsnap
   - include: tasks/nsd.yml
     tags: nsd
   - include: tasks/nginx.yml
