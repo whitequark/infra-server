@@ -1,7 +1,7 @@
 $ORIGIN   llvm.moe.
 $TTL      86400
 
-@         IN SOA    ns0.whitequark.org. admin.llvm.moe. (2016082200 28800 7200 864000 86400)
+@         IN SOA    ns0.whitequark.org. admin.llvm.moe. (2016082500 28800 7200 864000 86400)
           IN NS     ns0.whitequark.org.
           IN NS     ns1.rollernet.us.
           IN NS     ns2.rollernet.us.
