@@ -1,0 +1,33 @@
+server {
+  server_name {{name}} mailnew.whitequark.org;
+  listen [::]:80;
+{% if has_tls %}
+  listen [::]:443 ssl;
+  include ssl_params;
+  ssl_certificate /etc/letsencrypt/live/{{name}}/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/{{name}}/privkey.pem;
+{% endif %}
+
+  client_max_body_size 200M;
+
+  root /var/lib/roundcube;
+  index index.php;
+
+  location ~ .php$ {
+    fastcgi_pass unix:/tmp/roundcube.sock;
+    fastcgi_param SCRIPT_FILENAME /var/lib/roundcube$fastcgi_script_name;
+    include fastcgi_params;
+  }
+
+  location / {
+    rewrite ^favicon\.ico$ skins/larry/images/favicon.ico;
+  }
+
+  location /(config|temp|logs) {
+    return 403;
+  }
+
+  location /.well-known {
+    root /var/www/{{name}};
+  }
+}

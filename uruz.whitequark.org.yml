@@ -28,6 +28,8 @@
     tags: groupxiv.whitequark.org
   - include: tasks/sites/irclog.whitequark.org.yml
     tags: irclog.whitequark.org
+  - include: tasks/sites/mail.whitequark.org.yml
+    tags: mail.whitequark.org
   - include: tasks/sites/llvm.moe.yml
     tags: llvm.moe
   - include: tasks/personal.yml
@@ -36,3 +38,4 @@
   - include: handlers/nsd.yml
   - include: handlers/nginx.yml
   - include: handlers/sites/irclog.whitequark.org.yml
+  - include: handlers/sites/mail.whitequark.org.yml

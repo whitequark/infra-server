@@ -1,0 +1,45 @@
+- name: install dbconfig
+  apt: name=dbconfig-pgsql state=present default_release=jessie-backports
+- name: create user roundcube
+  user: name=roundcube shell=/usr/sbin/nologin
+- name: configure roundcube database
+  copy: dest=/etc/dbconfig-common/roundcube.conf src=templates/etc/dbconfig-common/roundcube.conf
+- name: install roundcube
+  apt: name={{item}} state=present
+  with_items:
+    - roundcube
+    - roundcube-pgsql
+    - roundcube-plugins
+    - spawn-fcgi
+  register: roundcube_apt
+- name: remove useless roundcube packages
+  apt: name={{item}} state=absent
+  with_items:
+    - apache2-bin
+    - roundcube-mysql
+- name: install roundcube plugins
+  git: dest=/var/lib/roundcube/plugins/{{item.name}} repo={{item.repo}}
+    accept_hostkey=yes force=yes
+  with_items:
+    - { name: contextmenu, repo: 'https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu' }
+    - { name: keyboard_shortcuts, repo: 'https://github.com/corbosman/keyboard_shortcuts' }
+- name: add roundcube init script
+  copy: dest=/etc/init.d/roundcube src=templates/etc/init.d/roundcube mode=0755
+  notify:
+    - restart roundcube
+- name: configure roundcube
+  copy: dest=/etc/roundcube/config.inc.php src=templates/etc/roundcube/config.inc.php
+- name: check for roundcube cookie
+  stat: path=/etc/roundcube/cookie.inc.php
+  register: roundcube_cookie
+- name: configure roundcube cookie
+  template: dest=/etc/roundcube/cookie.inc.php src=templates/etc/roundcube/cookie.inc.php
+  when: roundcube_cookie.stat.exists == False
+- name: enable roundcube service
+  service: name=roundcube state=started enabled=yes
+- name: fix permissions on roundcube log and temp
+  file: name={{item}} owner=roundcube group=roundcube
+  with_items:
+    - /var/lib/roundcube/temp
+    - /var/log/roundcube
+- include: tasks/nginx-site.yml name=mail.whitequark.org
