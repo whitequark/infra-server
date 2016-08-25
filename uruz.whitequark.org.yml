@@ -8,16 +8,16 @@
     tags: apt
   - include: tasks/system.yml
     tags: system
-  - include: tasks/tarsnap.yml version=1.0.37
-    tags: tarsnap
+  - include: tasks/personal.yml
+    tags: personal
+  - include: tasks/mail.yml
+    tags: mail
   - include: tasks/nsd.yml
     tags: nsd
   - include: tasks/nsd-zone.yml name=whitequark.org
     tags: nsd
   - include: tasks/nsd-zone.yml name=llvm.moe
     tags: nsd
-  - include: tasks/mail.yml
-    tags: mail
   - include: tasks/nginx.yml
     tags: nginx
   - include: tasks/nginx-site.yml name=uruz.whitequark.org
@@ -38,8 +38,8 @@
     tags: mail.whitequark.org
   - include: tasks/sites/llvm.moe.yml
     tags: llvm.moe
-  - include: tasks/personal.yml
-    tags: personal
+  - include: tasks/tarsnap.yml version=1.0.37
+    tags: tarsnap
   handlers:
   - include: handlers/syslog.yml
   - include: handlers/nsd.yml
