@@ -5,8 +5,6 @@
     - certbot
 - name: configure certbot to renew regularly
   cron: name="certbot" hour="15" job="certbot renew --quiet"
-- name: run nginx on startup
-  service: name=nginx enabled=yes
 - name: copy nginx ssl_params
   copy: dest=/etc/nginx/ssl_params src=templates/etc/nginx/ssl_params
   notify:
