@@ -12,6 +12,10 @@
     tags: tarsnap
   - include: tasks/nsd.yml
     tags: nsd
+  - include: tasks/nsd-zone.yml name=whitequark.org
+    tags: nsd
+  - include: tasks/nsd-zone.yml name=llvm.moe
+    tags: nsd
   - include: tasks/mail.yml
     tags: mail
   - include: tasks/nginx.yml
