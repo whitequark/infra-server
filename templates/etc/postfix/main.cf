@@ -1,0 +1,45 @@
+smtpd_banner = $myhostname ESMTP $mail_name (Debian/GNU)
+biff = no
+
+myhostname = {{inventory_hostname}}
+myorigin = whitequark.org
+mydestination = $myhostname, localhost.$mydomain, localhost,
+  whitequark.org, llvm.moe
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+  # rollernet secondary MXs
+  208.79.240.5/32 [2607:fe70:0:3::d]/128
+
+recipient_delimiter = +
+
+mailbox_command = /usr/lib/dovecot/dovecot-lda -d "$USER"
+message_size_limit = 300000000
+mailbox_size_limit = 0
+
+virtual_maps = regexp:/etc/postfix/virtual-regexp
+
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_security_options = noanonymous
+smtpd_recipient_restrictions = permit_mynetworks,
+  permit_sasl_authenticated,
+  reject_unauth_destination
+
+smtp_sasl_auth_enable = yes
+smtp_sasl_security_options = noanonymous
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sender_dependent_authentication = yes
+sender_dependent_relayhost_maps = hash:/etc/postfix/sender_relay
+
+{% if has_tls %}
+smtpd_tls_security_level = may
+smtpd_tls_auth_only = yes
+smtpd_tls_cert_file = /etc/letsencrypt/live/mail.whitequark.org/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/mail.whitequark.org/privkey.pem
+smtpd_tls_protocols = TLSv1 TLSv1.1 TLSv1.2
+smtpd_tls_ciphers = EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA256:EECDH+aRSA+RC4:EDH+aRSA:EECDH:RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS:!SSLv3
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+
+smtp_tls_security_level = may
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+{% endif %}

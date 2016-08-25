@@ -1,0 +1,44 @@
+- name: install dovecot, postfix and spamassassin
+  apt: name={{item}}
+  with_items:
+    - dovecot-imapd
+    - dovecot-managesieved
+    - dovecot-antispam
+    - postfix
+    - spamassassin
+    - spamc
+- name: configure dovecot
+  template: dest=/etc/dovecot/local.conf src=templates/etc/dovecot/local.conf
+  vars:
+    has_tls: '{{live}}'
+  notify:
+    - restart dovecot
+- name: set up dovecot passwd file
+  copy: dest=/etc/dovecot/passwd content= force=no mode=0640 owner=root group=dovecot
+- name: configure postfix main.cf
+  template: dest=/etc/postfix/main.cf src=templates/etc/postfix/main.cf
+  vars:
+    has_tls: '{{live}}'
+  notify:
+    - reload postfix
+- name: configure postfix master.cf
+  copy: dest=/etc/postfix/master.cf src=templates/etc/postfix/master.cf
+  notify:
+    - reload postfix
+- name: configure postfix virtual regexps
+  copy: dest=/etc/postfix/virtual-regexp src=templates/etc/postfix/virtual-regexp
+  register: postfix_virtual_regexp
+  notify:
+    - reload postfix
+- name: configure spamassassin
+  copy: dest=/etc/spamassassin/local.cf src=templates/etc/spamassassin/local.cf
+  notify:
+    - restart spamassassin
+- name: configure spamd
+  copy: dest=/etc/default/spamassassin src=templates/etc/default/spamassassin
+  notify:
+    - restart spamassassin
+- name: add rsyslog rules for dovecot
+  copy: dest=/etc/rsyslog.d/dovecot.conf src=templates/etc/rsyslog.d/dovecot.conf
+  notify:
+    - restart rsyslog

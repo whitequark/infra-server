@@ -12,6 +12,8 @@
     tags: tarsnap
   - include: tasks/nsd.yml
     tags: nsd
+  - include: tasks/mail.yml
+    tags: mail
   - include: tasks/nginx.yml
     tags: nginx
   - include: tasks/nginx-site.yml name=uruz.whitequark.org
@@ -35,7 +37,9 @@
   - include: tasks/personal.yml
     tags: personal
   handlers:
+  - include: handlers/syslog.yml
   - include: handlers/nsd.yml
+  - include: handlers/mail.yml
   - include: handlers/nginx.yml
   - include: handlers/sites/irclog.whitequark.org.yml
   - include: handlers/sites/mail.whitequark.org.yml

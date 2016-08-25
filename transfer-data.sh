@@ -24,6 +24,7 @@ SET work_mem to '16MB', maintenance_work_mem to '32MB';
 END
 ssh root@$INTO "pgloader irclog.load"
 
-for i in .config .local .irssi .spamassassin Archive Maildir sieve; do
+for i in .config .local .irssi .spamassassin Archive Maildir; do
   ssh $INTO rsync -aP $FROM:$i/ $i
 done
+ssh $INTO rsync -aP $FROM:sieve/ .sieve

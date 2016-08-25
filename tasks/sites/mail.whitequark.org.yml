@@ -29,16 +29,18 @@
     - restart roundcube
 - name: configure roundcube
   copy: dest=/etc/roundcube/config.inc.php src=templates/etc/roundcube/config.inc.php
+    group=roundcube mode=0644
 - name: check for roundcube cookie
   stat: path=/etc/roundcube/cookie.inc.php
   register: roundcube_cookie
 - name: configure roundcube cookie
   template: dest=/etc/roundcube/cookie.inc.php src=templates/etc/roundcube/cookie.inc.php
+    group=roundcube mode=0644
   when: roundcube_cookie.stat.exists == False
 - name: enable roundcube service
   service: name=roundcube state=started enabled=yes
 - name: fix permissions on roundcube log and temp
-  file: name={{item}} owner=roundcube group=roundcube
+  file: name={{item}} owner=roundcube group=roundcube state=directory recurse=yes
   with_items:
     - /var/lib/roundcube/temp
     - /var/log/roundcube

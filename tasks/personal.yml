@@ -1,5 +1,7 @@
 - name: create user whitequark
   user: name=whitequark shell=/bin/bash
+- name: configure mail forwarding from root@
+  copy: dest=/root/.forward content=whitequark
 - name: add SSH authorized key for user whitequark
   authorized_key: user=whitequark key={{ lookup('file', '/home/whitequark/.ssh/id_rsa.pub') }}
 - name: install personal packages
