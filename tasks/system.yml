@@ -1,0 +1,15 @@
+- name: remove useless getty's
+  lineinfile: name=/etc/inittab regexp="tty[23456]" state=absent
+- name: remove useless Debian defaults
+  apt: name={{item}} state=absent purge=yes autoremove=yes
+  with_items:
+    - acpi
+    - acpid
+    - acpi-support-base
+    - exim4
+    - exim4-base
+    - exim4-config
+    - exim4-daemon-light
+    - mutt
+    - procmail
+    - rpcbind
