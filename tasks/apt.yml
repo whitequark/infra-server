@@ -1,5 +1,7 @@
 - name: set APT sources
   copy: dest=/etc/apt/sources.list src=templates/etc/apt/sources.list
   register: apt_sources
+- name: configure unattended upgrades
+  copy: dest=/etc/apt/apt.conf.d/50unattended-upgrades src=templates/etc/apt/apt.conf.d/50unattended-upgrades
 - name: update APT cache
   apt: update_cache=yes cache_valid_time={{ '0' if apt_sources.changed else '3600' }}
