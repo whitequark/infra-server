@@ -9,4 +9,9 @@ server {
 {% endif %}
 
   root /var/www/{{name}};
+  location / {
+    sub_filter </body>
+      '<script type="text/javascript">var _gauges=_gauges||[];(function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.id="gauges-tracker";e.setAttribute("data-site-id","53ea8143e32bb44f4200b47f");e.src="//secure.gaug.es/track.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})()</script></body>';
+    sub_filter_once on;
+  }
 }
