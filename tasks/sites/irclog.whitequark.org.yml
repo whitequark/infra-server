@@ -61,4 +61,11 @@
     src=templates/var/www/irclog.whitequark.org/config/application.yml
   notify:
     - restart irclogger logger
+- name: configure irclogger watchdog
+  cron: name="watchdog" minute="*/12"
+    job="bundle exec /var/www/irclog.whitequark.org/watchdog.rb"
+  become: true
+  become_user: irclogger
+- name: configure mail forwarding from irclogger@
+  copy: dest=/home/irclogger/.forward content=whitequark
 - include: tasks/nginx-site.yml name=irclog.whitequark.org
