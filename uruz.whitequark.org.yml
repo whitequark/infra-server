@@ -2,7 +2,7 @@
 - hosts: uruz.whitequark.org
   remote_user: root
   vars:
-    live: False
+    live: True
   vars_files:
     - vars/passwords.yml
   tasks:
