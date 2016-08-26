@@ -1,0 +1,5 @@
+- name: create webroot for whitequark.org
+  file: dest=/var/www/whitequark.org state=directory owner=whitequark
+- name: populate webroot for whitequark.org
+  copy: dest=/var/www/whitequark.org src=templates/var/www/whitequark.org/ owner=whitequark
+- include: tasks/nginx-site.yml name=whitequark.org
