@@ -37,7 +37,7 @@ smtpd_tls_auth_only = yes
 smtpd_tls_cert_file = /etc/letsencrypt/live/mail.whitequark.org/fullchain.pem
 smtpd_tls_key_file = /etc/letsencrypt/live/mail.whitequark.org/privkey.pem
 smtpd_tls_protocols = TLSv1 TLSv1.1 TLSv1.2
-smtpd_tls_ciphers = EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA256:EECDH+aRSA+RC4:EDH+aRSA:EECDH:RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS:!SSLv3
+smtpd_tls_ciphers = medium
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 
 smtp_tls_security_level = may
