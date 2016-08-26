@@ -1,7 +1,3 @@
-upstream irclog_whitequark_org {
-  server unix:/var/www/irclog.whitequark.org/tmp/viewer.sock;
-}
-
 server {
   server_name {{name}};
   listen [::]:80;
@@ -12,7 +8,7 @@ server {
   ssl_certificate_key /etc/letsencrypt/live/{{name}}/privkey.pem;
 {% endif %}
 
-  root /var/www/{{name}}/public;
+  root /var/www/irclog.whitequark.org/public;
   location / {
     proxy_set_header Host $http_host;
     if (!-f $request_filename) {

@@ -57,15 +57,16 @@
 - name: enable irclogger-viewer service
   service: name=irclogger-viewer enabled=yes
 - name: configure irclogger
-  copy: dest=/var/www/irclog.whitequark.org/config/application.yml
+  template: dest=/var/www/irclog.whitequark.org/config/application.yml
     src=templates/var/www/irclog.whitequark.org/config/application.yml
   notify:
     - restart irclogger logger
 - name: configure irclogger watchdog
-  cron: name="watchdog" minute="*/12"
-    job="bundle exec /var/www/irclog.whitequark.org/watchdog.rb"
+  cron: name="watchdog" minute="*/5"
+    job="cd /var/www/irclog.whitequark.org && bundle exec ./watchdog.rb"
   become: true
   become_user: irclogger
 - name: configure mail forwarding from irclogger@
   copy: dest=/home/irclogger/.forward content=whitequark
 - include: tasks/nginx-site.yml name=irclog.whitequark.org
+- include: tasks/nginx-site.yml name=logs.jruby.org

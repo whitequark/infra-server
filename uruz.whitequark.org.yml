@@ -3,6 +3,8 @@
   remote_user: root
   vars:
     live: False
+  vars_files:
+    - vars/passwords.yml
   tasks:
   - include: tasks/apt.yml
     tags: apt
