@@ -12,7 +12,7 @@ $config['managesieve_host'] = '[::1]';
 $config['product_name'] = 'whitequark.org webmail';
 
 $config['login_autocomplete'] = 2; // username and password
-$config['session_domain'] = 'mail.whitequark.org';
+$config['session_domain'] = '{{domain}}';
 $config['session_lifetime'] = 60*6;
 
 $config['skin'] = 'classic';

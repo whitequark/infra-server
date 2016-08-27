@@ -34,8 +34,8 @@ sender_dependent_relayhost_maps = hash:/etc/postfix/sender_relay
 {% if has_tls %}
 smtpd_tls_security_level = may
 smtpd_tls_auth_only = yes
-smtpd_tls_cert_file = /etc/letsencrypt/live/mail.whitequark.org/fullchain.pem
-smtpd_tls_key_file = /etc/letsencrypt/live/mail.whitequark.org/privkey.pem
+smtpd_tls_cert_file = /etc/letsencrypt/live/{{domain}}/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/{{domain}}/privkey.pem
 smtpd_tls_protocols = TLSv1 TLSv1.1 TLSv1.2
 smtpd_tls_ciphers = medium
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache

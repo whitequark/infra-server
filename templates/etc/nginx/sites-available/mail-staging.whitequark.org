@@ -1,8 +1,8 @@
 server {
   server_name {{name}};
-  listen [::]:80;
+  listen [::]:80 ipv6only=off;
 {% if has_tls %}
-  listen [::]:443 ssl;
+  listen [::]:443 ssl ipv6only=off;
   include ssl_params;
   ssl_certificate /etc/letsencrypt/live/{{name}}/fullchain.pem;
   ssl_certificate_key /etc/letsencrypt/live/{{name}}/privkey.pem;

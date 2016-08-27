@@ -1,0 +1,23 @@
+---
+- hosts: mail-staging.whitequark.org
+  remote_user: root
+  vars:
+    live: True
+  tasks:
+  - include: tasks/apt.yml
+    tags: apt
+  - include: tasks/system.yml
+    tags: system
+  - include: tasks/mail.yml domain=mail-staging.whitequark.org
+    tags: mail
+  - include: tasks/nginx.yml
+    tags: nginx
+  - include: tasks/roundcube.yml domain=mail-staging.whitequark.org
+    tags: roundcube
+  - include: tasks/nginx-site.yml name=mail-staging.whitequark.org
+    tags: mail-staging.whitequark.org
+  handlers:
+  - include: handlers/syslog.yml
+  - include: handlers/mail.yml
+  - include: handlers/nginx.yml
+  - include: handlers/roundcube.yml

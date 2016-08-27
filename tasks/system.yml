@@ -4,11 +4,11 @@
 - name: reboot
   # ugh, systemd doesn't cleanly drop ssh connections on reboot
   local_action: shell ssh -o ServerAliveInterval=3
-    root@{{ansible_host|default(inventory_hostname)}} reboot
+    root@{{inventory_hostname}} reboot
   ignore_errors: true
   when: sysvinit.changed
 - name: wait for restart
-  local_action: wait_for port=22 host={{ansible_host}} search_regex=OpenSSH delay=10
+  local_action: wait_for port=22 host={{inventory_hostname}} search_regex=OpenSSH delay=10
   when: sysvinit.changed
 - name: remove useless getty's
   lineinfile: name=/etc/inittab regexp="tty[23456]" state=absent

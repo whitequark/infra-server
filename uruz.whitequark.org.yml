@@ -12,8 +12,10 @@
     tags: system
   - include: tasks/personal.yml
     tags: personal
-  - include: tasks/mail.yml
+  - include: tasks/mail.yml domain=mail.whitequark.org
     tags: mail
+  - include: tasks/roundcube.yml domain=mail.whitequark.org
+    tags: roundcube
   - include: tasks/nsd.yml
     tags: nsd
   - include: tasks/nsd-zone.yml name=whitequark.org
@@ -36,7 +38,7 @@
     tags: groupxiv.whitequark.org
   - include: tasks/sites/irclog.whitequark.org.yml
     tags: irclog.whitequark.org
-  - include: tasks/sites/mail.whitequark.org.yml
+  - include: tasks/nginx-site.yml name=mail.whitequark.org
     tags: mail.whitequark.org
   - include: tasks/sites/whitequark.org.yml
     tags: whitequark.org
@@ -52,4 +54,4 @@
   - include: handlers/mail.yml
   - include: handlers/nginx.yml
   - include: handlers/sites/irclog.whitequark.org.yml
-  - include: handlers/sites/mail.whitequark.org.yml
+  - include: handlers/roundcube.yml

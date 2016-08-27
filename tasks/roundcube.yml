@@ -1,5 +1,9 @@
-- name: install dbconfig
-  apt: name=dbconfig-pgsql state=present default_release=jessie-backports
+- name: install postgres, dbconfig, and git
+  apt: name={{item}} state=present default_release=jessie-backports
+  with_items:
+    - postgresql-9.4
+    - dbconfig-pgsql
+    - git
 - name: create user roundcube
   user: name=roundcube shell=/usr/sbin/nologin
 - name: configure roundcube database
@@ -28,7 +32,7 @@
   notify:
     - restart roundcube
 - name: configure roundcube
-  copy: dest=/etc/roundcube/config.inc.php src=templates/etc/roundcube/config.inc.php
+  template: dest=/etc/roundcube/config.inc.php src=templates/etc/roundcube/config.inc.php
     group=roundcube mode=0644
 - name: check for roundcube cookie
   stat: path=/etc/roundcube/cookie.inc.php
@@ -37,11 +41,10 @@
   template: dest=/etc/roundcube/cookie.inc.php src=templates/etc/roundcube/cookie.inc.php
     group=roundcube mode=0644
   when: roundcube_cookie.stat.exists == False
-- name: enable roundcube service
-  service: name=roundcube state=started enabled=yes
 - name: fix permissions on roundcube log and temp
   file: name={{item}} owner=roundcube group=roundcube state=directory recurse=yes
   with_items:
     - /var/lib/roundcube/temp
     - /var/log/roundcube
-- include: tasks/nginx-site.yml name=mail.whitequark.org
+- name: enable roundcube service
+  service: name=roundcube state=started enabled=yes
