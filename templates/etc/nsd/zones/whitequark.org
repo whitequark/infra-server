@@ -26,6 +26,3 @@ irclog    IN CNAME  @
 
 fehu      IN A      176.58.103.125
 rxr       IN CNAME  fehu
-
-mail-staging IN A    138.68.133.129
-mail-staging IN AAAA 2a03:b0c0:1:a1::52a:9001
