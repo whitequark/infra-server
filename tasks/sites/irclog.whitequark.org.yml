@@ -67,7 +67,7 @@
   notify:
     - restart irclogger logger
 - name: configure irclogger watchdog
-  cron: name="watchdog" minute="*/5"
+  cron: name="watchdog" minute="*/3"
     job="cd /var/www/irclog.whitequark.org && bundle exec ./watchdog.rb"
   become: true
   become_user: irclogger
