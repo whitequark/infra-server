@@ -6,6 +6,7 @@
     - bundler
     - redis-server
     - postgresql-9.4
+    - postgresql-contrib-9.4
     - libpq-dev
     - python-psycopg2
     - openssl
@@ -37,6 +38,10 @@
   ignore_errors: True
   register: irclog_checkdb
   changed_when: False
+- name: create postgres extension btree_gin
+  command: psql irclogs -c "create extension if not exists btree_gin;"
+  register: pg_create_extension
+  changed_when: "'already exists' not in pg_create_extension.stderr"
 - name: import irclogs database schema
   command: psql irclogs -f /var/www/irclog.whitequark.org/config/sql/postgresql-schema.sql
   become: true
