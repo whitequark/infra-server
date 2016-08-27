@@ -1,5 +1,7 @@
 - name: restart dovecot
   service: name=dovecot state=restarted
+- name: restart imapproxy
+  service: name=imapproxy state=restarted
 - name: reload postfix
   service: name=postfix state=reloaded
 - name: restart spamassassin

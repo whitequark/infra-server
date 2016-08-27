@@ -6,7 +6,7 @@ include_once("/etc/roundcube/cookie.inc.php");
 
 $config['db_dsnw'] = 'pgsql:///roundcube';
 
-$config['default_host'] = '[::1]'; // imap
+$config['default_host'] = '[::1]:1143'; // imap
 $config['managesieve_host'] = '[::1]';
 
 $config['product_name'] = 'whitequark.org webmail';
