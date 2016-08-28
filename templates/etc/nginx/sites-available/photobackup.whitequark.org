@@ -1,0 +1,23 @@
+upstream photobackup {
+  server localhost:8420;
+}
+
+server {
+  server_name {{name}};
+  listen [::]:80;
+{% if has_tls %}
+  listen [::]:443 ssl;
+  include ssl_params;
+  ssl_certificate /etc/letsencrypt/live/{{name}}/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/{{name}}/privkey.pem;
+{% endif %}
+
+  location / {
+    client_max_body_size 30m;
+    proxy_pass http://photobackup;
+  }
+
+  location /.well-known {
+    root /var/www/{{name}};
+  }
+}

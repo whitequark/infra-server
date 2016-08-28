@@ -19,13 +19,3 @@
   cron: name="rss2email" minute="*/4" job="r2e run"
   become: true
   become_user: whitequark
-
-- name: create user thz
-  user: name=thz shell=/bin/zsh
-- name: add SSH authorized key for thz
-  authorized_key: user=thz
-    key="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIARXzFx/EaGVb/BeNf4wFR6+dp9sQVkaRNehj4cQnxzQ"
-- name: install thz's personal packages
-  apt: name={{item}} state=present
-  with_items:
-    - zsh

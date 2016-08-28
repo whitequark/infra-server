@@ -1,7 +1,7 @@
 $ORIGIN   whitequark.org.
 $TTL      86400
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2016082500 28800 7200 864000 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2016082800 28800 7200 864000 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
           IN NS     ns2.rollernet.us.
@@ -23,6 +23,7 @@ files     IN CNAME  @
 lab       IN CNAME  @
 groupxiv  IN CNAME  @
 irclog    IN CNAME  @
+photobackup IN CNAME @
 
 fehu      IN A      176.58.103.125
 rxr       IN CNAME  fehu

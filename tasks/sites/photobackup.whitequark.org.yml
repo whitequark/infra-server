@@ -1,0 +1,22 @@
+- name: install python3-pip and libffi-dev
+  apt: name={{item}} state=present
+  with_items:
+    - python3-pip
+    - libffi-dev
+- name: install photobackup_bottle
+  pip: executable=pip3 name=photobackup_bottle state=present
+- name: configure photobackup for whitequark
+  template: dest=/home/whitequark/.photobackup src=templates/home/whitequark/.photobackup
+  become: true
+  become_user: whitequark
+  notify:
+    - restart photobackup
+- name: create photobackup archive for whitequark
+  file: name=/home/whitequark/Archive/PhotoBackup state=directory
+  become: true
+  become_user: whitequark
+- name: add photobackup init script
+  copy: dest=/etc/init.d/photobackup src=templates/etc/init.d/photobackup mode=0755
+- name: enable photobackup service
+  service: name=photobackup enabled=yes
+- include: tasks/nginx-site.yml name=photobackup.whitequark.org
