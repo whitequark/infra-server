@@ -16,6 +16,6 @@
     - strace
     - rss2email
 - name: run rss2email regularly
-  cron: name="rss2email" minute="*/4" job="r2e run"
+  cron: name="rss2email" minute="*/4" job="r2e run 2>/dev/null"
   become: true
   become_user: whitequark
