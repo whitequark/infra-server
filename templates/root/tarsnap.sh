@@ -18,6 +18,7 @@ FILES="
 
 OPTIONS="
   --exclude /var/www/groupxiv.whitequark.org/public_html/data/@-tiles
+  --quiet
 "
 
 for db in ${DATABASES}; do
