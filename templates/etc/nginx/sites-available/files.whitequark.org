@@ -15,5 +15,8 @@ server {
   }
   location /Unlisted {
     autoindex off;
+    location ~ /.+ {
+      autoindex on;
+    }
   }
 }
