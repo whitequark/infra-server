@@ -12,6 +12,7 @@ channels:
   - "#ruby"
   - "#qi-hardware"
   - "#homecmos"
+  - "#solvespace"
   - "#arm-netbook"
   - "#cinch"
   - "#rubygems"
