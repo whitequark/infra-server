@@ -1,0 +1,6 @@
+- name: install mumble-server
+  apt: name=mumble-server state=present
+- name: configure mumble-server password
+  lineinfile: dest=/etc/mumble-server.ini regexp=^serverpassword=
+    line=serverpassword={{mumble_password}}
+  notify: restart mumble-server

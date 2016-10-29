@@ -46,6 +46,8 @@
     tags: whitequark.org
   - include: tasks/sites/llvm.moe.yml
     tags: llvm.moe
+  - include: tasks/mumble.yml
+    tags: mumble
   - include: tasks/tarsnap.yml version=1.0.37
     tags: tarsnap
   - include: tasks/backup.yml
@@ -58,3 +60,4 @@
   - include: handlers/sites/irclog.whitequark.org.yml
   - include: handlers/sites/photobackup.whitequark.org.yml
   - include: handlers/roundcube.yml
+  - include: handlers/mumble.yml
