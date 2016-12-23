@@ -13,7 +13,12 @@ server {
 {% endif %}
 
   root /var/www/{{name}}/public;
+
   location / {
+    location ~ /.+/index/ {
+      return 403;
+    }
+
     proxy_set_header Host $http_host;
     if (!-f $request_filename) {
       proxy_pass http://irclog_whitequark_org;
