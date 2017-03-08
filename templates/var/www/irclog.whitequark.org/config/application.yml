@@ -72,4 +72,6 @@ hidden_channels:
   - "#base48"
   - "#brmlab"
   - "#nupic"
+legacy_escaping_scheme:
+  - ".openfpga"
 domain: irclog.whitequark.org
