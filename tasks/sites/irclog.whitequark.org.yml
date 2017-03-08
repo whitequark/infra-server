@@ -31,6 +31,7 @@
   notify:
     - restart irclogger logger
     - restart irclogger viewer
+  tags: irclog.whitequark.org:deploy
 - name: check for irclogs database
   command: psql irclogs -c "select * from irclog limit 1;"
   become: true
@@ -53,6 +54,7 @@
     chdir: /var/www/irclog.whitequark.org
   become: true
   become_user: irclogger
+  tags: irclog.whitequark.org:deploy
 - name: add irclogger-logger init script
   copy: dest=/etc/init.d/irclogger-logger src=templates/etc/init.d/irclogger-logger mode=0755
 - name: enable irclogger-logger service
@@ -66,6 +68,7 @@
     src=templates/var/www/irclog.whitequark.org/config/application.yml
   notify:
     - restart irclogger logger
+  tags: irclog.whitequark.org:deploy
 - name: configure irclogger watchdog
   cron: name="watchdog" minute="*/3"
     job="cd /var/www/irclog.whitequark.org && bundle exec ./watchdog.rb"
