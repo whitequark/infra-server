@@ -4,7 +4,7 @@
     - nginx
     - certbot
 - name: configure certbot to renew regularly
-  cron: name="certbot" hour="15" job="certbot renew --quiet --renew-hook 'service nginx reload'"
+  cron: name="certbot" hour="15" job="certbot renew --quiet --renew-hook '/etc/init.d/nginx reload'"
 - name: copy nginx ssl_params
   copy: dest=/etc/nginx/ssl_params src=templates/etc/nginx/ssl_params
   notify:
