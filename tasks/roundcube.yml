@@ -22,11 +22,13 @@
     - apache2-bin
     - roundcube-mysql
 - name: install roundcube plugins
-  git: dest=/var/lib/roundcube/plugins/{{item.name}} repo={{item.repo}}
+  git: dest=/var/lib/roundcube/plugins/{{item.name}} repo={{item.repo}} version={{item.version}}
     accept_hostkey=yes force=yes
   with_items:
-    - { name: contextmenu, repo: 'https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu' }
-    - { name: keyboard_shortcuts, repo: 'https://github.com/corbosman/keyboard_shortcuts' }
+    - { name: contextmenu,
+        repo: 'https://github.com/JohnDoh/Roundcube-Plugin-Context-Menu', version: 'release-2.1' }
+    - { name: keyboard_shortcuts,
+        repo: 'https://github.com/corbosman/keyboard_shortcuts', version: 'master' }
 - name: add roundcube init script
   copy: dest=/etc/init.d/roundcube src=templates/etc/init.d/roundcube mode=0755
   notify:
