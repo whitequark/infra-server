@@ -58,6 +58,7 @@ channels:
   - "#soletta"
   - "#reasonml"
   - "##openfpga"
+  - "#pypy"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
