@@ -20,6 +20,8 @@
     tags: nsd
   - include: tasks/nsd-zone.yml name=whitequark.org
     tags: nsd
+  - include: tasks/nsd-zone.yml name=whitequark.com
+    tags: nsd
   - include: tasks/nsd-zone.yml name=llvm.moe
     tags: nsd
   - include: tasks/nginx.yml
@@ -44,6 +46,8 @@
     tags: photobackup.whitequark.org
   - include: tasks/sites/whitequark.org.yml
     tags: whitequark.org
+  - include: tasks/nginx-site.yml name=whitequark.com
+    tags: whitequark.com
   - include: tasks/sites/llvm.moe.yml
     tags: llvm.moe
   - include: tasks/mumble.yml
