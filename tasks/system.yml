@@ -30,6 +30,10 @@
 - name: set timezone to UTC
   copy: dest=/etc/timezone content=Etc/UTC
   register: set_timezone
+- name: configure sysctl parameters
+  copy: dest=/etc/sysctl.conf src=templates/etc/sysctl.conf
+  notify:
+    - run sysctl
 - name: reconfigure tzdata
   command: dpkg-reconfigure -f noninteractive tzdata
   when: set_timezone.changed

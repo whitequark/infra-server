@@ -1,0 +1,2 @@
+- name: run sysctl
+  command: sysctl -p

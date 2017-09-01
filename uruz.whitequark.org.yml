@@ -57,6 +57,7 @@
   - include: tasks/backup.yml
     tags: backup
   handlers:
+  - include: handlers/sysctl.yml
   - include: handlers/syslog.yml
   - include: handlers/nsd.yml
   - include: handlers/mail.yml
