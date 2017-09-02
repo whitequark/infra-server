@@ -20,8 +20,6 @@
     tags: nsd
   - include: tasks/nsd-zone.yml name=whitequark.org
     tags: nsd
-  - include: tasks/nsd-zone.yml name=whitequark.com
-    tags: nsd
   - include: tasks/nsd-zone.yml name=llvm.moe
     tags: nsd
   - include: tasks/nginx.yml
