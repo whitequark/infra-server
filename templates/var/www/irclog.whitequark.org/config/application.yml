@@ -59,6 +59,7 @@ channels:
   - "#reasonml"
   - "##openfpga"
   - "#pypy"
+  - "#wallaroo"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
