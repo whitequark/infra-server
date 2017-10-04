@@ -1,2 +1,0 @@
-- name: restart photobackup
-  service: name=photobackup state=restarted

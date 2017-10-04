@@ -40,8 +40,6 @@
     tags: irclog.whitequark.org
   - include: tasks/nginx-site.yml name=mail.whitequark.org
     tags: mail.whitequark.org
-  - include: tasks/sites/photobackup.whitequark.org.yml
-    tags: photobackup.whitequark.org
   - include: tasks/sites/whitequark.org.yml
     tags: whitequark.org
   - include: tasks/nginx-site.yml name=whitequark.com
@@ -61,6 +59,5 @@
   - include: handlers/mail.yml
   - include: handlers/nginx.yml
   - include: handlers/sites/irclog.whitequark.org.yml
-  - include: handlers/sites/photobackup.whitequark.org.yml
   - include: handlers/roundcube.yml
   - include: handlers/mumble.yml
