@@ -12,20 +12,22 @@
     tags: system
   - include: tasks/personal.yml
     tags: personal
-  - include: tasks/mail.yml domain=mail.whitequark.org
-    tags: mail
-  - include: tasks/roundcube.yml domain=mail.whitequark.org
-    tags: roundcube
   - include: tasks/nsd.yml
     tags: nsd
   - include: tasks/nsd-zone.yml name=whitequark.org
     tags: nsd
   - include: tasks/nsd-zone.yml name=llvm.moe
     tags: nsd
+  - include: tasks/mail.yml domain=mail.whitequark.org
+    tags: mail
+  - include: tasks/mysql.yml
+    tags: mysql
   - include: tasks/nginx.yml
     tags: nginx
   - include: tasks/nginx-site.yml name=uruz.whitequark.org
     tags: nginx
+  - include: tasks/roundcube.yml domain=mail.whitequark.org
+    tags: mail.whitequark.org
   - include: tasks/sites/www.whitequark.org.yml
     tags: www.whitequark.org
   - include: tasks/sites/doc.whitequark.org.yml
@@ -58,6 +60,7 @@
   - include: handlers/nsd.yml
   - include: handlers/mail.yml
   - include: handlers/nginx.yml
-  - include: handlers/sites/irclog.whitequark.org.yml
+  - include: handlers/mysql.yml
   - include: handlers/roundcube.yml
+  - include: handlers/sites/irclog.whitequark.org.yml
   - include: handlers/mumble.yml
