@@ -1,29 +1,10 @@
-- name: check for tarsnap {{ version }}
-  shell: tarsnap --version | grep {{ version }}
-  register: tarsnap_check
-  changed_when: "tarsnap_check.stderr != ''"
-  ignore_errors: yes
-- name: add tarsnap source repository key
-  apt_key: id=3DA2BCE3 url=https://www.tarsnap.com/tarsnap-signing-key-2016.asc state=present
-  when: tarsnap_check|failed
-- name: add tarsnap source repository
-  apt_repository: repo='deb-src http://pkg.tarsnap.com/deb-src/ ./' state=present
-  when: tarsnap_check|failed
+- name: add tarsnap binary packaging key
+  apt_key: url=https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc state=present
+- name: add tarsnap deb repository
+  apt_repository: repo='deb http://pkg.tarsnap.com/deb/stretch ./' state=present
+  register: add_apt_repo
 - name: update APT cache
   apt: update_cache=yes
-  when: tarsnap_check|failed
-  # https://github.com/ansible/ansible-modules-core/issues/4519
-- name: install tarsnap build dependencies
-  command: apt-get -y build-dep tarsnap
-  when: tarsnap_check|failed
-- name: create tarsnap build directory
-  file: name=tarsnap state=directory
-  when: tarsnap_check|failed
-- name: build tarsnap package
-  command: apt-get source --compile tarsnap
-  args:
-    chdir: tarsnap
-  when: tarsnap_check|failed
-- name: install tarsnap package
-  apt: deb=tarsnap/tarsnap_{{ version }}-1_amd64.deb
-  when: tarsnap_check|failed
+  when: add_apt_repo.changed
+- name: install tarsnap
+  apt: name=tarsnap state=present
