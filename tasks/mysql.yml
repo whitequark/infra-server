@@ -1,7 +1,7 @@
 - name: install mysql
   apt: name={{item}} state=present
   with_items:
-    - mysql-server-5.5
+    - default-mysql-server
     - python-mysqldb
 - name: enable mysql auth_socket plugin
   copy: dest=/etc/mysql/conf.d/auth_socket.cnf src=templates/etc/mysql/conf.d/auth_socket.cnf

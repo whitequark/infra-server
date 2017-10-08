@@ -18,6 +18,7 @@
     - acpi
     - acpid
     - acpi-support-base
+    - avahi-daemon
     - exim4
     - exim4-base
     - exim4-config

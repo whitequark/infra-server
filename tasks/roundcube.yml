@@ -1,12 +1,12 @@
-- name: install postgres, dbconfig, and git
-  apt: name={{item}} state=present default_release=jessie-backports
+- name: install postgresql, dbconfig, and git
+  apt: name={{item}} state=present
   with_items:
-    - postgresql-9.4
+    - postgresql
     - dbconfig-pgsql
     - git
 - name: create user roundcube
   user: name=roundcube shell=/usr/sbin/nologin
-- name: configure roundcube database
+- name: configure postgresql roundcube database
   copy: dest=/etc/dbconfig-common/roundcube.conf src=templates/etc/dbconfig-common/roundcube.conf
 - name: install roundcube
   apt: name={{item}} state=present

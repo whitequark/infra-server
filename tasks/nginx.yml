@@ -1,5 +1,5 @@
 - name: install nginx and certbot
-  apt: name={{item}} state=present default_release=jessie-backports
+  apt: name={{item}} state=present
   with_items:
     - nginx
     - certbot
