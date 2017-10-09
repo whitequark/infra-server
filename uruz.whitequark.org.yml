@@ -50,7 +50,7 @@
     tags: llvm.moe
   - include: tasks/mumble.yml
     tags: mumble
-  - include: tasks/tarsnap.yml version=1.0.37
+  - include: tasks/tarsnap.yml
     tags: tarsnap
   - include: tasks/backup.yml
     tags: backup
