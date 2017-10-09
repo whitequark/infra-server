@@ -20,8 +20,6 @@
     tags: nsd
   - include: tasks/mail.yml domain=mail.whitequark.org
     tags: mail
-  - include: tasks/mysql.yml
-    tags: mysql
   - include: tasks/nginx.yml
     tags: nginx
   - include: tasks/nginx-site.yml name=uruz.whitequark.org
