@@ -2,12 +2,17 @@
 
 umask 077
 
-DATABASES="
+PG_DATABASES="
   roundcube
   irclogs
 "
 
+MY_DATABASES="
+  prestashop
+"
+
 FILES="
+  /var/www/shop.whitequark.org
   /var/www/doc.whitequark.org
   /var/www/files.whitequark.org
   /var/www/groupxiv.whitequark.org/public_html/data/
@@ -21,9 +26,15 @@ OPTIONS="
   --quiet
 "
 
-for db in ${DATABASES}; do
+for db in ${PG_DATABASES}; do
   sql="/var/backups/${db}.sql"
   pg_dump -C -f ${sql} ${db}
+  FILES="${FILES} ${sql}"
+done
+
+for db in ${MY_DATABASES}; do
+  sql="/var/backups/${db}.sql"
+  mysqldump -r ${sql} ${db}
   FILES="${FILES} ${sql}"
 done
 

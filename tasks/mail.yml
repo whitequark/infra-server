@@ -26,15 +26,18 @@
   template: dest=/etc/postfix/main.cf src=templates/etc/postfix/main.cf
   vars:
     has_tls: '{{live}}'
+  tags: mail:postfix
   notify:
     - reload postfix
 - name: configure postfix master.cf
   copy: dest=/etc/postfix/master.cf src=templates/etc/postfix/master.cf
+  tags: mail:postfix
   notify:
     - reload postfix
 - name: configure postfix virtual regexps
   copy: dest=/etc/postfix/virtual-regexp src=templates/etc/postfix/virtual-regexp
   register: postfix_virtual_regexp
+  tags: mail:postfix
   notify:
     - reload postfix
 - name: configure spamassassin

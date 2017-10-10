@@ -1,0 +1,107 @@
+server {
+  server_name {{name}};
+  listen [::]:80;
+{% if has_tls %}
+  listen [::]:443 ssl;
+  include ssl_params;
+  ssl_certificate /etc/letsencrypt/live/{{name}}/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/{{name}}/privkey.pem;
+{% endif %}
+
+  client_max_body_size 100M;
+
+  root /var/www/{{name}};
+  index index.php;
+
+  rewrite_log on;
+
+  # location ^~ /api/?(.*)$ {
+  #   fastcgi_pass unix:/tmp/prestashop.sock;
+  #   fastcgi_param SCRIPT_FILENAME $document_root/webservice/dispatcher.php?url=$1;
+  #   include fastcgi_params;
+  # }
+
+  rewrite ^/({{prestashop_shops.keys()|join('|')}})(/?.*) $2;
+  set $shop $1;
+
+  set $allow 0;
+  if ($remote_addr = "{{ansible_default_ipv6.address}}") {
+    set $allow 1;
+  }
+  if ($uri ~ ^/invite/) {
+    set $allow 1;
+  }
+  {% for shop, properties in prestashop_shops.items() %}
+  {% if properties.invite_token is defined %}
+  set $shop_matches 1;
+  if ($shop != "{{shop}}") {
+    set $shop_matches 0;
+  }
+  if ($cookie_invite != "{{properties.invite_token}}") {
+    set $shop_matches 0;
+  }
+  if ($shop_matches = 1) {
+    set $allow 1;
+  }
+  {% else %}
+  if ($shop = "{{shop}}") {
+    set $allow 1;
+  }
+  {% endif %}
+  {% endfor %}
+  if ($allow = 0) {
+    return 401;
+  }
+
+  location ~ ^/invite/(.*) {
+    add_header Set-Cookie "invite=$1; Max-Age=315360000; Path=/$shop/";
+
+    set $redirect "";
+    {% for shop, properties in prestashop_shops.items() %}
+    if ($shop = "{{shop}}") {
+      set $redirect "{{properties.invite_redirect}}";
+    }
+    {% endfor %}
+    return 303 "$scheme://$host/$shop$redirect";
+  }
+
+  rewrite ^/([0-9])(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ /img/p/$1/$1$2.jpg last;
+  rewrite ^/([0-9])([0-9])(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ /img/p/$1/$2/$1$2$3.jpg last;
+  rewrite ^/([0-9])([0-9])([0-9])(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ /img/p/$1/$2/$3/$1$2$3$4.jpg last;
+  rewrite ^/([0-9])([0-9])([0-9])([0-9])(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ /img/p/$1/$2/$3/$4/$1$2$3$4$5.jpg last;
+  rewrite ^/([0-9])([0-9])([0-9])([0-9])([0-9])(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ /img/p/$1/$2/$3/$4/$5/$1$2$3$4$5$6.jpg last;
+  rewrite ^/([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ /img/p/$1/$2/$3/$4/$5/$6/$1$2$3$4$5$6$7.jpg last;
+  rewrite ^/([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ /img/p/$1/$2/$3/$4/$5/$6/$7/$1$2$3$4$5$6$7$8.jpg last;
+  rewrite ^/([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])(-[_a-zA-Z0-9-]*)?(-[0-9]+)?/.+\.jpg$ /img/p/$1/$2/$3/$4/$5/$6/$7/$8/$1$2$3$4$5$6$7$8$9.jpg last;
+  rewrite ^/c/([0-9]+)(-[_a-zA-Z0-9-]*)(-[0-9]+)?/.+\.jpg$ /img/c/$1$2.jpg last;
+  rewrite ^/c/([a-zA-Z-]+)(-[0-9]+)?/.+\.jpg$ /img/c/$1.jpg last;
+  rewrite ^/([0-9]+)(-[_a-zA-Z0-9-]*)(-[0-9]+)?/.+\.jpg$ /img/c/$1$2.jpg last;
+
+  location ~ \.(jpg|jpeg|gif|png|svg|ico|eot|ttf|otf|woff2?|css|js|map|txt|json|xml)$ {
+    expires 1w;
+    access_log off;
+    log_not_found off;
+  }
+
+  location ~ ^/(js|themes)/.*\.html$ {
+    expires 1w;
+    access_log off;
+    log_not_found off;
+  }
+
+  location /xadmin {
+    fastcgi_pass unix:/tmp/prestashop.sock;
+    fastcgi_split_path_info ^(.+\.php)(.*)$;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    fastcgi_param PATH_INFO       $fastcgi_path_info;
+    include fastcgi_params;
+  }
+
+  location / {
+    error_page 404 = /index.php?controller=404;
+
+    fastcgi_pass unix:/tmp/prestashop.sock;
+    fastcgi_param SCRIPT_FILENAME $document_root/index.php;
+    include fastcgi_params;
+  }
+}

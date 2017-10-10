@@ -4,7 +4,7 @@
   vars:
     live: True
   vars_files:
-    - vars/passwords.yml
+    - vars/private.yml
   tasks:
   - include: tasks/apt.yml
     tags: apt
@@ -15,9 +15,9 @@
   - include: tasks/nsd.yml
     tags: nsd
   - include: tasks/nsd-zone.yml name=whitequark.org
-    tags: nsd
+    tags: nsd, nsd:whitequark.org
   - include: tasks/nsd-zone.yml name=llvm.moe
-    tags: nsd
+    tags: nsd, nsd:llvm.moe
   - include: tasks/mail.yml domain=mail.whitequark.org
     tags: mail
   - include: tasks/nginx.yml
@@ -26,6 +26,8 @@
     tags: nginx
   - include: tasks/roundcube.yml domain=mail.whitequark.org
     tags: mail.whitequark.org
+  - include: tasks/prestashop.yml domain=shop.whitequark.org version=1.7.2.2
+    tags: shop.whitequark.org
   - include: tasks/sites/www.whitequark.org.yml
     tags: www.whitequark.org
   - include: tasks/sites/doc.whitequark.org.yml
@@ -39,7 +41,9 @@
   - include: tasks/sites/irclog.whitequark.org.yml
     tags: irclog.whitequark.org
   - include: tasks/nginx-site.yml name=mail.whitequark.org
-    tags: mail.whitequark.org
+    tags: mail.whitequark.org, mail.whitequark.org:nginx
+  - include: tasks/nginx-site.yml name=shop.whitequark.org
+    tags: shop.whitequark.org, shop.whitequark.org:nginx
   - include: tasks/sites/whitequark.org.yml
     tags: whitequark.org
   - include: tasks/nginx-site.yml name=whitequark.com
@@ -60,5 +64,6 @@
   - include: handlers/nginx.yml
   - include: handlers/mysql.yml
   - include: handlers/roundcube.yml
+  - include: handlers/prestashop.yml
   - include: handlers/sites/irclog.whitequark.org.yml
   - include: handlers/mumble.yml

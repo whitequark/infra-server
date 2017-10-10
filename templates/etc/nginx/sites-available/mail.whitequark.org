@@ -13,9 +13,9 @@ server {
   root /var/lib/roundcube;
   index index.php;
 
-  location ~ .php$ {
+  location ~ \.php$ {
     fastcgi_pass unix:/tmp/roundcube.sock;
-    fastcgi_param SCRIPT_FILENAME /var/lib/roundcube$fastcgi_script_name;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     include fastcgi_params;
   }
 
