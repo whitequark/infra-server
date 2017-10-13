@@ -1,10 +1,9 @@
 ---
 - hosts: uruz.whitequark.org
-  remote_user: root
   vars:
-    live: True
+    live: yes
   vars_files:
-    - vars/private.yml
+  - vars/private.yml
   tasks:
   - include: tasks/apt.yml
     tags: apt
