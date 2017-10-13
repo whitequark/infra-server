@@ -1,0 +1,45 @@
+---
+- name: enable nginx site
+  file: dest=/etc/nginx/sites-enabled/{{domain}}
+    src=../sites-available/{{domain}} state=link force=true
+  register: nginx_site_enabled
+  notify:
+  - reload nginx
+  when: not site_is_enabled[domain]|default(false)
+- name: cache the fact that a domain is enabled
+  set_fact: site_is_enabled={{ site_is_enabled|combine({domain:true}) }} cacheable=yes
+  when: not site_is_enabled[domain]|default(false)
+- name: check if a letsencrypt certificate exist
+  stat: path=/etc/letsencrypt/live/{{domain}}/fullchain.pem
+  register: tls_cert
+  when: want_tls and not domain_has_cert[domain]|default(false)
+- name: determine whether the domain has a certificate
+  set_fact: has_tls={{ domain_has_cert[domain]|default(false) or
+                        tls_cert is defined and tls_cert.stat.exists }}
+- name: configure nginx site without https
+  template: dest=/etc/nginx/sites-available/{{domain}} src={{nginx_conf}}
+  notify:
+  - reload nginx
+  when: not want_tls or not has_tls
+- name: reload nginx
+  service: name=nginx state=reloaded
+  when: want_tls and not has_tls
+- name: create webroot for letsencrypt
+  file: dest=/var/www/{{domain}} state=directory
+  when: want_tls and not has_tls
+- name: acquire letsencrypt certificate
+  command: certbot certonly
+    --email whitequark@whitequark.org
+    --noninteractive --agree-tos
+    --webroot -w {{webroot}} -d {{domain}}
+  when: want_tls and not has_tls
+- name: cache the fact that the domain has a certificate
+  set_fact: domain_has_cert={{ domain_has_cert|combine({domain:true}) }} cacheable=yes
+  when: want_tls and not domain_has_cert[domain]|default(false)
+- name: configure nginx site with https
+  template: dest=/etc/nginx/sites-available/{{domain}} src={{nginx_conf}}
+  vars:
+    has_tls: true
+  notify:
+  - reload nginx
+  when: want_tls

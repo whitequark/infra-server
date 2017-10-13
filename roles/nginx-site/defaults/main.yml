@@ -1,0 +1,5 @@
+---
+site_is_enabled: {}
+domain_has_cert: {}
+nginx_conf: "sites/{{domain}}.conf"
+webroot: "/var/www/{{domain}}"
