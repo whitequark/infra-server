@@ -64,15 +64,15 @@
   # tasks/nsd-zone.yml name=whitequark.org
   # tasks/nsd-zone.yml name=llvm.moe
   # tasks/mail.yml domain=mail.whitequark.org
-  - role: nginx
-  - role: nginx-site
+  - name: nginx
+  - name: nginx-site
     domain: uruz.whitequark.org
     tags:   uruz.whitequark.org
-  - role: nginx-site
+  - name: nginx-site
     domain: www.whitequark.org
     tags:   www.whitequark.org
   # tasks/roundcube.yml domain=mail.whitequark.org
-  - role: prestashop
+  - name: prestashop
     domain: shop.whitequark.org
   # tasks/sites/www.whitequark.org.yml
   # tasks/sites/doc.whitequark.org.yml
@@ -83,7 +83,7 @@
   # tasks/nginx-site.yml name=mail.whitequark.org
   # tasks/nginx-site.yml name=shop.whitequark.org
   # tasks/sites/whitequark.org.yml
-  - role: nginx-site
+  - name: nginx-site
     domain: whitequark.com
     tags:   whitequark.com
   # tasks/sites/llvm.moe.yml
