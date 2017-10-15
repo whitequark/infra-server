@@ -1,2 +1,0 @@
-- name: restart prestashop
-  service: name=prestashop state=restarted

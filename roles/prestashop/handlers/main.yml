@@ -1,0 +1,5 @@
+---
+- name: prestashop post-installation message
+  debug: msg='Now, run the installer in the browser. As soon as it finishes, rerun the role.'
+- name: restart prestashop
+  service: name=prestashop state=restarted

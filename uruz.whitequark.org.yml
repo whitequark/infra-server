@@ -26,8 +26,8 @@
   #   tags: uruz.whitequark.org
   - include: tasks/roundcube.yml domain=mail.whitequark.org
     tags: mail.whitequark.org
-  - include: tasks/prestashop.yml domain=shop.whitequark.org version=1.7.2.2
-    tags: shop.whitequark.org
+  # - include: tasks/prestashop.yml domain=shop.whitequark.org version=1.7.2.2
+  #   tags: shop.whitequark.org
   # - include: tasks/sites/www.whitequark.org.yml
   #   tags: www.whitequark.org
   - include: tasks/sites/doc.whitequark.org.yml
@@ -72,7 +72,8 @@
     domain: www.whitequark.org
     tags:   www.whitequark.org
   # tasks/roundcube.yml domain=mail.whitequark.org
-  # tasks/prestashop.yml domain=shop.whitequark.org version=1.7.2.2
+  - role: prestashop
+    domain: shop.whitequark.org
   # tasks/sites/www.whitequark.org.yml
   # tasks/sites/doc.whitequark.org.yml
   # tasks/sites/files.whitequark.org.yml
@@ -96,6 +97,5 @@
   - include: handlers/mail.yml
   - include: handlers/mysql.yml
   - include: handlers/roundcube.yml
-  - include: handlers/prestashop.yml
   - include: handlers/sites/irclog.whitequark.org.yml
   - include: handlers/mumble.yml

@@ -12,7 +12,7 @@ MY_DATABASES="
 "
 
 FILES="
-  /var/www/shop.whitequark.org
+  /var/lib/prestashop
   /var/www/doc.whitequark.org
   /var/www/files.whitequark.org
   /var/www/groupxiv.whitequark.org/public_html/data/

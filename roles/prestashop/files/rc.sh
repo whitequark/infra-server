@@ -17,7 +17,7 @@ fi
 DESC="prestashop"
 PIDFILE=/var/run/prestashop.pid
 DAEMON=/usr/bin/spawn-fcgi
-DAEMON_ARGS="-s /tmp/prestashop.sock -u prestashop -U www-data -P ${PIDFILE}"
+DAEMON_ARGS="-s /run/prestashop.sock -u prestashop -U www-data -P ${PIDFILE}"
 DAEMON_ARGS="${DAEMON_ARGS} -C 3 -- /usr/bin/php-cgi7.0"
 
 do_stop_cmd() {
