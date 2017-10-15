@@ -15,7 +15,7 @@
   when: want_tls and not domain_has_cert[domain]|default(false)
 - name: determine whether the domain has a certificate
   set_fact: has_tls={{ domain_has_cert[domain]|default(false) or
-                        tls_cert is defined and tls_cert.stat.exists }}
+                       (tls_cert.stat|default({"exists":false})).exists }}
 - name: configure nginx site without https
   template: dest=/etc/nginx/sites-available/{{domain}} src={{nginx_conf}}
   notify:
