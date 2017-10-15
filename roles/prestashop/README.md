@@ -14,6 +14,8 @@ Installs prestashop in the provided webroot for the provided domain, and then se
   directory where the installation will be placed
 * `prestashop` (dict, optional, default: `{shops:{"":{}}}`)
   access control configuration
+    * `admin_token` (string, optional)
+      the token required to access the admin panel, via the `{domain}/secret/{token}` URI
     * `cron_token` (string, optional)
       the token that the _cronjobs_ module requires for the callback
     * `shops` (dict, required)
