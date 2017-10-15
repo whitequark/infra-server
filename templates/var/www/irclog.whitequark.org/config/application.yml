@@ -62,6 +62,7 @@ channels:
   - "#wallaroo"
   - "#picolisp"
   - "#zig"
+  - "#yosys"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
