@@ -20,16 +20,20 @@
     tags: nsd, nsd:llvm.moe
   - include: tasks/mail.yml domain=mail.whitequark.org
     tags: mail
-  # - include: tasks/nginx.yml
-  #   tags: nginx
-  # - include: tasks/nginx-site.yml name=uruz.whitequark.org
-  #   tags: uruz.whitequark.org
+  - import_role: name=nginx
+  - import_role: name=nginx-site
+    vars:
+      domain: uruz.whitequark.org
+    tags: uruz.whitequark.org:nginx-site
+  - import_role: name=nginx-site
+    vars:
+      domain: www.whitequark.org
+    tags: www.whitequark.org:nginx-site
   - include: tasks/roundcube.yml domain=mail.whitequark.org
     tags: mail.whitequark.org
-  # - include: tasks/prestashop.yml domain=shop.whitequark.org version=1.7.2.2
-  #   tags: shop.whitequark.org
-  # - include: tasks/sites/www.whitequark.org.yml
-  #   tags: www.whitequark.org
+  - import_role: name=prestashop
+    vars:
+      domain: shop.whitequark.org
   - include: tasks/sites/doc.whitequark.org.yml
     tags: doc.whitequark.org
   - include: tasks/sites/files.whitequark.org.yml
@@ -42,12 +46,12 @@
     tags: irclog.whitequark.org
   - include: tasks/nginx-site.yml name=mail.whitequark.org
     tags: mail.whitequark.org, mail.whitequark.org:nginx
-  - include: tasks/nginx-site.yml name=shop.whitequark.org
-    tags: shop.whitequark.org, shop.whitequark.org:nginx
   - include: tasks/sites/whitequark.org.yml
     tags: whitequark.org
-  # - include: tasks/nginx-site.yml name=whitequark.com
-  #   tags: whitequark.com
+  - import_role: name=nginx-site
+    vars:
+      domain: whitequark.com
+    tags: whitequark.com:nginx-site
   - include: tasks/sites/llvm.moe.yml
     tags: llvm.moe
   - include: tasks/mumble.yml
@@ -56,40 +60,6 @@
     tags: tarsnap
   - include: tasks/backup.yml
     tags: backup
-  roles:
-  # tasks/apt.yml
-  # tasks/system.yml
-  # tasks/personal.yml
-  # tasks/nsd.yml
-  # tasks/nsd-zone.yml name=whitequark.org
-  # tasks/nsd-zone.yml name=llvm.moe
-  # tasks/mail.yml domain=mail.whitequark.org
-  - name: nginx
-  - name: nginx-site
-    domain: uruz.whitequark.org
-    tags:   uruz.whitequark.org
-  - name: nginx-site
-    domain: www.whitequark.org
-    tags:   www.whitequark.org
-  # tasks/roundcube.yml domain=mail.whitequark.org
-  - name: prestashop
-    domain: shop.whitequark.org
-  # tasks/sites/www.whitequark.org.yml
-  # tasks/sites/doc.whitequark.org.yml
-  # tasks/sites/files.whitequark.org.yml
-  # tasks/sites/lab.whitequark.org.yml
-  # tasks/sites/groupxiv.whitequark.org.yml
-  # tasks/sites/irclog.whitequark.org.yml
-  # tasks/nginx-site.yml name=mail.whitequark.org
-  # tasks/nginx-site.yml name=shop.whitequark.org
-  # tasks/sites/whitequark.org.yml
-  - name: nginx-site
-    domain: whitequark.com
-    tags:   whitequark.com
-  # tasks/sites/llvm.moe.yml
-  # tasks/mumble.yml
-  # tasks/tarsnap.yml
-  # tasks/backup.yml
   handlers:
   - include: handlers/sysctl.yml
   - include: handlers/syslog.yml
