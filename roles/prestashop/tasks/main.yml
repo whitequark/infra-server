@@ -19,7 +19,7 @@
   cron:
     name: prestashop
     minute: 0
-    job: /bin/bash -c 'set -o pipefail; curl -sSf "https://{{domain}}/xadmin/index.php?controller=AdminCronJobs&token={{prestashop.cron_token}}" | grep -v cronjobs_prestashop'
+    job: /bin/bash -c 'set -o pipefail; curl -sSf "https://{{domain|mandatory}}/xadmin/index.php?controller=AdminCronJobs&token={{prestashop.cron_token}}" | grep -v cronjobs_prestashop'
   when: prestashop.cron_token is defined
   tags:
   - prestashop

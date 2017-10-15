@@ -1,7 +1,7 @@
 ---
 - name: enable nginx site
-  file: dest=/etc/nginx/sites-enabled/{{domain}}
-    src=../sites-available/{{domain}} state=link force=true
+  file: dest=/etc/nginx/sites-enabled/{{domain|mandatory}}
+    src=../sites-available/{{domain|mandatory}} state=link force=true
   register: nginx_site_enabled
   notify:
   - reload nginx
