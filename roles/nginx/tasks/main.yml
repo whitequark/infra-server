@@ -1,5 +1,5 @@
 ---
-- debug: msg="this task is a workaround for an ansible bug"
+- debug: msg='this task is a workaround for ansible bug 31751'
   tags: nginx
 - import_tasks: install.yml
   when: not nginx_is_installed
