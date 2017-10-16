@@ -2,6 +2,8 @@
 
 umask 077
 
+DATE="$(date -Iseconds)"
+
 PG_DATABASES="
   roundcube
   irclogs
@@ -12,18 +14,12 @@ MY_DATABASES="
 "
 
 FILES="
+  --exclude /var/www/groupxiv.whitequark.org/public_html/data/@-tiles
   /var/lib/prestashop
   /var/www/doc.whitequark.org
   /var/www/files.whitequark.org
   /var/www/groupxiv.whitequark.org/public_html/data/
   /var/www/llvm.moe
-  /home/whitequark
-  /home/thz
-"
-
-OPTIONS="
-  --exclude /var/www/groupxiv.whitequark.org/public_html/data/@-tiles
-  --quiet
 "
 
 for db in ${PG_DATABASES}; do
@@ -39,10 +35,19 @@ for db in ${MY_DATABASES}; do
 done
 
 set -f
-tarsnap \
+
+OPTIONS="
   --cachedir /var/cache/tarsnap \
   --keyfile /root/tarsnap-w.key \
   --checkpoint-bytes 512M \
   --humanize-numbers \
-  -f backup-`date -Iseconds` \
-  -c $* ${OPTIONS//@/*} ${FILES}
+  --quiet
+"
+
+tarsnap ${OPTIONS} \
+  -f uruz-var-${DATE} \
+  -c ${FILES//@/*}
+
+tarsnap ${OPTIONS} \
+  -f uruz-home-${DATE} \
+  -c /home
