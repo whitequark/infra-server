@@ -41,7 +41,8 @@ OPTIONS="
   --keyfile /root/tarsnap-w.key \
   --checkpoint-bytes 512M \
   --humanize-numbers \
-  --quiet
+  --quiet \
+  --no-print-stats
 "
 
 tarsnap ${OPTIONS} \
