@@ -64,6 +64,7 @@ channels:
   - "#zig"
   - "#yosys"
   - "#lisp"
+  - "#trilema"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
