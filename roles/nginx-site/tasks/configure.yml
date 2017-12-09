@@ -25,7 +25,7 @@
   service: name=nginx state=reloaded
   when: want_tls and not has_tls
 - name: create webroot for letsencrypt
-  file: dest=/var/www/{{domain}} state=directory
+  file: dest={{webroot}} state=directory
   when: want_tls and not has_tls
 - name: acquire letsencrypt certificate
   command: certbot certonly
