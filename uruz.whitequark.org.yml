@@ -6,8 +6,6 @@
   vars_files:
   - vars/private.yml
   pre_tasks:
-  - include: tasks/apt.yml
-    tags: apt
   - include: tasks/system.yml
     tags: system
   - include: tasks/personal.yml
@@ -57,12 +55,9 @@
   - include: tasks/backup.yml
     tags: backup
   roles:
-  # tasks/apt.yml
   # tasks/system.yml
   # tasks/personal.yml
   # tasks/mumble.yml
-  # tasks/tarsnap.yml
-  # tasks/backup.yml
   # tasks/nsd.yml
   # tasks/mail.yml domain=mail.whitequark.org
   - name: nginx

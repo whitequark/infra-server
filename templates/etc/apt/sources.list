@@ -1,3 +1,0 @@
-deb http://ftp.debian.org/debian/ stretch main contrib
-deb http://ftp.debian.org/debian/ stretch-backports main contrib
-deb http://security.debian.org/ stretch/updates main contrib
