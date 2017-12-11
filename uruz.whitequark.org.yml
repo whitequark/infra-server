@@ -5,6 +5,7 @@
     want_tls: yes
   vars_files:
   - vars/private.yml
+  - vars/public.yml
   pre_tasks:
   - include: tasks/system.yml
     tags: system
@@ -40,8 +41,8 @@
     tags: irclog.whitequark.org
   - include: tasks/nginx-site.yml name=mail.whitequark.org
     tags: mail.whitequark.org, mail.whitequark.org:nginx
-  - include: tasks/nginx-site.yml name=shop.whitequark.org
-    tags: shop.whitequark.org, shop.whitequark.org:nginx
+  # - include: tasks/nginx-site.yml name=shop.whitequark.org
+  #   tags: shop.whitequark.org, shop.whitequark.org:nginx
   # - include: tasks/sites/whitequark.org.yml
   #   tags: whitequark.org
   # - include: tasks/nginx-site.yml name=whitequark.com
@@ -50,10 +51,10 @@
   #   tags: llvm.moe
   - include: tasks/mumble.yml
     tags: mumble
-  - include: tasks/tarsnap.yml
-    tags: tarsnap
-  - include: tasks/backup.yml
-    tags: backup
+  # - include: tasks/tarsnap.yml
+  #   tags: tarsnap
+  # - include: tasks/backup.yml
+  #   tags: backup
   roles:
   # tasks/system.yml
   # tasks/personal.yml
@@ -98,6 +99,8 @@
   - name: nginx-site
     domain: llvm.moe
     tags:   llvm.moe
+  - name: tarsnap
+    tags: backup
   handlers:
   - include: handlers/sysctl.yml
   - include: handlers/syslog.yml

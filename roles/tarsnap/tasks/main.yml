@@ -1,0 +1,34 @@
+---
+- name: add tarsnap binary packaging key
+  apt_key: url=https://pkg.tarsnap.com/tarsnap-deb-packaging-key.asc
+  when: not tarsnap_is_installed
+- name: add tarsnap deb repository
+  apt_repository: repo='deb http://pkg.tarsnap.com/deb/stretch ./'
+  when: not tarsnap_is_installed
+  register: add_apt_repo
+- name: update APT cache
+  apt: update_cache=yes
+  when: add_apt_repo.changed
+- name: install tarsnap
+  apt: name=tarsnap
+  when: not tarsnap_is_installed
+  register: install_tarsnap
+- name: cache the fact that tarsnap is installed
+  set_fact: tarsnap_is_installed=true cacheable=yes
+  when: not install_tarsnap.changed and not tarsnap_is_installed
+- name: create postgres role root
+  postgresql_user: name=root role_attr_flags=superuser,login
+  become: true
+  become_user: postgres
+- name: check for tarsnap key
+  stat: path=/etc/backup-tarsnap.key
+  register: tarsnap_key
+- name: set permissions for tarsnap key
+  file: path=/etc/backup-tarsnap.key mode=0640
+  when: tarsnap_key.stat.exists
+- name: create the tarsnap backup script
+  template: dest=/usr/lib/backup-tarsnap.sh src=templates/backup.sh mode=0755
+  when: tarsnap_key.stat.exists
+- name: configure daily tarsnap backups
+  cron: name="tarsnap" minute="0" hour="0" job="ionice -cidle nice -n15 /usr/lib/backup-tarsnap.sh"
+  when: tarsnap_key.stat.exists

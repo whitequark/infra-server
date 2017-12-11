@@ -1,0 +1,16 @@
+---
+backup_objects:
+  postgres_dbs:
+  - roundcube
+  - irclogs
+  mysql_dbs:
+  - prestashop
+  files:
+    include:
+    - /var/lib/prestashop
+    - /var/www/doc.whitequark.org
+    - /var/www/files.whitequark.org
+    - /var/www/groupxiv.whitequark.org/public_html/data/
+    - /var/www/llvm.moe
+    exclude:
+    - /var/www/groupxiv.whitequark.org/public_html/data/*-tiles

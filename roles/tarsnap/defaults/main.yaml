@@ -1,0 +1,8 @@
+---
+tarsnap_is_installed: false
+backup_objects:
+  postgres_dbs: []
+  mysql_dbs: []
+  files:
+    include: []
+    exclude: []

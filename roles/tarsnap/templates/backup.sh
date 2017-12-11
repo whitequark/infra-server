@@ -5,21 +5,25 @@ umask 077
 DATE="$(date -Iseconds)"
 
 PG_DATABASES="
-  roundcube
-  irclogs
+{% for db in backup_objects.postgres_dbs|default([]) %}
+  {{ db }}
+{% endfor %}
 "
 
 MY_DATABASES="
-  prestashop
+{% for db in backup_objects.mysql_dbs|default([]) %}
+  {{ db }}
+{% endfor %}
 "
 
 FILES="
-  --exclude /var/www/groupxiv.whitequark.org/public_html/data/@-tiles
-  /var/lib/prestashop
-  /var/www/doc.whitequark.org
-  /var/www/files.whitequark.org
-  /var/www/groupxiv.whitequark.org/public_html/data/
-  /var/www/llvm.moe
+{% set backup_files = backup_objects.files|default({}) %}
+{% for file in backup_files.exclude|default([]) %}
+  --exclude {{ file | replace('*', '@') }}
+{% endfor %}
+{% for file in backup_files.include|default([]) %}
+  {{ file | replace('*', '@') }}
+{% endfor %}
 "
 
 for db in ${PG_DATABASES}; do
@@ -38,7 +42,7 @@ set -f
 
 OPTIONS="
   --cachedir /var/cache/tarsnap \
-  --keyfile /root/tarsnap-w.key \
+  --keyfile /etc/backup-tarsnap.key \
   --checkpoint-bytes 512M \
   --humanize-numbers \
   --quiet \
