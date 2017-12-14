@@ -1,0 +1,46 @@
+---
+- name: add owncloud binary packaging key
+  apt_key: url=https://download.owncloud.org/download/repositories/production/Debian_9.0/Release.key
+- name: add owncloud deb repository
+  apt_repository: repo='deb http://download.owncloud.org/download/repositories/production/Debian_9.0/ /'
+  register: add_apt_repo
+- name: update APT cache
+  apt: update_cache=yes
+  when: add_apt_repo.changed
+- name: install owncloud, mysql, php, php extensions, and spawn-fcgi
+  apt: name={{item}} state=present
+  with_items:
+  - owncloud-files
+  - python-mysqldb # for ansible
+  - default-mysql-server
+  - php7.0-gd
+  - php7.0-json
+  - php7.0-mysql
+  - php7.0-curl
+  - php7.0-intl
+  - php7.0-mcrypt
+  - php7.0-imagick
+  - php7.0-zip
+  - php7.0-xml
+  - php7.0-mbstring
+  - spawn-fcgi
+  notify:
+  - restart owncloud
+- name: create user owncloud
+  user: name=owncloud shell=/usr/sbin/nologin
+- name: create mysql database owncloud
+  mysql_db: name=owncloud state=present
+- name: create mysql database user owncloud
+  mysql_user: name=owncloud state=present priv=owncloud.*:ALL
+- name: create webroot for owncloud
+  file: dest={{webroot}} state=directory owner=owncloud
+- name: add owncloud init script
+  copy: dest=/etc/init.d/owncloud src=rc.sh mode=0755
+  notify:
+  - restart owncloud
+- name: enable owncloud service
+  service: name=owncloud state=started enabled=yes
+- name: configure owncloud system cron
+  cron: name="owncloud" minute="*/15" job="/usr/bin/php7.0 -f /path/to/your/owncloud/cron.php"
+  become: true
+  become_user: owncloud

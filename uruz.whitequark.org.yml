@@ -94,6 +94,8 @@
   # tasks/nginx-site.yml name=mail.whitequark.org
   - name: prestashop
     domain: shop.whitequark.org
+  - name: owncloud
+    domain: cloud.whitequark.org
   #   >>> llvm.moe <<<
   # tasks/nsd-zone.yml name=llvm.moe
   - name: nginx-site

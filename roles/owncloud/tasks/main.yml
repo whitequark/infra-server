@@ -1,0 +1,26 @@
+---
+- import_tasks: app.yml
+  tags:
+  - owncloud
+  - owncloud:app
+  # force eager expansion of variables so that nginx-site below uses exactly what we want
+- name: determine path to nginx site template
+  set_fact:
+    nginx_conf={{role_path}}/templates/nginx.conf
+    webroot={{webroot}} # or nginx-site's default will override ours
+  tags:
+  - owncloud
+  - owncloud:nginx
+- include_role: name=nginx-site
+  tags:
+  - owncloud
+  - owncloud:nginx
+- name: fix permissions on owncloud data directories
+  file: name={{item}} owner=owncloud group=owncloud state=directory recurse=yes
+  with_items:
+    - /var/www/owncloud/apps
+    - /var/www/owncloud/assets
+    - /var/www/owncloud/config
+    - /var/www/owncloud/data
+  tags:
+  - owncloud

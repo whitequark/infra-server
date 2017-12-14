@@ -1,0 +1,3 @@
+---
+- name: restart owncloud
+  service: name=owncloud state=restarted
