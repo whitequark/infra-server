@@ -1,0 +1,46 @@
+---
+- name: add nextcloud binary packaging key
+  apt_key: url=https://repo.morph027.de/gpg.key
+- name: add nextcloud deb repository
+  apt_repository: repo='deb https://repo.morph027.de/nextcloud jessie main'
+  register: add_apt_repo
+- name: update APT cache
+  apt: update_cache=yes
+  when: add_apt_repo.changed
+- name: install nextcloud, mysql, php, php extensions, and spawn-fcgi
+  apt: name={{item}} state=present
+  with_items:
+  - nextcloud-files
+  - python-mysqldb # for ansible
+  - default-mysql-server
+  - php7.0-gd
+  - php7.0-json
+  - php7.0-mysql
+  - php7.0-curl
+  - php7.0-intl
+  - php7.0-mcrypt
+  - php7.0-imagick
+  - php7.0-zip
+  - php7.0-xml
+  - php7.0-mbstring
+  - spawn-fcgi
+  notify:
+  - restart nextcloud
+- name: create user nextcloud
+  user: name=nextcloud shell=/usr/sbin/nologin
+- name: create mysql database nextcloud
+  mysql_db: name=nextcloud state=present
+- name: create mysql database user nextcloud
+  mysql_user: name=nextcloud state=present priv=nextcloud.*:ALL
+- name: create webroot for nextcloud
+  file: dest={{webroot}} state=directory owner=nextcloud
+- name: add nextcloud init script
+  copy: dest=/etc/init.d/nextcloud src=rc.sh mode=0755
+  notify:
+  - restart nextcloud
+- name: enable nextcloud service
+  service: name=nextcloud state=started enabled=yes
+- name: configure nextcloud system cron
+  cron: name="nextcloud" minute="*/15" job="/usr/bin/php7.0 -f /path/to/your/nextcloud/cron.php"
+  become: true
+  become_user: nextcloud

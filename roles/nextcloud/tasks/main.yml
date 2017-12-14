@@ -1,0 +1,26 @@
+---
+- import_tasks: app.yml
+  tags:
+  - nextcloud
+  - nextcloud:app
+  # force eager expansion of variables so that nginx-site below uses exactly what we want
+- name: determine path to nginx site template
+  set_fact:
+    nginx_conf={{role_path}}/templates/nginx.conf
+    webroot={{webroot}} # or nginx-site's default will override ours
+  tags:
+  - nextcloud
+  - nextcloud:nginx
+- include_role: name=nginx-site
+  tags:
+  - nextcloud
+  - nextcloud:nginx
+- name: fix permissions on nextcloud data directories
+  file: name={{item}} owner=nextcloud group=nextcloud state=directory recurse=yes
+  with_items:
+    - /var/www/nextcloud/apps
+    - /var/www/nextcloud/assets
+    - /var/www/nextcloud/config
+    - /var/www/nextcloud/data
+  tags:
+  - nextcloud
