@@ -23,6 +23,7 @@
   - php7.0-zip
   - php7.0-xml
   - php7.0-mbstring
+  - php7.0-apcu
   - spawn-fcgi
   notify:
   - restart nextcloud
@@ -41,6 +42,6 @@
 - name: enable nextcloud service
   service: name=nextcloud state=started enabled=yes
 - name: configure nextcloud system cron
-  cron: name="nextcloud" minute="*/15" job="/usr/bin/php7.0 -f /path/to/your/nextcloud/cron.php"
+  cron: name="nextcloud" minute="*/15" job="/usr/bin/php7.0 -f {{webroot}}/cron.php"
   become: true
   become_user: nextcloud

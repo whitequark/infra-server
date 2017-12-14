@@ -15,6 +15,11 @@
   tags:
   - nextcloud
   - nextcloud:nginx
+- name: configure nextcloud
+  template: dest={{webroot}}/config/ansible.config.php src=config.php
+  tags:
+  - nextcloud
+  - nextcloud:configure
 - name: fix permissions on nextcloud data directories
   file: name={{item}} owner=nextcloud group=nextcloud state=directory recurse=yes
   with_items:
