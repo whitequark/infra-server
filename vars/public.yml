@@ -5,11 +5,11 @@ backup_objects:
   - irclogs
   mysql_dbs:
   - prestashop
-  - owncloud
+  - nextcloud
   files:
     include:
     - /var/lib/prestashop
-    - /var/lib/owncloud
+    - /var/lib/nextcloud
     - /var/www/doc.whitequark.org
     - /var/www/files.whitequark.org
     - /var/www/groupxiv.whitequark.org/public_html/data/
