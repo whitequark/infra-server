@@ -23,12 +23,16 @@
 - name: check for tarsnap key
   stat: path=/etc/backup-tarsnap.key
   register: tarsnap_key
+  tags:
+  - tarsnap:config
 - name: set permissions for tarsnap key
   file: path=/etc/backup-tarsnap.key mode=0640
   when: tarsnap_key.stat.exists
 - name: create the tarsnap backup script
   template: dest=/usr/lib/backup-tarsnap.sh src=templates/backup.sh mode=0755
   when: tarsnap_key.stat.exists
+  tags:
+  - tarsnap:config
 - name: configure daily tarsnap backups
   cron: name="tarsnap" minute="0" hour="0" job="ionice -cidle nice -n15 /usr/lib/backup-tarsnap.sh"
   when: tarsnap_key.stat.exists

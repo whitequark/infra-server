@@ -9,10 +9,13 @@ backup_objects:
   files:
     include:
     - /var/lib/prestashop
-    - /var/lib/nextcloud
+    - /var/lib/nextcloud/apps
+    - /var/lib/nextcloud/data
     - /var/www/doc.whitequark.org
     - /var/www/files.whitequark.org
     - /var/www/groupxiv.whitequark.org/public_html/data/
     - /var/www/llvm.moe
     exclude:
     - /var/www/groupxiv.whitequark.org/public_html/data/*-tiles
+    - /var/lib/nextcloud/data/*/cache
+    - /var/lib/nextcloud/data/*/files_trashbin
