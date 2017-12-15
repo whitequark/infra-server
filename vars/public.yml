@@ -17,5 +17,7 @@ backup_objects:
     - /var/www/llvm.moe
     exclude:
     - /var/www/groupxiv.whitequark.org/public_html/data/*-tiles
+    - /var/lib/prestashop/app/cache
+    - /var/lib/prestashop/xadmin/autoupgrade # a whole other copy of prestashop
     - /var/lib/nextcloud/data/*/cache
     - /var/lib/nextcloud/data/*/files_trashbin
