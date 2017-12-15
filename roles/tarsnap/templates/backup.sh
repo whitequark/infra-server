@@ -2,7 +2,7 @@
 
 umask 077
 
-DATE="$(date -Iseconds)"
+DATE="$(date -Idate)"
 
 PG_DATABASES="
 {% for db in backup_objects.postgres_dbs|default([]) %}
