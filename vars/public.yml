@@ -9,8 +9,9 @@ backup_objects:
   files:
     include:
     - /var/lib/prestashop
-    - /var/lib/nextcloud/apps
-    - /var/lib/nextcloud/data
+    - /var/www/nextcloud/config
+    - /var/www/nextcloud/apps
+    - /var/www/nextcloud/data
     - /var/www/doc.whitequark.org
     - /var/www/files.whitequark.org
     - /var/www/groupxiv.whitequark.org/public_html/data/
@@ -19,5 +20,5 @@ backup_objects:
     - /var/www/groupxiv.whitequark.org/public_html/data/*-tiles
     - /var/lib/prestashop/app/cache
     - /var/lib/prestashop/xadmin/autoupgrade # a whole other copy of prestashop
-    - /var/lib/nextcloud/data/*/cache
-    - /var/lib/nextcloud/data/*/files_trashbin
+    - /var/www/nextcloud/data/*/cache
+    - /var/www/nextcloud/data/*/files_trashbin
