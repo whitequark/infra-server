@@ -29,8 +29,6 @@
   #   tags: shop.whitequark.org
   # - include: tasks/sites/www.whitequark.org.yml
   #   tags: www.whitequark.org
-  # - include: tasks/sites/doc.whitequark.org.yml
-  #   tags: doc.whitequark.org
   # - include: tasks/sites/files.whitequark.org.yml
   #   tags: files.whitequark.org
   # - include: tasks/sites/lab.whitequark.org.yml
@@ -77,9 +75,6 @@
   - name: nginx-site
     domain: www.whitequark.org
     tags:   www.whitequark.org
-  - name: nginx-site
-    domain: doc.whitequark.org
-    tags:   doc.whitequark.org
   - name: nginx-site
     domain: files.whitequark.org
     tags:   files.whitequark.org
