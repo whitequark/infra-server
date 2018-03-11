@@ -29,6 +29,10 @@
   - restart nextcloud
 - name: create user nextcloud
   user: name=nextcloud shell=/usr/sbin/nologin
+- name: configure mysql for nextcloud
+  file: dest=/etc/mysql/conf.d/nextcloud.cnf src=mysqld.cnf
+  notify:
+  - restart mysql
 - name: create mysql database nextcloud
   mysql_db: name=nextcloud state=present
 - name: create mysql database user nextcloud

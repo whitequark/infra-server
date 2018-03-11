@@ -1,3 +1,5 @@
 ---
 - name: restart nextcloud
   service: name=nextcloud state=restarted
+- name: restart mysql
+  service: name=mysql state=restarted
