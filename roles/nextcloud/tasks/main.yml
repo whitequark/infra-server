@@ -11,7 +11,7 @@
   tags:
   - nextcloud
   - nextcloud:nginx
-- include_role: name=nginx-site
+- import_role: name=nginx-site
   tags:
   - nextcloud
   - nextcloud:nginx

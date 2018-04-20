@@ -11,7 +11,7 @@
   tags:
   - prestashop
   - prestashop:nginx
-- include_role: name=nginx-site
+- import_role: name=nginx-site
   tags:
   - prestashop
   - prestashop:nginx
