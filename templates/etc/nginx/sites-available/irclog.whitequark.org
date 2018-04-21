@@ -15,8 +15,15 @@ server {
   root /var/www/{{name}}/public;
 
   location / {
-    location ~ /.+/index/ {
-      return 403;
+    set $allow 1;
+    if ($uri ~ ^/.+/index/) {
+      set $allow 0;
+    }
+    if ($cookie_access_key = "{{irclog_access_key}}") {
+      set $allow 1;
+    }
+    if ($allow = 0) {
+      return 401;
     }
 
     proxy_set_header Host $http_host;

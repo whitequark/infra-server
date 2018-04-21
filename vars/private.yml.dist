@@ -6,3 +6,4 @@
       invite_token: "letmein"
       invite_redirect: "/1-home"
 - prestashop_cron_token: ""
+- irclog_access_key: ""
