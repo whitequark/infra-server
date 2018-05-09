@@ -67,7 +67,6 @@ channels:
   - "#trilema"
   - "#logarion"
   - "#linux-amlogic"
-  - "#proghq"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
@@ -82,6 +81,7 @@ hidden_channels:
   - "#base48"
   - "#brmlab"
   - "#nupic"
+  - "#proghq"
 legacy_escaping_scheme:
   - ".openfpga"
 domain: irclog.whitequark.org
