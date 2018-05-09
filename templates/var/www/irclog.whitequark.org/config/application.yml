@@ -67,6 +67,7 @@ channels:
   - "#trilema"
   - "#logarion"
   - "#linux-amlogic"
+  - "#proghq"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"

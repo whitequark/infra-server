@@ -14,14 +14,28 @@ server {
 
   root /var/www/{{name}}/public;
 
+  location ~ ^/(.+)/access_key/(.*) {
+    add_header Set-Cookie "access_key=$2; Max-Age=315360000; Path=/; HttpOnly";
+
+    return 303 "$scheme://$host/$1/";
+  }
+
   location / {
     set $allow 1;
     if ($uri ~ ^/.+/index/) {
       set $allow 0;
     }
-    if ($cookie_access_key = "{{irclog_access_key}}") {
+    if ($cookie_access_key = "{{irclog.index_access_key}}") {
       set $allow 1;
     }
+    {% for channel, access_key in irclog.channel_access_keys.items() %}
+    if ($uri ~ ^/{{channel}}/) {
+      set $allow 0;
+    }
+    if ($cookie_access_key = "{{access_key}}") {
+      set $allow 1;
+    }
+    {% endfor %}
     if ($allow = 0) {
       return 401;
     }
