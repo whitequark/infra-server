@@ -68,6 +68,7 @@ channels:
   - "#logarion"
   - "#linux-amlogic"
   - "#proghq"
+  - "#amber"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
