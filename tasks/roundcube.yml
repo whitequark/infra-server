@@ -17,6 +17,7 @@
     # needs $ ln -s keyboard-shortcuts /var/lib/roundcube/keyboard_shortcuts, sigh
     - roundcube-plugins-extra
     - spawn-fcgi
+    - php-pspell
   register: roundcube_apt
 - name: remove useless roundcube packages
   apt: name={{item}} state=absent
