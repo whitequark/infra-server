@@ -35,14 +35,6 @@
   #   tags: lab.whitequark.org
   # - include: tasks/sites/groupxiv.whitequark.org.yml
   #   tags: groupxiv.whitequark.org
-  # - include: tasks/sites/irclog.whitequark.org.yml
-  #   tags: irclog.whitequark.org
-  # - include_role:
-  #     name:    irclogger
-  #   vars:
-  #     network: freenode
-  #     domain:  freenode.irclog.whitequark.org
-  #   tags:    freenode.irclog.whitequark.org
   - include: tasks/nginx-site.yml name=mail.whitequark.org
     tags: mail.whitequark.org, mail.whitequark.org:nginx
   # - include: tasks/nginx-site.yml name=shop.whitequark.org
