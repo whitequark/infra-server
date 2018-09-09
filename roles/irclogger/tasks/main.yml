@@ -1,0 +1,79 @@
+---
+- name: install ruby, thin, redis and postgres
+  apt: name={{item}} state=present
+  with_items:
+    - ruby
+    - thin
+    - bundler
+    - redis-server
+    - postgresql
+    - postgresql-contrib
+    - libpq-dev
+    - python-psycopg2
+    - openssl
+- name: create user irclog_{{network}}
+  user: name=irclog_{{network}} shell=/bin/bash
+- name: create postgres role irclog_{{network}}
+  postgresql_user: name=irclog_{{network}}
+  become: true
+  become_user: postgres
+- name: create postgres database irclog_{{network}}
+  postgresql_db: name=irclog_{{network}} owner=irclog_{{network}}
+  become: true
+  become_user: postgres
+- name: create webroot for {{domain}}
+  file: dest=/var/www/{{domain}} state=directory owner=irclog_{{network}}
+- name: deploy irclogger
+  git: dest=/var/www/{{domain}} repo=https://github.com/whitequark/irclogger
+    accept_hostkey=yes force=yes
+  become: true
+  become_user: irclog_{{network}}
+  register: irclog_checkout
+  notify:
+    - restart irclog-{{network}} logger
+    - restart irclog-{{network}} viewer
+- name: check for irclog_{{network}} database
+  command: psql irclog_{{network}} -c "select * from irclog limit 1;"
+  become: true
+  become_user: irclog_{{network}}
+  ignore_errors: True
+  register: irclog_checkdb
+  changed_when: False
+- name: create postgres extension btree_gin
+  command: psql irclog_{{network}} -c "create extension if not exists btree_gin;"
+  register: pg_create_extension
+  changed_when: "'already exists' not in pg_create_extension.stderr"
+- name: import irclog_{{network}} database schema
+  command: psql irclog_{{network}} -f /var/www/{{domain}}/config/sql/postgresql-schema.sql
+  become: true
+  become_user: irclog_{{network}}
+  when: irclog_checkdb.rc != 0
+- name: bundle irclogger
+  command: bundle install --deployment --without mysql
+  args:
+    chdir: /var/www/{{domain}}
+  become: true
+  become_user: irclog_{{network}}
+- name: add irclog-{{network}}-logger init script
+  template: dest=/etc/init.d/irclog-{{network}}-logger src=rc-logger.sh mode=0755
+- name: enable irclog-{{network}}-logger service
+  service: name=irclog-{{network}}-logger enabled=yes
+- name: add irclog-{{network}}-viewer init script
+  template: dest=/etc/init.d/irclog-{{network}}-viewer src=rc-viewer.sh mode=0755
+- name: enable irclog-{{network}}-viewer service
+  service: name=irclog-{{network}}-viewer enabled=yes
+- name: configure irclogger
+  template: dest=/var/www/{{domain}}/config/application.yml
+    src=templates/irclogger/{{network}}.yml
+  notify:
+    - restart irclog-{{network}} logger
+- name: configure irclogger watchdog
+  cron: name="irclog-{{network}}-watchdog" minute="*/3"
+    job="cd /var/www/{{domain}} && bundle exec ./watchdog.rb"
+  become: true
+  become_user: irclog_{{network}}
+- name: configure mail forwarding from irclog-{{network}}@
+  copy: dest=/home/irclog_{{network}}/.forward content=whitequark
+- name: determine path to nginx site template
+  set_fact: nginx_conf={{role_path}}/templates/nginx.conf
+- include_role: name=nginx-site

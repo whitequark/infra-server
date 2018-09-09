@@ -1,12 +1,12 @@
 ---
-database: postgres:///irclogs
+database: postgres:///irclog_freenode
 redis: redis://localhost:6379
 
 server: chat.freenode.net
 username: whitelogger
 realname: whitequark's logger bot
 nickname: _whitelogger
-password: {{irclogger_password}}
+password: {{irclog.freenode.password}}
 channels:
   - "#ruby-core"
   - "#ruby"
@@ -86,4 +86,4 @@ hidden_channels:
   - "#proghq"
 legacy_escaping_scheme:
   - ".openfpga"
-domain: irclog.whitequark.org
+domain: {{domain}}

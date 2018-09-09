@@ -35,8 +35,14 @@
   #   tags: lab.whitequark.org
   # - include: tasks/sites/groupxiv.whitequark.org.yml
   #   tags: groupxiv.whitequark.org
-  - include: tasks/sites/irclog.whitequark.org.yml
-    tags: irclog.whitequark.org
+  # - include: tasks/sites/irclog.whitequark.org.yml
+  #   tags: irclog.whitequark.org
+  # - include_role:
+  #     name:    irclogger
+  #   vars:
+  #     network: freenode
+  #     domain:  freenode.irclog.whitequark.org
+  #   tags:    freenode.irclog.whitequark.org
   - include: tasks/nginx-site.yml name=mail.whitequark.org
     tags: mail.whitequark.org, mail.whitequark.org:nginx
   # - include: tasks/nginx-site.yml name=shop.whitequark.org
@@ -84,7 +90,20 @@
   - name: nginx-site
     domain: groupxiv.whitequark.org
     tags:   groupxiv.whitequark.org
-  # tasks/sites/irclog.whitequark.org.yml
+  - name: irclogger
+    network: freenode
+    domain:  freenode.irclog.whitequark.org
+    tags: freenode.irclog.whitequark.org
+  - name: nginx-site
+    domain: irclog.whitequark.org
+    tags:   irclog.whitequark.org
+  - name: nginx-site
+    domain: logs.jruby.org
+    tags:   logs.jruby.org
+  - name: irclogger
+    network: esper
+    domain:  esper.irclog.whitequark.org
+    tags: esper.irclog.whitequark.org
   # tasks/roundcube.yml domain=mail.whitequark.org
   # tasks/nginx-site.yml name=mail.whitequark.org
   - name: prestashop
@@ -105,5 +124,4 @@
   - include: handlers/mail.yml
   - include: handlers/mysql.yml
   - include: handlers/roundcube.yml
-  - include: handlers/sites/irclog.whitequark.org.yml
   - include: handlers/mumble.yml

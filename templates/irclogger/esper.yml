@@ -1,0 +1,28 @@
+---
+database: postgres:///irclog_{{network}}
+redis: redis://localhost:6379
+
+server: irc.esper.net
+username: whitelogger
+realname: whitequark's logger bot
+nickname: _whitelogger
+# password: {{irclog.esper.password}}
+channels:
+  - "#!/bin/sh"
+  - "#bottorture"
+  - "#ckan"
+  - "#Kopernicus"
+  - "#kspacademia"
+  - "#KSPD&D"
+  - "#kspmodders"
+  - "#kspmodding"
+  - "#KSPOfficial"
+  - "#kspunofficial"
+  - "#principia"
+  - "#qboid"
+  - "#RO"
+  - "#RVEDev"
+  - "#spacedock"
+  - "#SpaceX"
+  - "#SpaceXFun"
+domain: {{domain}}

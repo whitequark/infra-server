@@ -4,20 +4,20 @@ if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
     set "$0" "$@"; INIT_D_SCRIPT_SOURCED=true . /lib/init/init-d-script
 fi
 ### BEGIN INIT INFO
-# Provides:          irclogger-viewer
+# Provides:          irclog-{{network}}-viewer
 # Required-Start:    $remote_fs postgresql
 # Required-Stop:     $remote_fs
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: irclogger viewer bot
+# Short-Description: {{domain}} viewer
 ### END INIT INFO
 
 # Author: whitequark <whitequark@whitequark.org>
 
-ROOT=/var/www/irclog.whitequark.org
-START_ARGS="--chuid irclogger -d ${ROOT}"
+ROOT=/var/www/{{domain}}
+START_ARGS="--chuid irclog_{{network}} -d ${ROOT}"
 
-DESC="irclogger viewer"
+DESC="{{domain}} viewer"
 DAEMON=/usr/bin/bundle
 DAEMON_ARGS="exec thin -C config/thin.yml start"
 PIDFILE=${ROOT}/tmp/viewer.pid
