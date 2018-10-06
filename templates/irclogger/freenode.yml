@@ -69,6 +69,7 @@ channels:
   - "#linux-amlogic"
   - "#proghq"
   - "#amber"
+  - "#racket"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
