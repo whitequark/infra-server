@@ -70,6 +70,8 @@ channels:
   - "#proghq"
   - "#amber"
   - "#racket"
+  - "#libreelec"
+  - "#panfrost"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
