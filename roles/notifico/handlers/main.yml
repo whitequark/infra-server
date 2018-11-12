@@ -1,0 +1,5 @@
+---
+- name: restart notifico-www
+  service: name=notifico-www state=restarted
+- name: restart notifico-bots
+  service: name=notifico-bots state=restarted

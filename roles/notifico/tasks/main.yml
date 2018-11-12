@@ -1,0 +1,67 @@
+---
+- name: install redis and native notifico dependencies
+  apt: name={{item}} state=present
+  with_items:
+  - python
+  - python-dev
+  - python-pip
+  - python-virtualenv
+  - python-gevent
+  - python-sqlalchemy
+  - python-crypto
+  - python-markupsafe
+  - python-celery
+  - redis-server
+- name: create user notifico
+  user: name=notifico shell=/usr/sbin/nologin
+- name: create webroot for notifico
+  file: dest={{webroot}} state=directory owner=notifico
+- name: deploy notifico
+  git: dest={{webroot}} repo=https://github.com/notifico/notifico
+    accept_hostkey=yes force=yes
+  become: true
+  become_user: notifico
+  notify:
+    - restart notifico-www
+    - restart notifico-bots
+- name: add notifico-www init script
+  template: dest=/etc/init.d/notifico-www src=rc-www.sh mode=0755
+- name: enable notifico-www service
+  service: name=notifico-www enabled=yes
+- name: add notifico-bots init script
+  template: dest=/etc/init.d/notifico-bots src=rc-bots.sh mode=0755
+- name: enable notifico-bots service
+  service: name=notifico-bots enabled=yes
+- name: configure notifico
+  template: dest={{webroot}}/local_config.py
+    src=templates/notifico.py
+  notify:
+    - restart notifico-www
+    - restart notifico-bots
+- name: check if notifico has a virtualenv
+  stat: path={{webroot}}/notifico-env
+  register: virtualenv
+- name: install notifico virtualenv
+  command: python2 -m virtualenv --system-site-packages notifico-env
+  args:
+    chdir: "{{webroot}}"
+  become: true
+  become_user: notifico
+  when: not virtualenv.stat.exists
+- name: install notifico python dependencies
+  shell: . {{webroot}}/notifico-env/bin/activate && python2 setup.py install
+  args:
+    chdir: "{{webroot}}"
+  become: true
+  become_user: notifico
+  when: not virtualenv.stat.exists
+- name: initialize notifico
+  shell: . {{webroot}}/notifico-env/bin/activate && python2 -m notifico init
+  args:
+    chdir: "{{webroot}}"
+  become: true
+  become_user: notifico
+  when: not virtualenv.stat.exists
+- name: determine path to nginx site template
+  set_fact: nginx_conf={{role_path}}/templates/nginx.conf webroot={{webroot}}
+- include_role: name=nginx-site

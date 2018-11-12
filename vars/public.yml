@@ -10,6 +10,7 @@ backup_objects:
   files:
     include:
     - /var/lib/prestashop
+    - /var/lib/notifico
     - /var/www/nextcloud/config
     - /var/www/nextcloud/apps
     - /var/www/nextcloud/data

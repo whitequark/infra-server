@@ -102,6 +102,9 @@
     domain: shop.whitequark.org
   - name: nextcloud
     domain: cloud.whitequark.org
+  - name: notifico
+    domain: notifico.whitequark.org
+    tags: notifico
   #   >>> llvm.moe <<<
   # tasks/nsd-zone.yml name=llvm.moe
   - name: nginx-site
