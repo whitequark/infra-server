@@ -17,7 +17,7 @@
 - name: create webroot for notifico
   file: dest={{webroot}} state=directory owner=notifico
 - name: deploy notifico
-  git: dest={{webroot}} repo=https://github.com/notifico/notifico
+  git: dest={{webroot}} repo=https://github.com/whitequark/notifico
     accept_hostkey=yes force=yes
   become: true
   become_user: notifico
