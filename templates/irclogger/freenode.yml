@@ -73,6 +73,7 @@ channels:
   - "#libreelec"
   - "#panfrost"
   - "#symbiflow"
+  - "#slime"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
