@@ -74,6 +74,7 @@ channels:
   - "#panfrost"
   - "#symbiflow"
   - "#slime"
+  - "#glasgow"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
