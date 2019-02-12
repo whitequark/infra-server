@@ -26,3 +26,6 @@ channels:
   - "#SpaceX"
   - "#SpaceXFun"
 domain: {{domain}}
+
+watchdog:
+  timeout: 3600
