@@ -85,7 +85,7 @@
   - name: irclogger
     network: freenode
     domain:  freenode.irclog.whitequark.org
-    tags: freenode.irclog.whitequark.org
+    tags:    freenode.irclog.whitequark.org
   - name: nginx-site
     domain: irclog.whitequark.org
     tags:   irclog.whitequark.org
@@ -95,16 +95,17 @@
   - name: irclogger
     network: esper
     domain:  esper.irclog.whitequark.org
-    tags: esper.irclog.whitequark.org
+    tags:    esper.irclog.whitequark.org
   # tasks/roundcube.yml domain=mail.whitequark.org
   # tasks/nginx-site.yml name=mail.whitequark.org
   - name: prestashop
     domain: shop.whitequark.org
   - name: nextcloud
     domain: cloud.whitequark.org
+    tags:   cloud.whitequark.org
   - name: notifico
     domain: notifico.whitequark.org
-    tags: notifico
+    tags:   notifico.whitequark
   #   >>> llvm.moe <<<
   # tasks/nsd-zone.yml name=llvm.moe
   - name: nginx-site

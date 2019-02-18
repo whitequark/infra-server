@@ -18,9 +18,9 @@ DESC="nextcloud"
 PIDFILE=/var/run/nextcloud.pid
 DAEMON=/usr/bin/spawn-fcgi
 DAEMON_ARGS="-s /run/nextcloud.sock -u nextcloud -U www-data -P ${PIDFILE}"
-DAEMON_ARGS="${DAEMON_ARGS} -C 3 -- /usr/bin/php-cgi7.0"
+DAEMON_ARGS="${DAEMON_ARGS} -C 3 -- /usr/bin/php-cgi"
 
 do_stop_cmd() {
   start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 \
-      --pidfile ${PIDFILE} --exec /usr/bin/php-cgi7.0
+      --pidfile ${PIDFILE} --exec /usr/bin/php-cgi
 }
