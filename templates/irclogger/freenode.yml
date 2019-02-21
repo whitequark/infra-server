@@ -75,6 +75,7 @@ channels:
   - "#symbiflow"
   - "#slime"
   - "#glasgow"
+  - "##yamahasynths"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
