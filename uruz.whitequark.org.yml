@@ -105,7 +105,10 @@
     tags:   cloud.whitequark.org
   - name: notifico
     domain: notifico.whitequark.org
-    tags:   notifico.whitequark
+    tags:   notifico.whitequark.org
+  - name: nginx-site
+    domain: gateway.whitequark.org
+    tags:   gateway.whitequark.org
   #   >>> llvm.moe <<<
   # tasks/nsd-zone.yml name=llvm.moe
   - name: nginx-site
