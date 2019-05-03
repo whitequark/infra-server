@@ -76,6 +76,7 @@ channels:
   - "#slime"
   - "#glasgow"
   - "##yamahasynths"
+  - "#scopehal"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
