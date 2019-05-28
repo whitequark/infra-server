@@ -40,4 +40,4 @@ lmtp      unix  -       -       -       -       -       lmtp
 anvil     unix  -       -       -       -       1       anvil
 scache    unix  -       -       -       -       1       scache
 spamassassin unix -     n       n       -       -       pipe
-  user=nobody argv=/usr/bin/spamc -u ${user} -e /usr/sbin/sendmail -oi -f ${sender} ${recipient}
+  user=nobody argv=/usr/bin/spamc -s 4000000 -u ${user} -e /usr/sbin/sendmail -oi -f ${sender} ${recipient}
