@@ -77,6 +77,7 @@ channels:
   - "#glasgow"
   - "##yamahasynths"
   - "#scopehal"
+  - "#lima"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
