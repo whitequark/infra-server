@@ -22,7 +22,7 @@
   command: certbot certonly
     --email whitequark@whitequark.org
     --noninteractive --agree-tos
-    --webroot -w /var/www/{{name}}/ -d {{name}}
+    --webroot -w /var/www/{{name}}/ -d {{name}} --cert-name {{name}}
   when: ssl_cert.stat.exists == False and live == True
 - name: configure {{name}} nginx site with https
   template: dest=/etc/nginx/sites-available/{{name}} src=templates/etc/nginx/sites-available/{{name}}
