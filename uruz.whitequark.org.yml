@@ -39,8 +39,8 @@
     tags: mail.whitequark.org, mail.whitequark.org:nginx
   # - include: tasks/nginx-site.yml name=shop.whitequark.org
   #   tags: shop.whitequark.org, shop.whitequark.org:nginx
-  # - include: tasks/sites/whitequark.org.yml
-  #   tags: whitequark.org
+  - include: tasks/sites/whitequark.org.yml
+    tags: whitequark.org
   # - include: tasks/nginx-site.yml name=whitequark.com
   #   tags: whitequark.com
   # - include: tasks/sites/llvm.moe.yml
