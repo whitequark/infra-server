@@ -109,6 +109,11 @@
   - name: nginx-site
     domain: gateway.whitequark.org
     tags:   gateway.whitequark.org
+  - name: flarum
+    domain: glasgow.whitequark.org
+    webroot:  /var/www/glasgow.whitequark.org
+    instance: glasgow
+    tags:   glasgow.whitequark.org
   #   >>> llvm.moe <<<
   # tasks/nsd-zone.yml name=llvm.moe
   - name: nginx-site
