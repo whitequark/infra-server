@@ -3,6 +3,6 @@
 - name: configure nsd
   template: dest=/etc/nsd/nsd.conf src=templates/etc/nsd/nsd.conf
   notify:
-    - reload nsd
+    - restart nsd
 - name: create /etc/nsd/zones
   file: path=/etc/nsd/zones state=directory
