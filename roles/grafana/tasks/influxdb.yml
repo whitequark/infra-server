@@ -1,0 +1,7 @@
+---
+- name: create influxdb grafana user
+  influxdb_user:
+    login_username: root
+    login_password: "{{influxdb_password.root}}"
+    user_name: grafana
+    user_password: "{{influxdb_password.grafana}}"

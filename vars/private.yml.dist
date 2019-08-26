@@ -1,6 +1,8 @@
 ---
 - influxdb_password:
     root: ""
+    grafana: ""
+- grafana_password: ""
 - mumble_password: ""
 - irclogger_password: ""
 - prestashop_shops:

@@ -117,6 +117,10 @@
   - name: influxdb
     domain: influxdb.whitequark.org
     tags:   influxdb.whitequark.org
+  - name: grafana
+    domain: grafana.whitequark.org
+    tags:   grafana.whitequark.org
+    influxdb: yes
   #   >>> llvm.moe <<<
   # tasks/nsd-zone.yml name=llvm.moe
   - name: nginx-site
