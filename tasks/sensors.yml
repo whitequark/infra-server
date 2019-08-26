@@ -1,0 +1,28 @@
+---
+- name: create influxdb sensors database
+  influxdb_database:
+    login_username: root
+    login_password: "{{influxdb_password.root}}"
+    database_name: sensors
+- name: create influxdb sensors user
+  influxdb_user:
+    login_username: root
+    login_password: "{{influxdb_password.root}}"
+    user_name: sensors
+    user_password: "{{influxdb_password.sensors}}"
+    grants:
+    - database: sensors
+      privilege: WRITE
+- name: grant grafana access to influxdb sensors database
+  influxdb_user:
+    login_username: root
+    login_password: "{{influxdb_password.root}}"
+    user_name: grafana
+    grants:
+    - database: sensors
+      privilege: READ
+- name: provision grafana influxdb sensors datasource
+  template: dest=/etc/grafana/provisioning/datasources/sensors.yml
+    src=templates/etc/grafana/provisioning/datasources/sensors.yml group=grafana mode=0640
+  notify:
+    - restart grafana-server

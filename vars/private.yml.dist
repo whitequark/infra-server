@@ -2,6 +2,7 @@
 - influxdb_password:
     root: ""
     grafana: ""
+    sensors: ""
 - grafana_password: ""
 - mumble_password: ""
 - irclogger_password: ""

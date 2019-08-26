@@ -128,6 +128,9 @@
     tags:   llvm.moe
   - name: tarsnap
     tags: backup
+  tasks:
+  - include: tasks/sensors.yml
+    tags: sensors
   handlers:
   - include: handlers/sysctl.yml
   - include: handlers/syslog.yml
