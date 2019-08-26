@@ -1,7 +1,7 @@
 - name: configure {{name}} zone
   template: dest=/etc/nsd/zones/{{name}} src=templates/etc/nsd/zones/{{name}}
   notify:
-    - reload nsd
+    - restart nsd
 - name: check {{name}} zone
   command: nsd-checkzone {{name}} /etc/nsd/zones/{{name}}
   changed_when: False
