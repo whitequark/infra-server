@@ -114,6 +114,9 @@
     webroot:  /var/www/glasgow.whitequark.org
     instance: glasgow
     tags:   glasgow.whitequark.org
+  - name: influxdb
+    domain: influxdb.whitequark.org
+    tags:   influxdb.whitequark.org
   #   >>> llvm.moe <<<
   # tasks/nsd-zone.yml name=llvm.moe
   - name: nginx-site

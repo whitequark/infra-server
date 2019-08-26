@@ -1,4 +1,6 @@
 ---
+- influxdb_password:
+    root: ""
 - mumble_password: ""
 - irclogger_password: ""
 - prestashop_shops:
