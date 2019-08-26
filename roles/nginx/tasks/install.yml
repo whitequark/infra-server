@@ -8,8 +8,8 @@
   register: install_nginx
 - name: remove default nginx site
   file: name=/etc/nginx/sites-enabled/default state=absent
-- name: copy nginx tls_params
-  copy: dest=/etc/nginx/tls_params src=tls_params.conf
+- name: copy nginx ssl_params
+  copy: dest=/etc/nginx/ssl_params src=ssl_params.conf
   notify:
   - reload nginx
   when: want_tls
