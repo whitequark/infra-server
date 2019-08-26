@@ -3,7 +3,7 @@
 - name: configure mail forwarding from root@
   copy: dest=/root/.forward content=whitequark
 - name: add SSH authorized key for user whitequark
-  authorized_key: user=whitequark key={{ lookup('file', '/home/whitequark/.ssh/id_rsa.pub') }}
+  authorized_key: user=whitequark key={{ lookup('file', '/home/whitequark/.ssh/id_ed25519.pub') }}
 - name: install whitequark's personal packages
   apt: name={{item}} state=present
   with_items:
