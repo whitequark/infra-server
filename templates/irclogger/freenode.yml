@@ -79,6 +79,7 @@ channels:
   - "#scopehal"
   - "#lima"
   - "#qaul.net"
+  - "#discferret"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
