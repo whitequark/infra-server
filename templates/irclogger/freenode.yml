@@ -80,6 +80,7 @@ channels:
   - "#lima"
   - "#qaul.net"
   - "#discferret"
+  - "#litex"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
