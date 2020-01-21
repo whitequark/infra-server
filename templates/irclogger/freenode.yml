@@ -81,7 +81,6 @@ channels:
   - "#qaul.net"
   - "#discferret"
   - "#litex"
-  - "#armbian"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
@@ -97,6 +96,7 @@ hidden_channels:
   - "#brmlab"
   - "#nupic"
   - "#proghq"
+  - "#armbian"
 legacy_escaping_scheme:
   - ".openfpga"
 domain: {{domain}}
