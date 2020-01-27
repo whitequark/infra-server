@@ -82,6 +82,7 @@ channels:
   - "#discferret"
   - "#litex"
   - "#armbian"
+  - "#nmigen"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
