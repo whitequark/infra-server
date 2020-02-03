@@ -84,6 +84,7 @@ channels:
   - "#armbian"
   - "#nmigen"
   - "#forth"
+  - "#xtompp"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
