@@ -3,6 +3,8 @@ database: postgres:///irclog_freenode
 redis: redis://localhost:6379
 
 server: chat.freenode.net
+port: 6697
+ssl: true
 username: whitelogger
 realname: whitequark's logger bot
 nickname: _whitelogger
