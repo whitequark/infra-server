@@ -21,6 +21,6 @@
     user_password: "{{influxdb_password.root}}"
   notify:
     - restart influxdb
-- import_role: name=nginx-site
+- include_role: name=nginx-site
   vars:
     nginx_conf: "nginx.conf"
