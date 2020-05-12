@@ -87,6 +87,7 @@ channels:
   - "#nmigen"
   - "#forth"
   - "#xtompp"
+  - "#etnaviv"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
