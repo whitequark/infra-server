@@ -30,7 +30,6 @@ channels:
   - "#radxa"
   - "#bundler"
   - "#rubygems-aws"
-  - "#m-labs"
   - "#microrb"
   - "#ocaml"
   - "#mirage"
@@ -91,19 +90,9 @@ channels:
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
-  - "#cuckoosandbox"
-  - "#panda-re"
-  - "#volatility"
-  - "#kvm"
-  - "#bedrock"
-  - "#xen"
-  - "#progressbar"
-  - "#v01d"
-  - "#base48"
-  - "#brmlab"
-  - "#nupic"
   - "#proghq"
   - "#armbian"
+  - "#m-labs"
 legacy_escaping_scheme:
   - ".openfpga"
 domain: {{domain}}
