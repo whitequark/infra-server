@@ -1,2 +1,1 @@
 /.+@llvm\.moe$/ whitequark@whitequark.org
-/^shop(\+[a-z]+)?@whitequark\.org$/ whitequark@whitequark.org

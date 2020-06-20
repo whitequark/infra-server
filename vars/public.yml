@@ -7,11 +7,9 @@ backup_objects:
   - irclog_freenode
   - irclog_esper
   mysql_dbs:
-  - prestashop
   - nextcloud
   files:
     include:
-    - /var/lib/prestashop
     - /var/lib/notifico
     - /var/www/nextcloud/config
     - /var/www/nextcloud/apps
@@ -22,7 +20,5 @@ backup_objects:
     - /var/www/llvm.moe
     exclude:
     - /var/www/groupxiv.whitequark.org/public_html/data/*-tiles
-    - /var/lib/prestashop/app/cache
-    - /var/lib/prestashop/xadmin/autoupgrade # a whole other copy of prestashop
     - /var/www/nextcloud/data/*/cache
     - /var/www/nextcloud/data/*/files_trashbin

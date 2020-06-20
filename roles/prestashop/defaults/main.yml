@@ -1,5 +1,0 @@
----
-install_version: 1.7.2.2
-webroot: /var/lib/prestashop
-prestashop:
-  shops: {}

@@ -24,7 +24,6 @@ groupxiv  IN CNAME  @
 irclog    IN CNAME  @
 freenode.irclog IN CNAME @
 esper.irclog    IN CNAME @
-shop      IN CNAME  @
 cloud     IN CNAME  @
 notifico  IN CNAME  @
 gateway   IN CNAME  @

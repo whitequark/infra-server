@@ -6,11 +6,6 @@
 - grafana_password: ""
 - mumble_password: ""
 - irclogger_password: ""
-- prestashop_shops:
-    foo:
-      invite_token: "letmein"
-      invite_redirect: "/1-home"
-- prestashop_cron_token: ""
 - irclog:
     index_access_key: ""
     channel_access_keys: {}
