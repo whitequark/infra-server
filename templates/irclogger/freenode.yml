@@ -87,6 +87,7 @@ channels:
   - "#forth"
   - "#xtompp"
   - "#etnaviv"
+  - "#skywater-pdk"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
