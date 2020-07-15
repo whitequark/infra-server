@@ -14,7 +14,6 @@ backup_objects:
     - /var/www/nextcloud/config
     - /var/www/nextcloud/apps
     - /var/www/nextcloud/data
-    - /var/www/flarum
     - /var/www/files.whitequark.org
     - /var/www/groupxiv.whitequark.org/public_html/data/
     - /var/www/llvm.moe
