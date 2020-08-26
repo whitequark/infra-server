@@ -9,6 +9,9 @@ $config['db_dsnw'] = 'pgsql:///roundcube';
 $config['default_host'] = '[::1]:1143'; // imap
 $config['managesieve_host'] = '[::1]';
 
+$config['smtp_server'] = 'localhost';
+$config['smtp_port'] = 587;
+
 $config['product_name'] = 'whitequark.org webmail';
 
 $config['login_autocomplete'] = 2; // username and password
