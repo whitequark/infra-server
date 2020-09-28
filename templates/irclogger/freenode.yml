@@ -89,6 +89,7 @@ channels:
   - "#etnaviv"
   - "#skywater-pdk"
   - "#prjmistral"
+  - "#apicula"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
