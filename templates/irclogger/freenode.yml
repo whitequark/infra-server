@@ -90,6 +90,7 @@ channels:
   - "#skywater-pdk"
   - "#prjmistral"
   - "#apicula"
+  - "#openwrt-devel"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
