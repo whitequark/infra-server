@@ -14,7 +14,6 @@ channels:
   - "#ruby"
   - "#qi-hardware"
   - "#homecmos"
-  - "#solvespace"
   - "#arm-netbook"
   - "#cinch"
   - "#rubygems"
@@ -97,6 +96,7 @@ hidden_channels:
   - "#proghq"
   - "#armbian"
   - "#m-labs"
+  - "#solvespace"
 legacy_escaping_scheme:
   - ".openfpga"
 domain: {{domain}}
