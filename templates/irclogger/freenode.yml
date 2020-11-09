@@ -90,6 +90,7 @@ channels:
   - "#prjmistral"
   - "#apicula"
   - "#openwrt-devel"
+  - "#lowempire"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
