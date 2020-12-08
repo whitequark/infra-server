@@ -64,7 +64,6 @@ channels:
   - "#zig"
   - "#yosys"
   - "#lisp"
-  - "#trilema"
   - "#logarion"
   - "#linux-amlogic"
   - "#proghq"
