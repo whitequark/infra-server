@@ -91,6 +91,10 @@ channels:
   - "#openwrt-devel"
   - "#lowempire"
   - "#river"
+  - "#asahi"
+  - "#asahi-dev"
+  - "#asahi-re"
+  - "#asahi-gpu"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
