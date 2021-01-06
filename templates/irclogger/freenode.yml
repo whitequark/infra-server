@@ -95,6 +95,7 @@ channels:
   - "#asahi-dev"
   - "#asahi-re"
   - "#asahi-gpu"
+  - "#buildbot"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
