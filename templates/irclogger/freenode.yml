@@ -71,6 +71,7 @@ channels:
   - "#racket"
   - "#libreelec"
   - "#panfrost"
+  - "##panfrost-offtopic"
   - "#symbiflow"
   - "#slime"
   - "#glasgow"
