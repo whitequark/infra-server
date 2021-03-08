@@ -23,8 +23,6 @@ channels:
   - "#RO"
   - "#RVEDev"
   - "#spacedock"
-  - "#SpaceX"
-  - "#SpaceXFun"
 domain: {{domain}}
 
 watchdog:
