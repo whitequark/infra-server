@@ -108,3 +108,6 @@ hidden_channels:
 legacy_escaping_scheme:
   - ".openfpga"
 domain: {{domain}}
+
+watchdog:
+  timeout: 600
