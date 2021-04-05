@@ -98,6 +98,7 @@ channels:
   - "#asahi-gpu"
   - "#buildbot"
   - "#videocore"
+  - "##stm32-rs"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
