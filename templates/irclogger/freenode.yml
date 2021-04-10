@@ -99,6 +99,7 @@ channels:
   - "#buildbot"
   - "#videocore"
   - "##stm32-rs"
+  - "#maemo-leste"
 hidden_channels:
   - "##fix_your_connection"
   - "#AUTOMATIOTT"
