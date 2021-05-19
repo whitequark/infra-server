@@ -54,6 +54,9 @@
     chdir: /var/www/{{domain}}
   become: true
   become_user: irclog_{{network}}
+  notify:
+    - restart irclog-{{network}} logger
+    - restart irclog-{{network}} viewer
 - name: add irclog-{{network}}-logger init script
   template: dest=/etc/init.d/irclog-{{network}}-logger src=rc-logger.sh mode=0755
 - name: enable irclog-{{network}}-logger service

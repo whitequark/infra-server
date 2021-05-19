@@ -1,5 +1,5 @@
 ---
-database: postgres:///irclog_freenode
+database: postgres:///irclog_{{network}}
 redis: redis://localhost:6379
 
 server: chat.freenode.net

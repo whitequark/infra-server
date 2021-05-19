@@ -1,0 +1,23 @@
+---
+database: postgres:///irclog_{{network}}
+redis: redis://localhost:6379
+
+server: irc.libera.chat
+port: 6697
+ssl: true
+username: whitelogger
+realname: whitequark's logger bot
+nickname: _whitelogger
+password: {{irclog.libera.password}}
+channels:
+  - "#nmigen"
+  - "#glasgow"
+  - "##openfpga"
+  - "#prjbureau"
+  - "#jruby"
+  - "#scopehal"
+  - "##yamahasynths"
+domain: {{domain}}
+
+watchdog:
+  timeout: 600
