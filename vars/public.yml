@@ -5,6 +5,7 @@ backup_objects:
   postgres_dbs:
   - roundcube
   - irclog_freenode
+  - irclog_libera
   - irclog_esper
   mysql_dbs:
   - nextcloud
