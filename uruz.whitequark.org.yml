@@ -86,6 +86,10 @@
     network: libera
     domain:  libera.irclog.whitequark.org
     tags:    libera.irclog.whitequark.org
+  - name: irclogger
+    network: oftc
+    domain:  oftc.irclog.whitequark.org
+    tags:    oftc.irclog.whitequark.org
   - name: nginx-site
     domain: irclog.whitequark.org
     tags:   irclog.whitequark.org

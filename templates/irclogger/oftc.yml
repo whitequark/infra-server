@@ -1,0 +1,20 @@
+---
+database: postgres:///irclog_{{network}}
+redis: redis://localhost:6379
+
+server: irc.oftc.net
+port: 6697
+ssl: true
+username: whitelogger
+realname: whitequark's logger bot
+nickname: _whitelogger
+password: {{irclog.oftc.password}}
+channels:
+  - "#asahi"
+  - "#asahi-dev"
+  - "#asahi-re"
+  - "#asahi-gpu"
+domain: {{domain}}
+
+watchdog:
+  timeout: 3600

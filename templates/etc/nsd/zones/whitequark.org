@@ -1,7 +1,7 @@
 $ORIGIN   whitequark.org.
 $TTL      86400
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2021052001 28800 7200 2419200 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2021052002 28800 7200 2419200 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
           IN A      {{ ansible_default_ipv4.address }}
@@ -24,6 +24,7 @@ groupxiv  IN CNAME  @
 irclog    IN CNAME  @
 freenode.irclog IN CNAME @
 libera.irclog   IN CNAME @
+oftc.irclog     IN CNAME @
 esper.irclog    IN CNAME @
 cloud     IN CNAME  @
 notifico  IN CNAME  @

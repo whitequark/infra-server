@@ -6,6 +6,7 @@ backup_objects:
   - roundcube
   - irclog_freenode
   - irclog_libera
+  - irclog_oftc
   - irclog_esper
   mysql_dbs:
   - nextcloud
