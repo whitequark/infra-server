@@ -21,6 +21,8 @@ channels:
   - "#river"
   - "#titandev"
   - "#discferret"
+  - "##stm32-rs"
+  - "#rust-embedded"
 domain: {{domain}}
 
 watchdog:
