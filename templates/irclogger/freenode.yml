@@ -86,7 +86,6 @@ channels:
   - "#apicula"
   - "#openwrt-devel"
   - "#lowempire"
-  - "#river"
   - "#buildbot"
   - "#videocore"
   - "##stm32-rs"

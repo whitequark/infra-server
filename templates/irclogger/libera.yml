@@ -18,6 +18,7 @@ channels:
   - "#scopehal"
   - "##yamahasynths"
   - "#ocaml"
+  - "#river"
 domain: {{domain}}
 
 watchdog:
