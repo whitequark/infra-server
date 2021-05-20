@@ -23,6 +23,7 @@ channels:
   - "#discferret"
   - "##stm32-rs"
   - "#rust-embedded"
+  - "#riscv"
 domain: {{domain}}
 
 watchdog:
