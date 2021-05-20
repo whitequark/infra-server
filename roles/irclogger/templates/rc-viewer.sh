@@ -23,6 +23,6 @@ DAEMON_ARGS="exec thin -C config/thin.yml start"
 PIDFILE=${ROOT}/tmp/viewer.pid
 
 do_stop_cmd() {
-  start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 \
+  start-stop-daemon --stop --quiet --retry=TERM/5/KILL/1 \
       --pidfile ${PIDFILE} --exec /usr/bin/ruby
 }
