@@ -20,6 +20,7 @@ channels:
   - "#ocaml"
   - "#river"
   - "#titandev"
+  - "#discferret"
 domain: {{domain}}
 
 watchdog:
