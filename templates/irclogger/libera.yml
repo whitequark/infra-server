@@ -19,6 +19,7 @@ channels:
   - "##yamahasynths"
   - "#ocaml"
   - "#river"
+  - "#titandev"
 domain: {{domain}}
 
 watchdog:
