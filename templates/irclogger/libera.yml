@@ -17,6 +17,7 @@ channels:
   - "#jruby"
   - "#scopehal"
   - "##yamahasynths"
+  - "#ocaml"
 domain: {{domain}}
 
 watchdog:
