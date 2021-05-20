@@ -102,10 +102,6 @@ hidden_channels:
   - "#asahi-dev"
   - "#asahi-re"
   - "#asahi-gpu"
-  - "#glasgow"
-  - "#nmigen"
-  - "#zig"
-  - "##yamahasynths"
 legacy_escaping_scheme:
   - ".openfpga"
 domain: {{domain}}
