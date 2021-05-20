@@ -24,6 +24,7 @@ channels:
   - "##stm32-rs"
   - "#rust-embedded"
   - "#riscv"
+  - "#foot"
 domain: {{domain}}
 
 watchdog:
