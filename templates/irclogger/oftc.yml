@@ -16,6 +16,8 @@ channels:
   - "#asahi-gpu"
   - "#haiku"
   - "#haiku-3rdparty"
+  - "#panfrost"
+  - "##panfrost-offtopic"
 domain: {{domain}}
 
 watchdog:

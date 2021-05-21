@@ -68,8 +68,6 @@ channels:
   - "#amber"
   - "#racket"
   - "#libreelec"
-  - "#panfrost"
-  - "##panfrost-offtopic"
   - "#symbiflow"
   - "#slime"
   - "#scopehal"
