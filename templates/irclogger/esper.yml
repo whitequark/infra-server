@@ -23,6 +23,7 @@ channels:
   - "#RO"
   - "#RVEDev"
   - "#spacedock"
+
 domain: {{domain}}
 
 watchdog:

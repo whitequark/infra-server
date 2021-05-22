@@ -8,7 +8,7 @@ ssl: true
 username: whitelogger
 realname: whitequark's logger bot
 nickname: _whitelogger
-password: {{irclog.libera.password}}
+password: {{irclog[network].password}}
 channels:
   - "#nmigen"
   - "#glasgow"
@@ -25,6 +25,7 @@ channels:
   - "#rust-embedded"
   - "#riscv"
   - "#foot"
+
 domain: {{domain}}
 
 watchdog:

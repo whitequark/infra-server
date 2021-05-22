@@ -8,7 +8,7 @@ ssl: true
 username: whitelogger
 realname: whitequark's logger bot
 nickname: _whitelogger
-password: {{irclog.oftc.password}}
+password: {{irclog[network].password}}
 channels:
   - "#asahi"
   - "#asahi-dev"
@@ -19,6 +19,7 @@ channels:
   - "#panfrost"
   - "##panfrost-offtopic"
   - "#linux-sunxi"
+
 domain: {{domain}}
 
 watchdog:

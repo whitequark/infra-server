@@ -8,7 +8,7 @@ ssl: true
 username: whitelogger
 realname: whitequark's logger bot
 nickname: _whitelogger
-password: {{irclog.freenode.password}}
+password: {{irclog[network].password}}
 channels:
   - "#ruby-core"
   - "#ruby"
@@ -97,9 +97,10 @@ hidden_channels:
   - "#asahi-dev"
   - "#asahi-re"
   - "#asahi-gpu"
+
+domain: {{domain}}
 legacy_escaping_scheme:
   - ".openfpga"
-domain: {{domain}}
 
 watchdog:
   timeout: 600
