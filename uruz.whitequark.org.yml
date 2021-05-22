@@ -19,40 +19,15 @@
     tags: nsd, nsd:llvm.moe
   - include: tasks/mail.yml domain=mail.whitequark.org
     tags: mail
-  # - include: tasks/nginx.yml
-  #   tags: nginx
-  # - include: tasks/nginx-site.yml name=uruz.whitequark.org
-  #   tags: uruz.whitequark.org
   - include: tasks/roundcube.yml domain=mail.whitequark.org
     tags: mail.whitequark.org
-  # - include: tasks/sites/www.whitequark.org.yml
-  #   tags: www.whitequark.org
-  # - include: tasks/sites/files.whitequark.org.yml
-  #   tags: files.whitequark.org
-  # - include: tasks/sites/lab.whitequark.org.yml
-  #   tags: lab.whitequark.org
-  # - include: tasks/sites/groupxiv.whitequark.org.yml
-  #   tags: groupxiv.whitequark.org
   - include: tasks/nginx-site.yml name=mail.whitequark.org
     tags: mail.whitequark.org, mail.whitequark.org:nginx
   - include: tasks/sites/whitequark.org.yml
     tags: whitequark.org
-  # - include: tasks/nginx-site.yml name=whitequark.com
-  #   tags: whitequark.com
-  # - include: tasks/sites/llvm.moe.yml
-  #   tags: llvm.moe
   - include: tasks/mumble.yml
     tags: mumble
-  # - include: tasks/tarsnap.yml
-  #   tags: tarsnap
-  # - include: tasks/backup.yml
-  #   tags: backup
   roles:
-  # tasks/system.yml
-  # tasks/personal.yml
-  # tasks/mumble.yml
-  # tasks/nsd.yml
-  # tasks/mail.yml domain=mail.whitequark.org
   - name: nginx
   - name: nginx-site # default server
     domain: uruz.whitequark.org
@@ -62,7 +37,6 @@
     domain: whitequark.com
     tags:   whitequark.com
   #   >>> whitequark.org <<<
-  # tasks/nsd-zone.yml name=whitequark.org
   - name: nginx-site
     domain: whitequark.org
     tags:   whitequark.org
@@ -100,8 +74,6 @@
     network: esper
     domain:  esper.irclog.whitequark.org
     tags:    esper.irclog.whitequark.org
-  # tasks/roundcube.yml domain=mail.whitequark.org
-  # tasks/nginx-site.yml name=mail.whitequark.org
   - name: nextcloud
     domain: cloud.whitequark.org
     tags:   cloud.whitequark.org
@@ -124,7 +96,6 @@
     tags:   grafana.whitequark.org
     influxdb: yes
   #   >>> llvm.moe <<<
-  # tasks/nsd-zone.yml name=llvm.moe
   - name: nginx-site
     domain: llvm.moe
     tags:   llvm.moe
