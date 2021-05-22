@@ -18,7 +18,6 @@ channels:
   - "#cinch"
   - "#rubygems"
   - "#rubygems-trust"
-  - "#linux-sunxi"
   - "#elliottcable"
   - "#imx6-dev"
   - "#cubieboard"

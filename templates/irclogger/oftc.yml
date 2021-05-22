@@ -18,6 +18,7 @@ channels:
   - "#haiku-3rdparty"
   - "#panfrost"
   - "##panfrost-offtopic"
+  - "#linux-sunxi"
 domain: {{domain}}
 
 watchdog:
