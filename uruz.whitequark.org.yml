@@ -55,25 +55,25 @@
   - name: irclogger
     network: freenode
     domain:  freenode.irclog.whitequark.org
-    tags:    freenode.irclog.whitequark.org
+    tags:    freenode.irclog.whitequark.org, irclog.whitequark.org
   - name: irclogger
     network: libera
     domain:  libera.irclog.whitequark.org
-    tags:    libera.irclog.whitequark.org
+    tags:    libera.irclog.whitequark.org, irclog.whitequark.org
   - name: irclogger
     network: oftc
     domain:  oftc.irclog.whitequark.org
-    tags:    oftc.irclog.whitequark.org
-  - name: nginx-site
-    domain: irclog.whitequark.org
-    tags:   irclog.whitequark.org
-  - name: nginx-site
-    domain: logs.jruby.org
-    tags:   logs.jruby.org
+    tags:    oftc.irclog.whitequark.org, irclog.whitequark.org
   - name: irclogger
     network: esper
     domain:  esper.irclog.whitequark.org
-    tags:    esper.irclog.whitequark.org
+    tags:    esper.irclog.whitequark.org, irclog.whitequark.org
+  - name: nginx-site # alias for libera.irclog.whitequark.org/jruby
+    domain: logs.jruby.org
+    tags:   logs.jruby.org, irclog.whitequark.org
+  - name: nginx-site # legacy alias for freenode.irclog.whitequark.org
+    domain: irclog.whitequark.org
+    tags:   irclog.whitequark.org
   - name: nextcloud
     domain: cloud.whitequark.org
     tags:   cloud.whitequark.org
