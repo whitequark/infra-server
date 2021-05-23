@@ -95,6 +95,11 @@
     domain: grafana.whitequark.org
     tags:   grafana.whitequark.org
     influxdb: yes
+  - name: dendrite
+    version: v0.3.11
+    server: whitequark.org
+    domain: matrix.whitequark.org
+    tags:   matrix.whitequark.org
   #   >>> llvm.moe <<<
   - name: nginx-site
     domain: llvm.moe

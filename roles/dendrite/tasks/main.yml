@@ -1,0 +1,62 @@
+---
+- name: create user dendrite
+  user: name=dendrite shell=/bin/bash
+- name: create application root
+  file: dest={{root.app}}  state=directory owner=dendrite
+- name: create data root
+  file: dest={{root.data}} state=directory owner=dendrite
+- name: create log root
+  file: dest={{root.log}}  state=directory owner=dendrite
+
+- name: create postgres role dendrite
+  postgresql_user: name=dendrite
+  become: true
+  become_user: postgres
+- name: create postgres database dendrite
+  postgresql_db: name=dendrite owner=dendrite
+  become: true
+  become_user: postgres
+
+- name: install build dependencies
+  apt:
+    default_release: buster-backports
+    state: latest
+    name: golang
+- name: clone dendrite source
+  git: dest={{root.app}} repo=https://github.com/matrix-org/dendrite
+    accept_hostkey=yes force=yes version={{version}}
+  become: true
+  become_user: dendrite
+  register: dendrite_checkout
+  notify:
+  - restart dendrite
+- name: build dendrite
+  command: ./build.sh
+  args:
+    chdir: "{{root.app}}"
+  become: true
+  become_user: dendrite
+  when: dendrite_checkout.changed
+  register: dendrite_build
+  notify:
+  - restart dendrite
+
+- name: provision matrix private key
+  copy: dest={{root.data}}/matrix.pem content={{dendrite.private_key}} mode=0400 owner=dendrite
+  notify:
+  - restart dendrite
+- name: configure dendrite
+  template: dest={{root.data}}/config.yaml src=config.yaml owner=dendrite
+  notify:
+  - restart dendrite
+
+- name: add dendrite init script
+  template: dest=/etc/init.d/dendrite src=rc.sh mode=0755
+  notify:
+  - restart dendrite
+- name: enable dendrite service
+  service: name=dendrite enabled=yes
+
+- name: determine path to nginx site template
+  set_fact: nginx_conf={{role_path}}/templates/nginx.conf
+- include_role: name=nginx-site
