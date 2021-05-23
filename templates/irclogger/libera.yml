@@ -25,6 +25,7 @@ channels:
   - "#rust-embedded"
   - "#riscv"
   - "#foot"
+  - "#osdev"
 
 domain: {{domain}}
 
