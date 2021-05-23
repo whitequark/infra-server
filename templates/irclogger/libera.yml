@@ -26,6 +26,7 @@ channels:
   - "#riscv"
   - "#foot"
   - "#osdev"
+  - "#armbian"
 
 domain: {{domain}}
 
