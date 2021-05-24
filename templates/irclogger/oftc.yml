@@ -19,6 +19,9 @@ channels:
   - "#panfrost"
   - "##panfrost-offtopic"
   - "#linux-sunxi"
+  - "#dri-devel"
+  - "#freedesktop"
+  - "#wayland"
 
 domain: {{domain}}
 
