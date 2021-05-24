@@ -27,6 +27,7 @@ channels:
   - "#foot"
   - "#osdev"
   - "#armbian"
+  - "#litex"
 
 domain: {{domain}}
 
