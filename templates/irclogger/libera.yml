@@ -28,6 +28,9 @@ channels:
   - "#osdev"
   - "#armbian"
   - "#litex"
+  - "#proghq"
+hidden_channels:
+  - "#proghq"
 
 domain: {{domain}}
 
