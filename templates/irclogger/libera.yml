@@ -30,6 +30,7 @@ channels:
   - "#litex"
   - "#proghq"
   - "#yosys"
+  - "#maemo-leste"
 hidden_channels:
   - "#proghq"
 
