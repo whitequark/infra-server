@@ -1,16 +1,16 @@
 ---
 - name: install ruby, thin, redis and postgres
-  apt: name={{item}} state=present
-  with_items:
-    - ruby
-    - thin
-    - bundler
-    - redis-server
-    - postgresql
-    - postgresql-contrib
-    - libpq-dev
-    - python-psycopg2
-    - openssl
+  apt:
+    name:
+      - ruby
+      - thin
+      - bundler
+      - redis-server
+      - postgresql
+      - postgresql-contrib
+      - libpq-dev
+      - python-psycopg2
+      - openssl
 - name: create user irclog_{{network}}
   user: name=irclog_{{network}} shell=/bin/bash
 - name: create postgres role irclog_{{network}}
