@@ -23,6 +23,7 @@ channels:
   - "#freedesktop"
   - "#wayland"
   - "#lima"
+  - "#cedrus"
 
 domain: {{domain}}
 
