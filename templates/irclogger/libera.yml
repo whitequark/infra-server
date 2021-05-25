@@ -29,6 +29,7 @@ channels:
   - "#armbian"
   - "#litex"
   - "#proghq"
+  - "#yosys"
 hidden_channels:
   - "#proghq"
 
