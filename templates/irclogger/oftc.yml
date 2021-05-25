@@ -22,6 +22,7 @@ channels:
   - "#dri-devel"
   - "#freedesktop"
   - "#wayland"
+  - "#lima"
 
 domain: {{domain}}
 
