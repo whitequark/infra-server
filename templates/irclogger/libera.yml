@@ -32,6 +32,7 @@ channels:
   - "#yosys"
   - "#maemo-leste"
   - "#libreelec"
+  - "#sandstorm"
 hidden_channels:
   - "#proghq"
 
