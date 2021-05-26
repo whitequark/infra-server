@@ -1,5 +1,6 @@
 ---
 - name: restart irclog-{{network}} logger
   service: name=irclog-{{network}}-logger state=restarted
+  when: logging
 - name: restart irclog-{{network}} viewer
   service: name=irclog-{{network}}-viewer state=restarted

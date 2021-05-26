@@ -58,8 +58,8 @@
   template: dest=/etc/init.d/irclog-{{network}}-logger src=rc-logger.sh mode=0755
   notify:
     - restart irclog-{{network}} logger
-- name: enable irclog-{{network}}-logger service
-  service: name=irclog-{{network}}-logger enabled=yes
+- name: enable/disable irclog-{{network}}-logger service
+  service: name=irclog-{{network}}-logger enabled={{logging}}
 - name: add irclog-{{network}}-viewer init script
   template: dest=/etc/init.d/irclog-{{network}}-viewer src=rc-viewer.sh mode=0755
   notify:
@@ -75,6 +75,7 @@
 - name: configure irclogger watchdog
   cron: name="irclog-{{network}}-watchdog" minute="*/3"
     job="cd /var/www/{{domain}} && bundle exec ./watchdog.rb"
+    disabled={{not logging}}
   become: true
   become_user: irclog_{{network}}
 - name: configure mail forwarding from irclog-{{network}}@

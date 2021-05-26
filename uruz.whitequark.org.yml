@@ -53,6 +53,7 @@
     domain: groupxiv.whitequark.org
     tags:   groupxiv.whitequark.org
   - name: irclogger
+    logging: no
     network: freenode
     domain:  freenode.irclog.whitequark.org
     tags:    freenode.irclog.whitequark.org, irclog.whitequark.org
