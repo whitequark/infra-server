@@ -33,6 +33,7 @@ channels:
   - "#maemo-leste"
   - "#libreelec"
   - "#sandstorm"
+  - "#kisslinux"
 hidden_channels:
   - "#proghq"
 
