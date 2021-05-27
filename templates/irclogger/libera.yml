@@ -37,6 +37,7 @@ channels:
   - "#picolisp"
   - "#linux-exynos"
   - "#commonlisp"
+  - "#pypy"
 hidden_channels:
   - "#proghq"
 
