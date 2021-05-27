@@ -41,6 +41,7 @@ channels:
   - "#evennia"
   - "#linux-rockchip"
   - "#u-boot"
+  - "#tegra"
 hidden_channels:
   - "#proghq"
 
