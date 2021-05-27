@@ -42,6 +42,10 @@ channels:
   - "#linux-rockchip"
   - "#u-boot"
   - "#tegra"
+  - "#openocd"
+  - "#linux-ti"
+  - "#beagle"
+  - "#yocto"
 hidden_channels:
   - "#proghq"
 
