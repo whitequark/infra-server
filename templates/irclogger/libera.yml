@@ -38,6 +38,7 @@ channels:
   - "#linux-exynos"
   - "#commonlisp"
   - "#pypy"
+  - "#evennia"
 hidden_channels:
   - "#proghq"
 
