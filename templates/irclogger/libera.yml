@@ -47,6 +47,7 @@ channels:
   - "#beagle"
   - "#yocto"
   - "#armlinux"
+  - "#hpy"
 hidden_channels:
   - "#proghq"
 
