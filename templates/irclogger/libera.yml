@@ -39,6 +39,7 @@ channels:
   - "#commonlisp"
   - "#pypy"
   - "#evennia"
+  - "#linux-rockchip"
 hidden_channels:
   - "#proghq"
 
