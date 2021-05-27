@@ -36,6 +36,7 @@ channels:
   - "#kisslinux"
   - "#picolisp"
   - "#linux-exynos"
+  - "#commonlisp"
 hidden_channels:
   - "#proghq"
 
