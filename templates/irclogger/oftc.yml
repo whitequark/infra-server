@@ -25,6 +25,7 @@ channels:
   - "#lima"
   - "#cedrus"
   - "#etnaviv"
+  - "#zink"
 
 domain: {{domain}}
 
