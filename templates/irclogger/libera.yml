@@ -49,6 +49,7 @@ channels:
   - "#armlinux"
   - "#hpy"
   - "#ruby"
+  - "#crystal-lang"
 hidden_channels:
   - "#proghq"
 
