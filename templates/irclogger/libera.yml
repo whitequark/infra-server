@@ -35,6 +35,7 @@ channels:
   - "#sandstorm"
   - "#kisslinux"
   - "#picolisp"
+  - "#linux-exynos"
 hidden_channels:
   - "#proghq"
 
