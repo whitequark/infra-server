@@ -46,6 +46,7 @@ channels:
   - "#linux-ti"
   - "#beagle"
   - "#yocto"
+  - "#armlinux"
 hidden_channels:
   - "#proghq"
 
