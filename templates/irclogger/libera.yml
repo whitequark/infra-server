@@ -48,6 +48,7 @@ channels:
   - "#yocto"
   - "#armlinux"
   - "#hpy"
+  - "#ruby"
 hidden_channels:
   - "#proghq"
 
