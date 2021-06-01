@@ -50,6 +50,7 @@ channels:
   - "#hpy"
   - "#ruby"
   - "#crystal-lang"
+  - "#linux-amlogic"
 hidden_channels:
   - "#proghq"
 
