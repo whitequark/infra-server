@@ -26,6 +26,7 @@ channels:
   - "#cedrus"
   - "#etnaviv"
   - "#zink"
+  - "#openwrt-devel"
 
 domain: {{domain}}
 
