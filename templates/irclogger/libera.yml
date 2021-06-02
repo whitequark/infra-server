@@ -52,6 +52,7 @@ channels:
   - "#crystal-lang"
   - "#linux-amlogic"
   - "#fedora-riscv"
+  - "#mew"
 hidden_channels:
   - "#proghq"
 
