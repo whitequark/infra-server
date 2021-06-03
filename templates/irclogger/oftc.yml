@@ -27,6 +27,7 @@ channels:
   - "#etnaviv"
   - "#zink"
   - "#openwrt-devel"
+  - "#yab"
 
 domain: {{domain}}
 
