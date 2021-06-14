@@ -29,6 +29,8 @@ channels:
   - "#openwrt-devel"
   - "#yab"
   - "#debian-malaysia"
+  - "#aarch64-laptops"
+  - "#linux-msm"
 
 domain: {{domain}}
 
