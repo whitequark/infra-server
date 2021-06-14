@@ -28,6 +28,7 @@ channels:
   - "#zink"
   - "#openwrt-devel"
   - "#yab"
+  - "#debian-malaysia"
 
 domain: {{domain}}
 
