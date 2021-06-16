@@ -53,6 +53,7 @@ channels:
   - "#linux-amlogic"
   - "#fedora-riscv"
   - "#mew"
+  - "#buildbot"
 hidden_channels:
   - "#proghq"
 
