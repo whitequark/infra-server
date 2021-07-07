@@ -54,6 +54,7 @@ channels:
   - "#fedora-riscv"
   - "#mew"
   - "#buildbot"
+  - "#Speedsaver"
 hidden_channels:
   - "#proghq"
 
