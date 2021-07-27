@@ -55,6 +55,7 @@ channels:
   - "#mew"
   - "#buildbot"
   - "#Speedsaver"
+  - "#mlpack"
 hidden_channels:
   - "#proghq"
 
