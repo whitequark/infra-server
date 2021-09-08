@@ -56,6 +56,9 @@ channels:
   - "#buildbot"
   - "#Speedsaver"
   - "#mlpack"
+  - "#crux"
+  - "#crux-devel"
+  - "#crux-arm"
 hidden_channels:
   - "#proghq"
 
