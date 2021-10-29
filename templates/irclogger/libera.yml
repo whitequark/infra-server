@@ -60,6 +60,7 @@ channels:
   - "#crux-devel"
   - "#crux-arm"
   - "#openscad"
+  - "#racket"
 hidden_channels:
   - "#proghq"
 
