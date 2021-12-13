@@ -62,6 +62,7 @@ channels:
   - "#openscad"
   - "#racket"
   - "#amaranth-lang"
+  - "#solvespace"
 hidden_channels:
   - "#proghq"
 
