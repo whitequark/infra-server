@@ -11,6 +11,7 @@ nickname: _whitelogger
 password: {{irclog[network].password}}
 channels:
   - "#asahi"
+  - "#asahi-alt"
   - "#asahi-dev"
   - "#asahi-re"
   - "#asahi-gpu"
