@@ -63,6 +63,7 @@ channels:
   - "#racket"
   - "#amaranth-lang"
   - "#solvespace"
+  - "#fedora-coreos"
 hidden_channels:
   - "#proghq"
 
