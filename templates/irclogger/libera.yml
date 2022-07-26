@@ -64,6 +64,10 @@ channels:
   - "#amaranth-lang"
   - "#solvespace"
   - "#fedora-coreos"
+  - "#armbian-allwinner"
+  - "#armbian-rockchip"
+  - "#armbian-amlogic"
+  - "#armbian-broadcom"
 hidden_channels:
   - "#proghq"
 
