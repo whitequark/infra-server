@@ -68,6 +68,7 @@ channels:
   - "#armbian-rockchip"
   - "#armbian-amlogic"
   - "#armbian-broadcom"
+  - "#openFPGALoader"
 hidden_channels:
   - "#proghq"
 
