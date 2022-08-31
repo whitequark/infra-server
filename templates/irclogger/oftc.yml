@@ -32,6 +32,7 @@ channels:
   - "#debian-malaysia"
   - "#aarch64-laptops"
   - "#linux-msm"
+  - "#io_uring"
 
 domain: {{domain}}
 
