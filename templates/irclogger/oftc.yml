@@ -33,6 +33,7 @@ channels:
   - "#aarch64-laptops"
   - "#linux-msm"
   - "#io_uring"
+  - "#linux-cros-arm"
 
 domain: {{domain}}
 
