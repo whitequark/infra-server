@@ -70,6 +70,7 @@ channels:
   - "#armbian-broadcom"
   - "#openFPGALoader"
   - "#moin"
+  - "#zeppe-lin"
 hidden_channels:
   - "#proghq"
 
