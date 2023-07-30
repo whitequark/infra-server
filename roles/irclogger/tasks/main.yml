@@ -24,7 +24,7 @@
 - name: create webroot for {{domain}}
   file: dest=/var/www/{{domain}} state=directory owner=irclog_{{network}}
 - name: deploy irclogger
-  git: dest=/var/www/{{domain}} repo=https://github.com/whitequark/irclogger
+  git: dest=/var/www/{{domain}} repo=https://github.com/whitequark/irclogger version=v1
     accept_hostkey=yes force=yes
   become: true
   become_user: irclog_{{network}}
