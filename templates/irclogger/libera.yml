@@ -70,6 +70,8 @@ channels:
   - "#openFPGALoader"
   - "#moin"
   - "#zeppe-lin"
+  - "#ffmpeg"
+  - "#ffmpeg-devel"
 hidden_channels:
   - "#proghq"
 
