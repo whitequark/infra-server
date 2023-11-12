@@ -35,6 +35,7 @@ channels:
   - "#io_uring"
   - "#linux-cros-arm"
   - "#ubuntu-asahi"
+  - "#msm8937-mainline"
 
 domain: {{domain}}
 
