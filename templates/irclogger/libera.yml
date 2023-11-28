@@ -74,6 +74,7 @@ channels:
   - "#ffmpeg-devel"
   - "#mailx"
   - "##raspberrypi-internals"
+  - "#hts"
 hidden_channels:
   - "#proghq"
 
