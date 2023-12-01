@@ -75,6 +75,7 @@ channels:
   - "#mailx"
   - "##raspberrypi-internals"
   - "#hts"
+  - "#crux-social"
 hidden_channels:
   - "#proghq"
 
