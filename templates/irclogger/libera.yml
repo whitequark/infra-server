@@ -77,6 +77,7 @@ channels:
   - "#hts"
   - "#crux-social"
   - "#radxa"
+  - "#fedilinks"
 hidden_channels:
   - "#proghq"
 
