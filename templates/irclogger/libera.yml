@@ -78,6 +78,7 @@ channels:
   - "#crux-social"
   - "#radxa"
   - "#fedilinks"
+  - "#linux-mediatek"
 hidden_channels:
   - "#proghq"
 
