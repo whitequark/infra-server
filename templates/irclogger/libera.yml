@@ -79,6 +79,7 @@ channels:
   - "#radxa"
   - "#fedilinks"
   - "#linux-mediatek"
+  - "#numbat"
 hidden_channels:
   - "#proghq"
 
