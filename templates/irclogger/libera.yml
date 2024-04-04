@@ -80,6 +80,7 @@ channels:
   - "#fedilinks"
   - "#linux-mediatek"
   - "#numbat"
+  - "#openvswitch"
 hidden_channels:
   - "#proghq"
 
