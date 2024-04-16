@@ -36,6 +36,7 @@ channels:
   - "#linux-cros-arm"
   - "#ubuntu-asahi"
   - "#msm8937-mainline"
+  - "#sm8250-mainline"
 
 domain: {{domain}}
 
