@@ -81,7 +81,6 @@ channels:
   - "#linux-mediatek"
   - "#numbat"
   - "#openvswitch"
-  - "#tvix-dev"
 hidden_channels:
   - "#proghq"
 
