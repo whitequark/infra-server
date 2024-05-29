@@ -81,6 +81,7 @@ channels:
   - "#linux-mediatek"
   - "#numbat"
   - "#openvswitch"
+  - "##bash-crimes"
 hidden_channels:
   - "#proghq"
 
