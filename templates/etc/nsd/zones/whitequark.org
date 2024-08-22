@@ -1,7 +1,7 @@
 $ORIGIN   whitequark.org.
 $TTL      86400
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2023070201 28800 7200 2419200 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2024082101 28800 7200 2419200 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
           IN A      {{ ansible_default_ipv4.address }}
@@ -34,3 +34,4 @@ glasgow   IN CNAME  @
 influxdb  IN CNAME  @
 grafana   IN CNAME  @
 matrix    IN CNAME  @
+@         IN TXT    "google-site-verification=K47tTYe0rr7fv7jY-MPih8AQs45uudV-a_wwlHJAFNs"
