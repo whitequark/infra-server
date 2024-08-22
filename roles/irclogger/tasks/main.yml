@@ -25,7 +25,7 @@
   file: dest=/var/www/{{domain}} state=directory owner=irclog_{{network}}
 - name: deploy irclogger
   git: dest=/var/www/{{domain}} repo=https://github.com/whitequark/irclogger version=v1
-    accept_hostkey=yes force=yes
+    accept_hostkey=yes force=yes version=a96622d515d23c0df3bab2a3a3f6c698874fc9c2
   become: true
   become_user: irclog_{{network}}
   register: irclog_checkout
