@@ -2,4 +2,4 @@
   apt: name=rsync state=present
 - name: create webroot for files.whitequark.org
   file: dest=/var/www/files.whitequark.org state=directory owner=whitequark
-- include: tasks/nginx-site.yml name=files.whitequark.org
+- include_tasks: tasks/nginx-site.yml name=files.whitequark.org

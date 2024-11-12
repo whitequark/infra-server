@@ -7,4 +7,4 @@
     accept_hostkey=yes
   become: true
   become_user: whitequark
-- include: tasks/nginx-site.yml name=groupxiv.whitequark.org
+- include_tasks: tasks/nginx-site.yml name=groupxiv.whitequark.org

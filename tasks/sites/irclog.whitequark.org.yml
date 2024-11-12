@@ -76,7 +76,7 @@
   become_user: irclogger
 - name: configure mail forwarding from irclogger@
   copy: dest=/home/irclogger/.forward content=whitequark
-- include: tasks/nginx-site.yml name=irclog.whitequark.org
+- include_tasks: tasks/nginx-site.yml name=irclog.whitequark.org
   tags: irclog.whitequark.org:nginx
-- include: tasks/nginx-site.yml name=logs.jruby.org
+- include_tasks: tasks/nginx-site.yml name=logs.jruby.org
   tags: irclog.whitequark.org:nginx
