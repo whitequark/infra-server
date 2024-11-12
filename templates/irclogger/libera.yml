@@ -82,6 +82,7 @@ channels:
   - "#numbat"
   - "#openvswitch"
   - "##bash-crimes"
+  - "#prjcombine"
 hidden_channels:
   - "#proghq"
 
