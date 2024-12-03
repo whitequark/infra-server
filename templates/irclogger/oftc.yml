@@ -37,6 +37,7 @@ channels:
   - "#ubuntu-asahi"
   - "#msm8937-mainline"
   - "#sm8250-mainline"
+  - "#sm7150-mainline"
 
 domain: {{domain}}
 
