@@ -83,6 +83,7 @@ channels:
   - "#openvswitch"
   - "##bash-crimes"
   - "#prjcombine"
+  - "#http.sh"
 hidden_channels:
   - "#proghq"
 
