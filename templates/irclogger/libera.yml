@@ -84,6 +84,7 @@ channels:
   - "##bash-crimes"
   - "#prjcombine"
   - "#http.sh"
+  - "#prjunnamed"
 hidden_channels:
   - "#proghq"
 
