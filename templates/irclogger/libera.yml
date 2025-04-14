@@ -85,6 +85,7 @@ channels:
   - "#prjcombine"
   - "#http.sh"
   - "#prjunnamed"
+  - "#crux-musl"
 hidden_channels:
   - "#proghq"
 
