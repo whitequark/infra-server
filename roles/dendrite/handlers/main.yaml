@@ -1,3 +1,0 @@
----
-- name: restart dendrite
-  service: name=dendrite state=restarted

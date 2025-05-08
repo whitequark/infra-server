@@ -1,7 +1,0 @@
----
-version: master
-root:
-  app:  /var/lib/dendrite/app
-  data: /var/lib/dendrite/data
-  log:  /var/log/dendrite
-http_port: 8008

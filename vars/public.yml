@@ -8,7 +8,6 @@ backup_objects:
   - irclog_libera
   - irclog_oftc
   - irclog_esper
-  - dendrite
   mysql_dbs:
   - nextcloud
   files:
