@@ -1,5 +1,2 @@
 ---
-- influxdb_password:
-    root: ""
-    sensors: ""
 - mumble_password: ""
