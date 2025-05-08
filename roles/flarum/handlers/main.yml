@@ -1,3 +1,0 @@
----
-- name: restart flarum
-  service: name=flarum-{{instance}} state=restarted
