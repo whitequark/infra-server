@@ -5,7 +5,3 @@
     sensors: ""
 - grafana_password: ""
 - mumble_password: ""
-- irclogger_password: ""
-- irclog:
-    index_access_key: ""
-    channel_access_keys: {}
