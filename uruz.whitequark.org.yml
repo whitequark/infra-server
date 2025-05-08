@@ -92,10 +92,6 @@
   - name: influxdb
     domain: influxdb.whitequark.org
     tags:   influxdb.whitequark.org
-  - name: grafana
-    domain: grafana.whitequark.org
-    tags:   grafana.whitequark.org
-    influxdb: yes
   - name: dendrite
     version: v0.3.11
     server: whitequark.org
@@ -107,9 +103,6 @@
     tags:   llvm.moe
   - name: tarsnap
     tags: backup
-  tasks:
-  - include_tasks: tasks/sensors.yml
-    tags: sensors
   handlers:
   - include_tasks: handlers/sysctl.yml
   - include_tasks: handlers/syslog.yml
