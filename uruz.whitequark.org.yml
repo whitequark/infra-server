@@ -11,15 +11,15 @@
     tags: system
   - include_tasks: tasks/personal.yml
     tags: personal
-  - include_tasks: tasks/nsd.yml
+  - import_tasks: tasks/nsd.yml
     tags: nsd
-  - include_tasks: tasks/nsd-zone.yml
+  - import_tasks: tasks/nsd-zone.yml
     vars:
-      name: whitequark.org
+      zone: whitequark.org
     tags: nsd, nsd:whitequark.org
-  - include_tasks: tasks/nsd-zone.yml
+  - import_tasks: tasks/nsd-zone.yml
     vars:
-      name: llvm.moe
+      zone: llvm.moe
     tags: nsd, nsd:llvm.moe
   - include_tasks: tasks/mail.yml
     vars:
@@ -98,7 +98,7 @@
   handlers:
   - include_tasks: handlers/sysctl.yml
   - include_tasks: handlers/syslog.yml
-  - include_tasks: handlers/nsd.yml
+  - import_tasks: handlers/nsd.yml
   - include_tasks: handlers/mail.yml
   - include_tasks: handlers/mysql.yml
   - include_tasks: handlers/roundcube.yml

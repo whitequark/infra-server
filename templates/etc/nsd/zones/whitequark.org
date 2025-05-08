@@ -1,7 +1,7 @@
 $ORIGIN   whitequark.org.
 $TTL      86400
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2024082101 28800 7200 2419200 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025050802 28800 7200 2419200 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
           IN A      {{ ansible_default_ipv4.address }}
@@ -10,6 +10,7 @@ $TTL      86400
           IN MX     20 mail.rollernet.us.
           IN MX     20 mail2.rollernet.us.
           IN TXT    "v=spf1 a mx -all"
+          IN TXT    "google-site-verification=K47tTYe0rr7fv7jY-MPih8AQs45uudV-a_wwlHJAFNs"
 _atproto  IN TXT    "did=did:plc:i7ayw57idpkvkyzktdpmtgm7"
 ns0       IN A      {{ ansible_default_ipv4.address }}
 ns0       IN AAAA   {{ ansible_default_ipv6.address }}
@@ -18,7 +19,6 @@ uruz      IN AAAA   {{ ansible_default_ipv6.address }}
 mail      IN A      {{ ansible_default_ipv4.address }}
 mail      IN AAAA   {{ ansible_default_ipv6.address }}
 www       IN CNAME  @
-doc       IN CNAME  @
 files     IN CNAME  @
 lab       IN CNAME  @
 groupxiv  IN CNAME  @
@@ -30,8 +30,3 @@ esper.irclog    IN CNAME @
 cloud     IN CNAME  @
 notifico  IN CNAME  @
 gateway   IN CNAME  @
-glasgow   IN CNAME  @
-influxdb  IN CNAME  @
-grafana   IN CNAME  @
-matrix    IN CNAME  @
-@         IN TXT    "google-site-verification=K47tTYe0rr7fv7jY-MPih8AQs45uudV-a_wwlHJAFNs"
