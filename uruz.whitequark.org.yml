@@ -7,9 +7,9 @@
   - vars/private.yml
   - vars/public.yml
   pre_tasks:
-  - include_tasks: tasks/system.yml
+  - import_tasks: tasks/system.yml
     tags: system
-  - include_tasks: tasks/personal.yml
+  - import_tasks: tasks/personal.yml
     tags: personal
   - import_tasks: tasks/nsd.yml
     tags: nsd
@@ -21,21 +21,21 @@
     vars:
       zone: llvm.moe
     tags: nsd, nsd:llvm.moe
-  - include_tasks: tasks/mail.yml
+  - import_tasks: tasks/mail.yml
     vars:
       domain: mail.whitequark.org
     tags: mail
-  - include_tasks: tasks/roundcube.yml
+  - import_tasks: tasks/roundcube.yml
     vars:
       domain: mail.whitequark.org
     tags: mail.whitequark.org
-  - include_tasks: tasks/nginx-site.yml
+  - import_tasks: tasks/nginx-site.yml
     vars:
       name: mail.whitequark.org
     tags: mail.whitequark.org, mail.whitequark.org:nginx
-  - include_tasks: tasks/sites/whitequark.org.yml
+  - import_tasks: tasks/sites/whitequark.org.yml
     tags: whitequark.org
-  - include_tasks: tasks/mumble.yml
+  - import_tasks: tasks/mumble.yml
     tags: mumble
   roles:
   - name: nginx
@@ -96,10 +96,10 @@
   - name: tarsnap
     tags: backup
   handlers:
-  - include_tasks: handlers/sysctl.yml
-  - include_tasks: handlers/syslog.yml
+  - import_tasks: handlers/sysctl.yml
+  - import_tasks: handlers/syslog.yml
   - import_tasks: handlers/nsd.yml
-  - include_tasks: handlers/mail.yml
-  - include_tasks: handlers/mysql.yml
-  - include_tasks: handlers/roundcube.yml
-  - include_tasks: handlers/mumble.yml
+  - import_tasks: handlers/mail.yml
+  - import_tasks: handlers/mysql.yml
+  - import_tasks: handlers/roundcube.yml
+  - import_tasks: handlers/mumble.yml
