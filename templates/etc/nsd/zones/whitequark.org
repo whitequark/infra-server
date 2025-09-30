@@ -1,12 +1,13 @@
 $ORIGIN   whitequark.org.
 $TTL      600
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025093002 28800 7200 2419200 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100101 28800 7200 2419200 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
           IN A      {{ ansible_default_ipv4.address }}
           IN AAAA   {{ ansible_default_ipv6.address }}
           IN MX     10 mail
+          IN MX     15 mail2
           IN MX     20 mail.rollernet.us.
           IN MX     20 mail2.rollernet.us.
           IN TXT    "v=spf1 a mx -all"
