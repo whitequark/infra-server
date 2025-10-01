@@ -10,8 +10,8 @@ $TTL      600
           IN MX     15 mail2
           IN MX     20 mail.rollernet.us.
           IN MX     20 mail2.rollernet.us.
-          IN TXT    "v=spf1 a mx -all"
-_dmarc    IN TXT    "v=DMARC1; p=none"
+          IN TXT    "v=spf1 mx -all"
+_dmarc    IN TXT    "v=DMARC1; p=reject"
 mail._domainkey IN TXT ( "v=DKIM1; k=rsa; "
         "p=MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsxOxjQBZMHogGzyotvL+MbpstYEWIsW9y091cNEtAI6YNq7jjLbg5BIbCfcjKj6erCoqMgmTrol3SGiFzYNp5VCL1f+ZIe83q1jp7Vnmk2UJ/KVQuLZEWEVu71tmtfiEfGvWlc0SzjDQhZ2hpeQfx/RbsnAvGJOmFWpqe97hFH2o0NYoRXPsUnGwIuBGRe2FdgA6lnC2Hlm/GryYN"
         "LWYsQ6t5TKV/OIBsEqxfBQBTplUynbpDhbFWwWTaPz4xo+AvElEoSneTkicdhv0qX1K5gqVY5i8OldRAk30OwD5O3e28qEeX+/W67S27OH5aeJGvWBKAnovZ15CO0jLMG2fgnIfopuJX74HWJ5Pw5Q1LwzzPmCtxzVhcJEmO5W6/vmlYkw/mDHUsiajc9+Aul5oWLzqoDKmbmMAjC/NYIaZn/Y2HAsIGn2wpQ2ZCSz/O2xK6y0xd53laxOG0n"
@@ -25,6 +25,7 @@ uruz      IN AAAA   {{ ansible_default_ipv6.address }}
 mail      IN CNAME  mail2
 mail2     IN A      135.181.99.189
 mail2     IN AAAA   2a01:4f9:c012:f378::1
+mail2     IN TXT    "v=spf1 mx -all"
 www       IN CNAME  @
 files     IN CNAME  @
 lab       IN CNAME  @
