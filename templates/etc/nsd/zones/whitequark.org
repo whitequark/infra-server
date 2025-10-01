@@ -1,7 +1,7 @@
 $ORIGIN   whitequark.org.
 $TTL      600
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100101 28800 7200 2419200 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100103 28800 7200 2419200 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
           IN A      {{ ansible_default_ipv4.address }}
@@ -11,6 +11,7 @@ $TTL      600
           IN MX     20 mail.rollernet.us.
           IN MX     20 mail2.rollernet.us.
           IN TXT    "v=spf1 a mx -all"
+_dmarc    IN TXT    "v=DMARC1; p=reject"
           IN TXT    "google-site-verification=K47tTYe0rr7fv7jY-MPih8AQs45uudV-a_wwlHJAFNs"
 _atproto  IN TXT    "did=did:plc:i7ayw57idpkvkyzktdpmtgm7"
 ns0       IN A      {{ ansible_default_ipv4.address }}
