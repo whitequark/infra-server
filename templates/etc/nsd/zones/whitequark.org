@@ -1,16 +1,15 @@
 $ORIGIN   whitequark.org.
 $TTL      600
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100105 28800 7200 2419200 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100106 28800 7200 2419200 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
           IN A      {{ ansible_default_ipv4.address }}
           IN AAAA   {{ ansible_default_ipv6.address }}
           IN MX     10 mail
-          IN MX     15 mail2
           IN MX     20 mail.rollernet.us.
           IN MX     20 mail2.rollernet.us.
-          IN TXT    "v=spf1 mx -all"
+          IN TXT    "v=spf1 ip4:135.181.99.189 ip6:2a01:4f9:c012:f378::1 -all"
 _dmarc    IN TXT    "v=DMARC1; p=reject"
 mail._domainkey IN TXT ( "v=DKIM1; k=rsa; "
         "p=MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsxOxjQBZMHogGzyotvL+MbpstYEWIsW9y091cNEtAI6YNq7jjLbg5BIbCfcjKj6erCoqMgmTrol3SGiFzYNp5VCL1f+ZIe83q1jp7Vnmk2UJ/KVQuLZEWEVu71tmtfiEfGvWlc0SzjDQhZ2hpeQfx/RbsnAvGJOmFWpqe97hFH2o0NYoRXPsUnGwIuBGRe2FdgA6lnC2Hlm/GryYN"
@@ -22,10 +21,10 @@ ns0       IN A      {{ ansible_default_ipv4.address }}
 ns0       IN AAAA   {{ ansible_default_ipv6.address }}
 uruz      IN A      {{ ansible_default_ipv4.address }}
 uruz      IN AAAA   {{ ansible_default_ipv6.address }}
-mail      IN CNAME  mail2
-mail2     IN A      135.181.99.189
-mail2     IN AAAA   2a01:4f9:c012:f378::1
-mail2     IN TXT    "v=spf1 mx -all"
+mail      IN A      135.181.99.189
+mail      IN AAAA   2a01:4f9:c012:f378::1
+mail      IN TXT    "v=spf1 ip4:135.181.99.189 ip6:2a01:4f9:c012:f378::1 -all"
+mai2      IN CNAME  mail
 www       IN CNAME  @
 files     IN CNAME  @
 lab       IN CNAME  @
