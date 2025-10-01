@@ -17,22 +17,6 @@
     vars:
       zone: whitequark.org
     tags: nsd, nsd:whitequark.org
-  - import_tasks: tasks/nsd-zone.yml
-    vars:
-      zone: llvm.moe
-    tags: nsd, nsd:llvm.moe
-  - import_tasks: tasks/mail.yml
-    vars:
-      domain: mail.whitequark.org
-    tags: mail
-  - import_tasks: tasks/roundcube.yml
-    vars:
-      domain: mail.whitequark.org
-    tags: mail.whitequark.org
-  - import_tasks: tasks/nginx-site.yml
-    vars:
-      name: mail.whitequark.org
-    tags: mail.whitequark.org, mail.whitequark.org:nginx
   - import_tasks: tasks/sites/whitequark.org.yml
     tags: whitequark.org
   - import_tasks: tasks/mumble.yml
@@ -62,44 +46,17 @@
   - name: nginx-site
     domain: groupxiv.whitequark.org
     tags:   groupxiv.whitequark.org
-  - name: nginx-site
-    domain: libera.irclog.whitequark.org
-    tags:   libera.irclog.whitequark.org, irclog.whitequark.org
-  - name: nginx-site
-    domain: oftc.irclog.whitequark.org
-    tags:   oftc.irclog.whitequark.org, irclog.whitequark.org
-  - name: nginx-site
-    domain: esper.irclog.whitequark.org
-    tags:   esper.irclog.whitequark.org, irclog.whitequark.org
-  - name: nginx-site
-    domain: freenode.irclog.whitequark.org
-    tags:   freenode.irclog.whitequark.org, irclog.whitequark.org
-  - name: nginx-site # alias for libera.irclog.whitequark.org/jruby
-    domain: logs.jruby.org
-    tags:   logs.jruby.org, irclog.whitequark.org
-  - name: nginx-site # legacy alias for freenode.irclog.whitequark.org
-    domain: irclog.whitequark.org
-    tags:   freenode.irclog.whitequark.org, irclog.whitequark.org
   - name: nextcloud
     domain: cloud.whitequark.org
     tags:   cloud.whitequark.org
-  - name: notifico
-    domain: notifico.whitequark.org
-    tags:   notifico.whitequark.org
   - name: nginx-site
     domain: gateway.whitequark.org
     tags:   gateway.whitequark.org
-  #   >>> llvm.moe <<<
-  - name: nginx-site
-    domain: llvm.moe
-    tags:   llvm.moe
   - name: tarsnap
     tags: backup
   handlers:
   - import_tasks: handlers/sysctl.yml
   - import_tasks: handlers/syslog.yml
   - import_tasks: handlers/nsd.yml
-  - import_tasks: handlers/mail.yml
   - import_tasks: handlers/mysql.yml
-  - import_tasks: handlers/roundcube.yml
   - import_tasks: handlers/mumble.yml

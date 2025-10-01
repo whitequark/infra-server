@@ -1,2 +1,0 @@
-- name: restart roundcube
-  service: name=roundcube state=restarted

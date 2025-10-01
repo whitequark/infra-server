@@ -1,5 +1,0 @@
-- name: create webroot for llvm.moe
-  file: dest=/var/www/llvm.moe state=directory owner=whitequark
-- name: populate webroot for llvm.moe
-  copy: dest=/var/www/llvm.moe src=templates/var/www/llvm.moe/ owner=whitequark
-- include_tasks: tasks/nginx-site.yml name=llvm.moe

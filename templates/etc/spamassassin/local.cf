@@ -1,7 +1,0 @@
-bayes_ignore_header X-Bogosity
-bayes_ignore_header X-Spam-Flag
-bayes_ignore_header X-Spam-Status
-
-loadplugin Mail::SpamAssassin::Plugin::Shortcircuit
-shortcircuit BAYES_99 spam
-shortcircuit BAYES_00 ham
