@@ -19,8 +19,6 @@
     tags: nsd, nsd:whitequark.org
   - import_tasks: tasks/sites/whitequark.org.yml
     tags: whitequark.org
-  - import_tasks: tasks/mumble.yml
-    tags: mumble
   roles:
   - name: nginx
   - name: nginx-site # default server
