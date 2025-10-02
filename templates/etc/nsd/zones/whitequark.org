@@ -1,40 +1,44 @@
 $ORIGIN   whitequark.org.
 $TTL      600
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100205 28800 7200 2419200 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100206 28800 7200 2419200 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
-          IN A      {{ ansible_default_ipv4.address }}
-          IN AAAA   {{ ansible_default_ipv6.address }}
-_atproto  IN TXT    "did=did:plc:i7ayw57idpkvkyzktdpmtgm7"
 ns0       IN A      {{ ansible_default_ipv4.address }}
 ns0       IN AAAA   {{ ansible_default_ipv6.address }}
-uruz      IN A      {{ ansible_default_ipv4.address }}
-uruz      IN AAAA   {{ ansible_default_ipv6.address }}
-longtail  IN A      116.203.194.250
-longtail  IN AAAA   2a01:4f8:1c1a:cb58::1
 
-@               IN MX     5 mail
-@               IN MX     10 mail.rollernet.us.
-@               IN MX     10 mail2.rollernet.us.
-mail            IN A      135.181.99.189
-mail            IN AAAA   2a01:4f9:c012:f378::1
-@               IN TXT    "v=spf1 ip4:135.181.99.189 ip6:2a01:4f9:c012:f378::1 -all"
-mail            IN TXT    "v=spf1 ip4:135.181.99.189 ip6:2a01:4f9:c012:f378::1 -all"
-_dmarc          IN TXT    "v=DMARC1; p=reject; rua=mail-reports@whitequark.org;"
-mail._domainkey IN TXT (  "v=DKIM1; k=rsa; "
+@               IN MX    5 mail
+@               IN MX    10 mail.rollernet.us.
+@               IN MX    10 mail2.rollernet.us.
+mail            IN A     135.181.99.189
+mail            IN AAAA  2a01:4f9:c012:f378::1
+@               IN TXT   "v=spf1 ip4:135.181.99.189 ip6:2a01:4f9:c012:f378::1 -all"
+mail            IN TXT   "v=spf1 ip4:135.181.99.189 ip6:2a01:4f9:c012:f378::1 -all"
+_dmarc          IN TXT   "v=DMARC1; p=reject; rua=mail-reports@whitequark.org;"
+mail._domainkey IN TXT ( "v=DKIM1; k=rsa; "
         "p=MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsxOxjQBZMHogGzyotvL+MbpstYEWIsW9y091cNEtAI6YNq7jjLbg5BIbCfcjKj6erCoqMgmTrol3SGiFzYNp5VCL1f+ZIe83q1jp7Vnmk2UJ/KVQuLZEWEVu71tmtfiEfGvWlc0SzjDQhZ2hpeQfx/RbsnAvGJOmFWpqe97hFH2o0NYoRXPsUnGwIuBGRe2FdgA6lnC2Hlm/GryYN"
         "LWYsQ6t5TKV/OIBsEqxfBQBTplUynbpDhbFWwWTaPz4xo+AvElEoSneTkicdhv0qX1K5gqVY5i8OldRAk30OwD5O3e28qEeX+/W67S27OH5aeJGvWBKAnovZ15CO0jLMG2fgnIfopuJX74HWJ5Pw5Q1LwzzPmCtxzVhcJEmO5W6/vmlYkw/mDHUsiajc9+Aul5oWLzqoDKmbmMAjC/NYIaZn/Y2HAsIGn2wpQ2ZCSz/O2xK6y0xd53laxOG0n"
         "yRyvf6h96GZL75HdewdkpxHiwMqguY+Vd9xkLGfrTFagDz/f0y3ilnZnF+O0wUpcZCZ63vs6BzRBs43BVajn9TysuW75qiYd5z0nafE1OvAp/zLSgHJPO3XkTdRMzEUUKykE+TRLts0jszSdBSPasfnc8Cgi4WogDHJIfElTyi1oTALW9TbzYq7rMoSduGBGfINd0/FU/X2VBJmr51XTxrv+j+lQMCAwEAAQ=="
 )
-mta-sts         IN CNAME  mail
-_mta-sts        IN TXT    "v=STSv1; id=1759381101;"
-_smtp._tls      IN TXT    "v=TLSRPTv1; rua=mailto:mail-reports@whitequark.org;"
+mta-sts         IN CNAME mail
+_mta-sts        IN TXT   "v=STSv1; id=1759381101;"
+_smtp._tls      IN TXT   "v=TLSRPTv1; rua=mailto:mail-reports@whitequark.org;"
 
-files           IN CNAME  @
-lab             IN CNAME  @
-groupxiv        IN CNAME  @
-cloud           IN CNAME  @
+_atproto        IN TXT    "did=did:plc:i7ayw57idpkvkyzktdpmtgm7"
+
+longtail        IN A     116.203.194.250
+longtail        IN AAAA  2a01:4f8:1c1a:cb58::1
+syncplay        IN CNAME longtail
+mumble          IN CNAME longtail
+
+uruz            IN A     {{ ansible_default_ipv4.address }}
+uruz            IN AAAA  {{ ansible_default_ipv6.address }}
+@               IN A     {{ ansible_default_ipv4.address }}
+@               IN AAAA  {{ ansible_default_ipv6.address }}
+files           IN CNAME uruz
+lab             IN CNAME uruz
+groupxiv        IN CNAME uruz
+cloud           IN CNAME uruz
 
 irclog          IN CNAME catirclogs.org.
 freenode.irclog IN CNAME irclog
