@@ -1,7 +1,7 @@
 $ORIGIN   whitequark.org.
 $TTL      600
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100201 28800 7200 2419200 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100202 28800 7200 2419200 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
           IN A      {{ ansible_default_ipv4.address }}
@@ -10,7 +10,7 @@ $TTL      600
           IN MX     20 mail.rollernet.us.
           IN MX     20 mail2.rollernet.us.
           IN TXT    "v=spf1 ip4:135.181.99.189 ip6:2a01:4f9:c012:f378::1 -all"
-_dmarc    IN TXT    "v=DMARC1; p=reject"
+_dmarc    IN TXT    "v=DMARC1; p=reject; rua=mail-reports@whitequark.org;"
 mail._domainkey IN TXT ( "v=DKIM1; k=rsa; "
         "p=MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsxOxjQBZMHogGzyotvL+MbpstYEWIsW9y091cNEtAI6YNq7jjLbg5BIbCfcjKj6erCoqMgmTrol3SGiFzYNp5VCL1f+ZIe83q1jp7Vnmk2UJ/KVQuLZEWEVu71tmtfiEfGvWlc0SzjDQhZ2hpeQfx/RbsnAvGJOmFWpqe97hFH2o0NYoRXPsUnGwIuBGRe2FdgA6lnC2Hlm/GryYN"
         "LWYsQ6t5TKV/OIBsEqxfBQBTplUynbpDhbFWwWTaPz4xo+AvElEoSneTkicdhv0qX1K5gqVY5i8OldRAk30OwD5O3e28qEeX+/W67S27OH5aeJGvWBKAnovZ15CO0jLMG2fgnIfopuJX74HWJ5Pw5Q1LwzzPmCtxzVhcJEmO5W6/vmlYkw/mDHUsiajc9+Aul5oWLzqoDKmbmMAjC/NYIaZn/Y2HAsIGn2wpQ2ZCSz/O2xK6y0xd53laxOG0n"
