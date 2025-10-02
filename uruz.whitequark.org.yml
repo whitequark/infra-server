@@ -9,38 +9,18 @@
   pre_tasks:
   - import_tasks: tasks/system.yml
     tags: system
-  - import_tasks: tasks/personal.yml
-    tags: personal
   - import_tasks: tasks/nsd.yml
     tags: nsd
   - import_tasks: tasks/nsd-zone.yml
     vars:
       zone: whitequark.org
     tags: nsd, nsd:whitequark.org
-  - import_tasks: tasks/sites/whitequark.org.yml
-    tags: whitequark.org
   roles:
   - name: nginx
   - name: nginx-site # default server
     domain: uruz.whitequark.org
     tags:   uruz.whitequark.org
-  #   >>> whitequark.com <<<
-  - name: nginx-site
-    domain: whitequark.com
-    tags:   whitequark.com
   #   >>> whitequark.org <<<
-  - name: nginx-site
-    domain: whitequark.org
-    tags:   whitequark.org
-  - name: nginx-site
-    domain: files.whitequark.org
-    tags:   files.whitequark.org
-  - name: nginx-site
-    domain: lab.whitequark.org
-    tags:   lab.whitequark.org
-  - name: nginx-site
-    domain: groupxiv.whitequark.org
-    tags:   groupxiv.whitequark.org
   - name: nextcloud
     domain: cloud.whitequark.org
     tags:   cloud.whitequark.org
@@ -51,4 +31,3 @@
   - import_tasks: handlers/syslog.yml
   - import_tasks: handlers/nsd.yml
   - import_tasks: handlers/mysql.yml
-  - import_tasks: handlers/mumble.yml
