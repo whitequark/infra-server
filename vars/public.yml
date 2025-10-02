@@ -1,24 +1,14 @@
 ---
-gateway:
-  yamaha: 3812
 backup_objects:
-  postgres_dbs:
-  - roundcube
-  - irclog_freenode
-  - irclog_libera
-  - irclog_oftc
-  - irclog_esper
   mysql_dbs:
   - nextcloud
   files:
     include:
-    - /var/lib/notifico
     - /var/www/nextcloud/config
     - /var/www/nextcloud/apps
     - /var/www/nextcloud/data
     - /var/www/files.whitequark.org
     - /var/www/groupxiv.whitequark.org/public_html/data/
-    - /var/www/llvm.moe
     exclude:
     - /var/www/groupxiv.whitequark.org/public_html/data/*-tiles
     - /var/www/nextcloud/data/*/cache

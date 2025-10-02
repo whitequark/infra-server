@@ -1,7 +1,7 @@
 $ORIGIN   whitequark.org.
 $TTL      600
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100204 28800 7200 2419200 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100205 28800 7200 2419200 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
           IN A      {{ ansible_default_ipv4.address }}
@@ -31,13 +31,10 @@ mta-sts         IN CNAME  mail
 _mta-sts        IN TXT    "v=STSv1; id=1759381101;"
 _smtp._tls      IN TXT    "v=TLSRPTv1; rua=mailto:mail-reports@whitequark.org;"
 
-www       IN CNAME  @
-files     IN CNAME  @
-lab       IN CNAME  @
-groupxiv  IN CNAME  @
-cloud     IN CNAME  @
-notifico  IN CNAME  @
-gateway   IN CNAME  @
+files           IN CNAME  @
+lab             IN CNAME  @
+groupxiv        IN CNAME  @
+cloud           IN CNAME  @
 
 irclog          IN CNAME catirclogs.org.
 freenode.irclog IN CNAME irclog
