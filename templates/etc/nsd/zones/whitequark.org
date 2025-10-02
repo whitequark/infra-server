@@ -1,7 +1,7 @@
 $ORIGIN   whitequark.org.
 $TTL      600
 
-@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100106 28800 7200 2419200 86400)
+@         IN SOA    ns0.whitequark.org. admin.whitequark.org. (2025100201 28800 7200 2419200 86400)
           IN NS     ns0
           IN NS     ns1.rollernet.us.
           IN A      {{ ansible_default_ipv4.address }}
@@ -21,10 +21,11 @@ ns0       IN A      {{ ansible_default_ipv4.address }}
 ns0       IN AAAA   {{ ansible_default_ipv6.address }}
 uruz      IN A      {{ ansible_default_ipv4.address }}
 uruz      IN AAAA   {{ ansible_default_ipv6.address }}
+longtail  IN A      116.203.194.250
+longtail  IN AAAA   2a01:4f8:1c1a:cb58::1
 mail      IN A      135.181.99.189
 mail      IN AAAA   2a01:4f9:c012:f378::1
 mail      IN TXT    "v=spf1 ip4:135.181.99.189 ip6:2a01:4f9:c012:f378::1 -all"
-mai2      IN CNAME  mail
 www       IN CNAME  @
 files     IN CNAME  @
 lab       IN CNAME  @
